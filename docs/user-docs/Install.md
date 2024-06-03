@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-To get started with Beaver Notes, visit the website at [beavernotes.com](beavernotes.com) and navigate to the download section. Choose the installer that matches your operating system – whether it's macOS, Windows, or a Linux distribution. Once you've selected the right installer, you can either go on and follow on-screen instructions or keep reading this section of the docs for better guidance.
+To get started with Beaver Notes, visit the website at [beavernotes.com](https://beavernotes.com) and navigate to the download section. Choose the installer that matches your operating system – whether it's macOS, Windows, or a Linux distribution. Once you've selected the right installer, you can either go on and follow on-screen instructions or keep reading this section of the docs for better guidance.
 
 :::info Not sure which installer to pick? No worries! We are here to help you, just click here
 
