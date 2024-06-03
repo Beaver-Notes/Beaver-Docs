@@ -1,0 +1,27 @@
+{
+  "id": "user-docs/Beaver Notes/Markdown syntax",
+  "title": "Markdown syntax",
+  "description": "Markdown is a powerful language that helps you get things",
+  "source": "@site/docs/user-docs/Beaver Notes/Markdown syntax.md",
+  "sourceDirName": "user-docs/Beaver Notes",
+  "slug": "/user-docs/Beaver Notes/Markdown syntax",
+  "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Markdown syntax",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/user-docs/Beaver Notes/Markdown syntax.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Getting Around",
+    "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Getting Around"
+  },
+  "next": {
+    "title": "Labels",
+    "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Labels"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "dev-docs/Beaver Notes/Setup Your Environment",
+  "title": "Setup Your Environment",
+  "description": "Dive into contributing by setting up your local development environment. Follow these steps to clone the Beaver Notes repository and get ready for action.",
+  "source": "@site/docs/dev-docs/Beaver Notes/Setup Your Environment.md",
+  "sourceDirName": "dev-docs/Beaver Notes",
+  "slug": "/dev-docs/Beaver Notes/Setup Your Environment",
+  "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Setup Your Environment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev-docs/Beaver Notes/Setup Your Environment.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How to contribure",
+    "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure"
+  },
+  "next": {
+    "title": "Building and Testing Beaver Notes",
+    "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Building and Testing Beaver Notes"
+  }
+}

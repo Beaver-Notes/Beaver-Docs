@@ -194,18 +194,26 @@
     },
     "content": "content---beaver-docs-markdown-page-393-4cf"
   },
-  "/Beaver-Docs/docs-127": {
+  "/Beaver-Docs/docs-c56": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---beaver-docs-docsaba-cd4"
     }
   },
-  "/Beaver-Docs/docs-209": {
+  "/Beaver-Docs/docs-312": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---beaver-docs-docs-294-747"
   },
-  "/Beaver-Docs/docs-bc9": {
+  "/Beaver-Docs/docs-cc1": {
     "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/Beaver-Docs/docs/category/beaver-notes-062": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---beaver-docs-docs-category-beaver-notesd-42-e30"
+  },
+  "/Beaver-Docs/docs/category/beaver-notes-1-d8f": {
+    "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
+    "__props": "__props---beaver-docs-docs-category-beaver-notes-1-a-2-d-93a"
   },
   "/Beaver-Docs/docs/category/dev-docs-146": {
     "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
@@ -215,53 +223,53 @@
     "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
     "__props": "__props---beaver-docs-docs-category-user-guides-75-f-25d"
   },
-  "/Beaver-Docs/docs/dev-docs/Building and Testing Beaver Notes-570": {
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Building and Testing Beaver Notes-2ba": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-building-and-testing-beaver-notesaf-9-1bf"
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-building-and-testing-beaver-notes-5-e-2-7a8"
   },
-  "/Beaver-Docs/docs/dev-docs/How to contribure-02a": {
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure-02c": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-how-to-contribure-2-c-1-800"
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-how-to-contribureb-40-a1c"
   },
-  "/Beaver-Docs/docs/dev-docs/Legacy Localization-e33": {
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Legacy Localization-aac": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-legacy-localization-8-cc-975"
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-legacy-localization-2-fa-577"
   },
-  "/Beaver-Docs/docs/dev-docs/Localization-4bd": {
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Localization-473": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-localizationbfa-bf5"
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-localization-9-e-4-6c3"
   },
-  "/Beaver-Docs/docs/dev-docs/Packaging the app-bb2": {
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Packaging the app-392": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-packaging-the-appf-48-8f0"
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-packaging-the-appacb-e60"
   },
-  "/Beaver-Docs/docs/dev-docs/Setup Your Environment-527": {
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Setup Your Environment-37e": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-setup-your-environmentba-0-b1f"
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-setup-your-environmentb-4-d-f55"
   },
-  "/Beaver-Docs/docs/user-docs/Getting Around-85d": {
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Getting Around-7bf": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-user-docs-getting-around-225-b9a"
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-getting-around-817-f3e"
   },
-  "/Beaver-Docs/docs/user-docs/Install-828": {
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Install-99b": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-user-docs-install-125-d3b"
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-install-549-395"
   },
-  "/Beaver-Docs/docs/user-docs/Labels-ce4": {
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Labels-1c7": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-user-docs-labelsb-5-f-5eb"
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-labels-89-f-bea"
   },
-  "/Beaver-Docs/docs/user-docs/Markdown syntax-796": {
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Markdown syntax-6a2": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-user-docs-markdown-syntaxb-5-e-3c6"
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-markdown-syntaxf-5-d-34f"
   },
-  "/Beaver-Docs/docs/user-docs/Password-454": {
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Password-96d": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-user-docs-password-998-5fe"
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-password-28-c-833"
   },
-  "/Beaver-Docs/docs/user-docs/Set up the Sync-5c4": {
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync-544": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-user-docs-set-up-the-sync-220-db8"
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-set-up-the-sync-6-f-0-b40"
   },
   "/Beaver-Docs/-8ea": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",

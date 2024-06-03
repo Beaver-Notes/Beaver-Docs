@@ -8,66 +8,66 @@
           "label": "Next",
           "isLast": true,
           "path": "/Beaver-Docs/docs",
-          "mainDocId": "user-docs/Install",
+          "mainDocId": "user-docs/Beaver Notes/Install",
           "docs": [
             {
-              "id": "dev-docs/Building and Testing Beaver Notes",
-              "path": "/Beaver-Docs/docs/dev-docs/Building and Testing Beaver Notes",
+              "id": "dev-docs/Beaver Notes/Building and Testing Beaver Notes",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Building and Testing Beaver Notes",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/How to contribure",
-              "path": "/Beaver-Docs/docs/dev-docs/How to contribure",
+              "id": "dev-docs/Beaver Notes/How to contribure",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Legacy Localization",
-              "path": "/Beaver-Docs/docs/dev-docs/Legacy Localization",
+              "id": "dev-docs/Beaver Notes/Legacy Localization",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Legacy Localization",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Localization",
-              "path": "/Beaver-Docs/docs/dev-docs/Localization",
+              "id": "dev-docs/Beaver Notes/Localization",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Localization",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Packaging the app",
-              "path": "/Beaver-Docs/docs/dev-docs/Packaging the app",
+              "id": "dev-docs/Beaver Notes/Packaging the app",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Packaging the app",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Setup Your Environment",
-              "path": "/Beaver-Docs/docs/dev-docs/Setup Your Environment",
+              "id": "dev-docs/Beaver Notes/Setup Your Environment",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Setup Your Environment",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "user-docs/Getting Around",
-              "path": "/Beaver-Docs/docs/user-docs/Getting Around",
+              "id": "user-docs/Beaver Notes/Getting Around",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Getting Around",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "user-docs/Install",
-              "path": "/Beaver-Docs/docs/user-docs/Install",
+              "id": "user-docs/Beaver Notes/Install",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Install",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "user-docs/Labels",
-              "path": "/Beaver-Docs/docs/user-docs/Labels",
+              "id": "user-docs/Beaver Notes/Labels",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Labels",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "user-docs/Markdown syntax",
-              "path": "/Beaver-Docs/docs/user-docs/Markdown syntax",
+              "id": "user-docs/Beaver Notes/Markdown syntax",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Markdown syntax",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "user-docs/Password",
-              "path": "/Beaver-Docs/docs/user-docs/Password",
+              "id": "user-docs/Beaver Notes/Password",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Password",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "user-docs/Set up the Sync",
-              "path": "/Beaver-Docs/docs/user-docs/Set up the Sync",
+              "id": "user-docs/Beaver Notes/Set up the Sync",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -76,8 +76,18 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "/category/beaver-notes",
+              "path": "/Beaver-Docs/docs/category/beaver-notes",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "/category/dev-docs",
               "path": "/Beaver-Docs/docs/category/dev-docs",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/beaver-notes-1",
+              "path": "/Beaver-Docs/docs/category/beaver-notes-1",
               "sidebar": "tutorialSidebar"
             }
           ],
