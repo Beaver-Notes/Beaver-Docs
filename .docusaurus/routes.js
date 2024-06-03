@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/Beaver-Docs/docs',
-    component: ComponentCreator('/Beaver-Docs/docs', '3ec'),
+    component: ComponentCreator('/Beaver-Docs/docs', 'fc3'),
     routes: [
       {
         path: '/Beaver-Docs/docs',
-        component: ComponentCreator('/Beaver-Docs/docs', '2ad'),
+        component: ComponentCreator('/Beaver-Docs/docs', '4a4'),
         routes: [
           {
             path: '/Beaver-Docs/docs',
-            component: ComponentCreator('/Beaver-Docs/docs', '9b7'),
+            component: ComponentCreator('/Beaver-Docs/docs', '613'),
             routes: [
               {
                 path: '/Beaver-Docs/docs/category/dev-docs',
@@ -140,8 +140,8 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Beaver-Docs/docs/dev-docs/Localization (Legacy)',
-                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization (Legacy)', '592'),
+                path: '/Beaver-Docs/docs/dev-docs/Localization - Legacy',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization - Legacy', 'cf4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
