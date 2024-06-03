@@ -7,9 +7,10 @@ export default {
   "title": "Beaver Docs",
   "favicon": "img/favicon.ico",
   "url": "https://your-docusaurus-site.example.com",
-  "baseUrl": "/",
-  "organizationName": "facebook",
-  "projectName": "docusaurus",
+  "baseUrl": "/Beaver-Docs/",
+  "projectName": "Beaver-Notes.github.io",
+  "organizationName": "Beaver-Notes",
+  "trailingSlash": false,
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",
   "i18n": {

@@ -3,193 +3,193 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '5ff'),
+    path: '/Beaver-Docs/__docusaurus/debug',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug', '5e0'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
+    path: '/Beaver-Docs/__docusaurus/debug/config',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug/config', '06f'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
+    path: '/Beaver-Docs/__docusaurus/debug/content',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug/content', 'e14'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
+    path: '/Beaver-Docs/__docusaurus/debug/globalData',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug/globalData', '0e7'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
+    path: '/Beaver-Docs/__docusaurus/debug/metadata',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug/metadata', '26b'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
+    path: '/Beaver-Docs/__docusaurus/debug/registry',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug/registry', '3c1'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
+    path: '/Beaver-Docs/__docusaurus/debug/routes',
+    component: ComponentCreator('/Beaver-Docs/__docusaurus/debug/routes', '780'),
     exact: true
   },
   {
-    path: '/blog',
-    component: ComponentCreator('/blog', 'b2f'),
+    path: '/Beaver-Docs/blog',
+    component: ComponentCreator('/Beaver-Docs/blog', '3c0'),
     exact: true
   },
   {
-    path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', '182'),
+    path: '/Beaver-Docs/blog/archive',
+    component: ComponentCreator('/Beaver-Docs/blog/archive', '67a'),
     exact: true
   },
   {
-    path: '/blog/first-blog-post',
-    component: ComponentCreator('/blog/first-blog-post', '89a'),
+    path: '/Beaver-Docs/blog/first-blog-post',
+    component: ComponentCreator('/Beaver-Docs/blog/first-blog-post', '8e5'),
     exact: true
   },
   {
-    path: '/blog/long-blog-post',
-    component: ComponentCreator('/blog/long-blog-post', '9ad'),
+    path: '/Beaver-Docs/blog/long-blog-post',
+    component: ComponentCreator('/Beaver-Docs/blog/long-blog-post', '144'),
     exact: true
   },
   {
-    path: '/blog/mdx-blog-post',
-    component: ComponentCreator('/blog/mdx-blog-post', 'e9f'),
+    path: '/Beaver-Docs/blog/mdx-blog-post',
+    component: ComponentCreator('/Beaver-Docs/blog/mdx-blog-post', '9a8'),
     exact: true
   },
   {
-    path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '287'),
+    path: '/Beaver-Docs/blog/tags',
+    component: ComponentCreator('/Beaver-Docs/blog/tags', 'aaa'),
     exact: true
   },
   {
-    path: '/blog/tags/docusaurus',
-    component: ComponentCreator('/blog/tags/docusaurus', '704'),
+    path: '/Beaver-Docs/blog/tags/docusaurus',
+    component: ComponentCreator('/Beaver-Docs/blog/tags/docusaurus', 'd82'),
     exact: true
   },
   {
-    path: '/blog/tags/facebook',
-    component: ComponentCreator('/blog/tags/facebook', '858'),
+    path: '/Beaver-Docs/blog/tags/facebook',
+    component: ComponentCreator('/Beaver-Docs/blog/tags/facebook', '4f0'),
     exact: true
   },
   {
-    path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello', '299'),
+    path: '/Beaver-Docs/blog/tags/hello',
+    component: ComponentCreator('/Beaver-Docs/blog/tags/hello', 'cd5'),
     exact: true
   },
   {
-    path: '/blog/tags/hola',
-    component: ComponentCreator('/blog/tags/hola', '00d'),
+    path: '/Beaver-Docs/blog/tags/hola',
+    component: ComponentCreator('/Beaver-Docs/blog/tags/hola', 'fd9'),
     exact: true
   },
   {
-    path: '/blog/welcome',
-    component: ComponentCreator('/blog/welcome', 'd2b'),
+    path: '/Beaver-Docs/blog/welcome',
+    component: ComponentCreator('/Beaver-Docs/blog/welcome', 'b63'),
     exact: true
   },
   {
-    path: '/markdown-page',
-    component: ComponentCreator('/markdown-page', '3d7'),
+    path: '/Beaver-Docs/markdown-page',
+    component: ComponentCreator('/Beaver-Docs/markdown-page', '833'),
     exact: true
   },
   {
-    path: '/docs',
-    component: ComponentCreator('/docs', '025'),
+    path: '/Beaver-Docs/docs',
+    component: ComponentCreator('/Beaver-Docs/docs', '3ec'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', '0a2'),
+        path: '/Beaver-Docs/docs',
+        component: ComponentCreator('/Beaver-Docs/docs', '2ad'),
         routes: [
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', 'd37'),
+            path: '/Beaver-Docs/docs',
+            component: ComponentCreator('/Beaver-Docs/docs', '9b7'),
             routes: [
               {
-                path: '/docs/category/dev-docs',
-                component: ComponentCreator('/docs/category/dev-docs', 'db3'),
+                path: '/Beaver-Docs/docs/category/dev-docs',
+                component: ComponentCreator('/Beaver-Docs/docs/category/dev-docs', '146'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/category/user-guides',
-                component: ComponentCreator('/docs/category/user-guides', '189'),
+                path: '/Beaver-Docs/docs/category/user-guides',
+                component: ComponentCreator('/Beaver-Docs/docs/category/user-guides', 'b72'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/dev-docs/Building and Testing Beaver Notes',
-                component: ComponentCreator('/docs/dev-docs/Building and Testing Beaver Notes', 'dab'),
+                path: '/Beaver-Docs/docs/dev-docs/Building and Testing Beaver Notes',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Building and Testing Beaver Notes', '570'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/dev-docs/How to contribure',
-                component: ComponentCreator('/docs/dev-docs/How to contribure', '871'),
+                path: '/Beaver-Docs/docs/dev-docs/How to contribure',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/How to contribure', '02a'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/dev-docs/Localization',
-                component: ComponentCreator('/docs/dev-docs/Localization', '463'),
+                path: '/Beaver-Docs/docs/dev-docs/Localization',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization', '4bd'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/dev-docs/Localization (Legacy)',
-                component: ComponentCreator('/docs/dev-docs/Localization (Legacy)', 'c29'),
+                path: '/Beaver-Docs/docs/dev-docs/Localization (Legacy)',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization (Legacy)', '592'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/dev-docs/Packaging the app',
-                component: ComponentCreator('/docs/dev-docs/Packaging the app', 'cc7'),
+                path: '/Beaver-Docs/docs/dev-docs/Packaging the app',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Packaging the app', 'bb2'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/dev-docs/Setup Your Environment',
-                component: ComponentCreator('/docs/dev-docs/Setup Your Environment', '659'),
+                path: '/Beaver-Docs/docs/dev-docs/Setup Your Environment',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Setup Your Environment', '527'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/user-docs/Getting Around',
-                component: ComponentCreator('/docs/user-docs/Getting Around', 'f79'),
+                path: '/Beaver-Docs/docs/user-docs/Getting Around',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Getting Around', '85d'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/user-docs/Install',
-                component: ComponentCreator('/docs/user-docs/Install', '04f'),
+                path: '/Beaver-Docs/docs/user-docs/Install',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Install', '828'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/user-docs/Labels',
-                component: ComponentCreator('/docs/user-docs/Labels', '361'),
+                path: '/Beaver-Docs/docs/user-docs/Labels',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Labels', 'ce4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/user-docs/Markdown syntax',
-                component: ComponentCreator('/docs/user-docs/Markdown syntax', '650'),
+                path: '/Beaver-Docs/docs/user-docs/Markdown syntax',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Markdown syntax', '796'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/user-docs/Password',
-                component: ComponentCreator('/docs/user-docs/Password', '7ad'),
+                path: '/Beaver-Docs/docs/user-docs/Password',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Password', '454'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/user-docs/Set up the Sync',
-                component: ComponentCreator('/docs/user-docs/Set up the Sync', '6cb'),
+                path: '/Beaver-Docs/docs/user-docs/Set up the Sync',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Set up the Sync', '5c4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -200,8 +200,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', '2e1'),
+    path: '/Beaver-Docs/',
+    component: ComponentCreator('/Beaver-Docs/', '8ea'),
     exact: true
   },
   {

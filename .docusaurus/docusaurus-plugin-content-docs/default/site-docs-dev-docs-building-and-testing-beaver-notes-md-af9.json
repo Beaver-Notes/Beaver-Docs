@@ -5,7 +5,7 @@
   "source": "@site/docs/dev-docs/Building and Testing Beaver Notes.md",
   "sourceDirName": "dev-docs",
   "slug": "/dev-docs/Building and Testing Beaver Notes",
-  "permalink": "/docs/dev-docs/Building and Testing Beaver Notes",
+  "permalink": "/Beaver-Docs/docs/dev-docs/Building and Testing Beaver Notes",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev-docs/Building and Testing Beaver Notes.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Setup Your Environment",
-    "permalink": "/docs/dev-docs/Setup Your Environment"
+    "permalink": "/Beaver-Docs/docs/dev-docs/Setup Your Environment"
   },
   "next": {
     "title": "Packaging the app",
-    "permalink": "/docs/dev-docs/Packaging the app"
+    "permalink": "/Beaver-Docs/docs/dev-docs/Packaging the app"
   }
 }

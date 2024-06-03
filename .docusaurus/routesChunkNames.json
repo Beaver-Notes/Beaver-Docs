@@ -1,273 +1,273 @@
 {
-  "/__docusaurus/debug-5ff": {
+  "/Beaver-Docs/__docusaurus/debug-5e0": {
     "__comp": "__comp---theme-debug-config-23-a-2ff",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     }
   },
-  "/__docusaurus/debug/config-5ba": {
+  "/Beaver-Docs/__docusaurus/debug/config-06f": {
     "__comp": "__comp---theme-debug-config-23-a-2ff",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     }
   },
-  "/__docusaurus/debug/content-a2b": {
+  "/Beaver-Docs/__docusaurus/debug/content-e14": {
     "__comp": "__comp---theme-debug-contentba-8-ce7",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     },
-    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
+    "__props": "__props---beaver-docs-docusaurus-debug-content-380-343"
   },
-  "/__docusaurus/debug/globalData-c3c": {
+  "/Beaver-Docs/__docusaurus/debug/globalData-0e7": {
     "__comp": "__comp---theme-debug-global-dataede-0fa",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     }
   },
-  "/__docusaurus/debug/metadata-156": {
+  "/Beaver-Docs/__docusaurus/debug/metadata-26b": {
     "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     }
   },
-  "/__docusaurus/debug/registry-88c": {
+  "/Beaver-Docs/__docusaurus/debug/registry-3c1": {
     "__comp": "__comp---theme-debug-registry-679-501",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     }
   },
-  "/__docusaurus/debug/routes-000": {
+  "/Beaver-Docs/__docusaurus/debug/routes-780": {
     "__comp": "__comp---theme-debug-routes-946-699",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "plugin---beaver-docs-docusaurus-debugb-38-0e4"
     }
   },
-  "/blog-b2f": {
+  "/Beaver-Docs/blog-3c0": {
     "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "content---beaver-docs-blog-766-2e8"
       },
       {
-        "content": "content---blogf-4-f-cd7"
+        "content": "content---beaver-docs-blogf-4-f-bce"
       },
       {
-        "content": "content---blog-871-381"
+        "content": "content---beaver-docs-blog-871-d50"
       },
       {
-        "content": "content---blog-925-e00"
+        "content": "content---beaver-docs-blog-925-50a"
       }
     ],
-    "__props": "__props---blogc-15-573"
+    "__props": "__props---beaver-docs-blog-89-d-696"
   },
-  "/blog/archive-182": {
+  "/Beaver-Docs/blog/archive-67a": {
     "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "__props": "__props---blog-archivef-81-229"
+    "__props": "__props---beaver-docs-blog-archive-93-a-180"
   },
-  "/blog/first-blog-post-89a": {
+  "/Beaver-Docs/blog/first-blog-post-8e5": {
     "__comp": "__comp---theme-blog-post-pageccc-cab",
     "__context": {
       "data": {
-        "blogMetadata": "blogMetadata---blog-first-blog-postace-ee5"
+        "blogMetadata": "blogMetadata---beaver-docs-blog-first-blog-postace-edb"
       },
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-first-blog-poste-27-4a1"
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
+    "content": "content---beaver-docs-blog-first-blog-poste-27-9cc"
   },
-  "/blog/long-blog-post-9ad": {
+  "/Beaver-Docs/blog/long-blog-post-144": {
     "__comp": "__comp---theme-blog-post-pageccc-cab",
     "__context": {
       "data": {
-        "blogMetadata": "blogMetadata---blog-first-blog-postace-ee5"
+        "blogMetadata": "blogMetadata---beaver-docs-blog-first-blog-postace-edb"
       },
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-long-blog-post-736-bc7"
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
+    "content": "content---beaver-docs-blog-long-blog-post-736-187"
   },
-  "/blog/mdx-blog-post-e9f": {
+  "/Beaver-Docs/blog/mdx-blog-post-9a8": {
     "__comp": "__comp---theme-blog-post-pageccc-cab",
     "__context": {
       "data": {
-        "blogMetadata": "blogMetadata---blog-first-blog-postace-ee5"
+        "blogMetadata": "blogMetadata---beaver-docs-blog-first-blog-postace-edb"
       },
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-mdx-blog-post-593-37b"
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
+    "content": "content---beaver-docs-blog-mdx-blog-post-593-358"
   },
-  "/blog/tags-287": {
+  "/Beaver-Docs/blog/tags-aaa": {
     "__comp": "__comp---theme-blog-tags-list-page-01-a-d0b",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "__props": "__props---blog-tags-3-a-2-fa2"
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
+    "__props": "__props---beaver-docs-blog-tags-42-b-b51"
   },
-  "/blog/tags/docusaurus-704": {
+  "/Beaver-Docs/blog/tags/docusaurus-d82": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "content---beaver-docs-blog-766-2e8"
       },
       {
-        "content": "content---blogf-4-f-cd7"
+        "content": "content---beaver-docs-blogf-4-f-bce"
       },
       {
-        "content": "content---blog-871-381"
+        "content": "content---beaver-docs-blog-871-d50"
       },
       {
-        "content": "content---blog-925-e00"
+        "content": "content---beaver-docs-blog-925-50a"
       }
     ],
-    "__props": "__props---blog-tags-docusaurus-321-832"
+    "__props": "__props---beaver-docs-blog-tags-docusaurus-7-d-3-d2b"
   },
-  "/blog/tags/facebook-858": {
+  "/Beaver-Docs/blog/tags/facebook-4f0": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "content---beaver-docs-blog-766-2e8"
       }
     ],
-    "__props": "__props---blog-tags-facebooke-5-a-514"
+    "__props": "__props---beaver-docs-blog-tags-facebook-9-c-7-715"
   },
-  "/blog/tags/hello-299": {
+  "/Beaver-Docs/blog/tags/hello-cd5": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
     "items": [
       {
-        "content": "content---blog-766-e3c"
+        "content": "content---beaver-docs-blog-766-2e8"
       },
       {
-        "content": "content---blog-871-381"
+        "content": "content---beaver-docs-blog-871-d50"
       }
     ],
-    "__props": "__props---blog-tags-hellof-82-2fd"
+    "__props": "__props---beaver-docs-blog-tags-hello-1-af-78b"
   },
-  "/blog/tags/hola-00d": {
+  "/Beaver-Docs/blog/tags/hola-fd9": {
     "__comp": "__comp---theme-blog-tags-posts-page-687-b6c",
     "__context": {
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
     "items": [
       {
-        "content": "content---blog-925-e00"
+        "content": "content---beaver-docs-blog-925-50a"
       }
     ],
-    "__props": "__props---blog-tags-hola-5-e-9-9a3"
+    "__props": "__props---beaver-docs-blog-tags-hola-37-d-fb4"
   },
-  "/blog/welcome-d2b": {
+  "/Beaver-Docs/blog/welcome-b63": {
     "__comp": "__comp---theme-blog-post-pageccc-cab",
     "__context": {
       "data": {
-        "blogMetadata": "blogMetadata---blog-first-blog-postace-ee5"
+        "blogMetadata": "blogMetadata---beaver-docs-blog-first-blog-postace-edb"
       },
-      "plugin": "plugin---blog-369-22e"
+      "plugin": "plugin---beaver-docs-blog-369-552"
     },
-    "sidebar": "sidebar---blog-814-8ac",
-    "content": "content---blog-welcomed-9-f-ffb"
+    "sidebar": "sidebar---beaver-docs-blog-814-322",
+    "content": "content---beaver-docs-blog-welcomed-9-f-dc0"
   },
-  "/markdown-page-3d7": {
+  "/Beaver-Docs/markdown-page-833": {
     "__comp": "__comp---theme-mdx-page-1-f-3-b90",
     "__context": {
-      "plugin": "plugin---markdown-pagea-74-7b5"
+      "plugin": "plugin---beaver-docs-markdown-pagea-74-3c0"
     },
-    "content": "content---markdown-page-393-028"
+    "content": "content---beaver-docs-markdown-page-393-4cf"
   },
-  "/docs-025": {
+  "/Beaver-Docs/docs-3ec": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
-      "plugin": "plugin---docsaba-d7c"
+      "plugin": "plugin---beaver-docs-docsaba-cd4"
     }
   },
-  "/docs-0a2": {
+  "/Beaver-Docs/docs-2ad": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---docs-005-788"
+    "__props": "__props---beaver-docs-docs-294-747"
   },
-  "/docs-d37": {
+  "/Beaver-Docs/docs-9b7": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
-  "/docs/category/dev-docs-db3": {
+  "/Beaver-Docs/docs/category/dev-docs-146": {
     "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-dev-docse-05-4f2"
+    "__props": "__props---beaver-docs-docs-category-dev-docs-539-a40"
   },
-  "/docs/category/user-guides-189": {
+  "/Beaver-Docs/docs/category/user-guides-b72": {
     "__comp": "__comp---theme-doc-category-generated-index-page-14-e-640",
-    "__props": "__props---docs-category-user-guidesebd-43c"
+    "__props": "__props---beaver-docs-docs-category-user-guides-75-f-25d"
   },
-  "/docs/dev-docs/Building and Testing Beaver Notes-dab": {
+  "/Beaver-Docs/docs/dev-docs/Building and Testing Beaver Notes-570": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-docs-building-and-testing-beaver-notesaf-9-b0b"
+    "content": "content---beaver-docs-docs-dev-docs-building-and-testing-beaver-notesaf-9-1bf"
   },
-  "/docs/dev-docs/How to contribure-871": {
+  "/Beaver-Docs/docs/dev-docs/How to contribure-02a": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-docs-how-to-contribure-2-c-1-e50"
+    "content": "content---beaver-docs-docs-dev-docs-how-to-contribure-2-c-1-800"
   },
-  "/docs/dev-docs/Localization-463": {
+  "/Beaver-Docs/docs/dev-docs/Localization-4bd": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-docs-localizationbfa-bda"
+    "content": "content---beaver-docs-docs-dev-docs-localizationbfa-bf5"
   },
-  "/docs/dev-docs/Localization (Legacy)-c29": {
+  "/Beaver-Docs/docs/dev-docs/Localization (Legacy)-592": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-docs-localization-legacy-d-30-d21"
+    "content": "content---beaver-docs-docs-dev-docs-localization-legacy-d-30-296"
   },
-  "/docs/dev-docs/Packaging the app-cc7": {
+  "/Beaver-Docs/docs/dev-docs/Packaging the app-bb2": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-docs-packaging-the-appf-48-110"
+    "content": "content---beaver-docs-docs-dev-docs-packaging-the-appf-48-8f0"
   },
-  "/docs/dev-docs/Setup Your Environment-659": {
+  "/Beaver-Docs/docs/dev-docs/Setup Your Environment-527": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dev-docs-setup-your-environmentba-0-c60"
+    "content": "content---beaver-docs-docs-dev-docs-setup-your-environmentba-0-b1f"
   },
-  "/docs/user-docs/Getting Around-f79": {
+  "/Beaver-Docs/docs/user-docs/Getting Around-85d": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-docs-getting-around-225-c7c"
+    "content": "content---beaver-docs-docs-user-docs-getting-around-225-b9a"
   },
-  "/docs/user-docs/Install-04f": {
+  "/Beaver-Docs/docs/user-docs/Install-828": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-docs-install-125-bad"
+    "content": "content---beaver-docs-docs-user-docs-install-125-d3b"
   },
-  "/docs/user-docs/Labels-361": {
+  "/Beaver-Docs/docs/user-docs/Labels-ce4": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-docs-labelsb-5-f-792"
+    "content": "content---beaver-docs-docs-user-docs-labelsb-5-f-5eb"
   },
-  "/docs/user-docs/Markdown syntax-650": {
+  "/Beaver-Docs/docs/user-docs/Markdown syntax-796": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-docs-markdown-syntaxb-5-e-0c9"
+    "content": "content---beaver-docs-docs-user-docs-markdown-syntaxb-5-e-3c6"
   },
-  "/docs/user-docs/Password-7ad": {
+  "/Beaver-Docs/docs/user-docs/Password-454": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-docs-password-998-f5b"
+    "content": "content---beaver-docs-docs-user-docs-password-998-5fe"
   },
-  "/docs/user-docs/Set up the Sync-6cb": {
+  "/Beaver-Docs/docs/user-docs/Set up the Sync-5c4": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-user-docs-set-up-the-sync-220-3b0"
+    "content": "content---beaver-docs-docs-user-docs-set-up-the-sync-220-db8"
   },
-  "/-2e1": {
+  "/Beaver-Docs/-8ea": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",
     "__context": {
-      "plugin": "plugin---markdown-pagea-74-7b5"
+      "plugin": "plugin---beaver-docs-markdown-pagea-74-3c0"
     },
-    "config": "config---5-e-9-4f3"
+    "config": "config---beaver-docs-5-e-9-592"
   }
 }
