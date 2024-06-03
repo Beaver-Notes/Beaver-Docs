@@ -1,0 +1,20 @@
+{
+  "id": "dev-docs/Localization (Legacy)",
+  "title": "Localization (Legacy)",
+  "description": "At Beaver, we believe in creating software that is both privacy-friendly and accessible to everyone, and you can assist us in achieving this by translating Beaver into your own language.",
+  "source": "@site/docs/dev-docs/Localization (Legacy).md",
+  "sourceDirName": "dev-docs",
+  "slug": "/dev-docs/Localization (Legacy)",
+  "permalink": "/docs/dev-docs/Localization (Legacy)",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev-docs/Localization (Legacy).md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Localization",
+    "permalink": "/docs/dev-docs/Localization"
+  }
+}

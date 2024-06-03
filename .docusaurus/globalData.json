@@ -1,0 +1,98 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "user-docs/Install",
+          "docs": [
+            {
+              "id": "dev-docs/Building and Testing Beaver Notes",
+              "path": "/docs/dev-docs/Building and Testing Beaver Notes",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "dev-docs/How to contribure",
+              "path": "/docs/dev-docs/How to contribure",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "dev-docs/Localization",
+              "path": "/docs/dev-docs/Localization",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "dev-docs/Localization (Legacy)",
+              "path": "/docs/dev-docs/Localization (Legacy)",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "dev-docs/Packaging the app",
+              "path": "/docs/dev-docs/Packaging the app",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "dev-docs/Setup Your Environment",
+              "path": "/docs/dev-docs/Setup Your Environment",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Getting Around",
+              "path": "/docs/user-docs/Getting Around",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Install",
+              "path": "/docs/user-docs/Install",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Labels",
+              "path": "/docs/user-docs/Labels",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Markdown syntax",
+              "path": "/docs/user-docs/Markdown syntax",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Password",
+              "path": "/docs/user-docs/Password",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Set up the Sync",
+              "path": "/docs/user-docs/Set up the Sync",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/user-guides",
+              "path": "/docs/category/user-guides",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "/category/dev-docs",
+              "path": "/docs/category/dev-docs",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/category/user-guides",
+                "label": "User Guides"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

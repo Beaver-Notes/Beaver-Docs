@@ -1,0 +1,27 @@
+{
+  "id": "user-docs/Labels",
+  "title": "Labels",
+  "description": "Labels are quite easy to master and can quickly become your best friends as they help you find and organize your notes,thoughts, and more.",
+  "source": "@site/docs/user-docs/Labels.md",
+  "sourceDirName": "user-docs",
+  "slug": "/user-docs/Labels",
+  "permalink": "/docs/user-docs/Labels",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/user-docs/Labels.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Markdown syntax",
+    "permalink": "/docs/user-docs/Markdown syntax"
+  },
+  "next": {
+    "title": "Password",
+    "permalink": "/docs/user-docs/Password"
+  }
+}
