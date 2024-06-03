@@ -194,17 +194,17 @@
     },
     "content": "content---beaver-docs-markdown-page-393-4cf"
   },
-  "/Beaver-Docs/docs-fc3": {
+  "/Beaver-Docs/docs-127": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---beaver-docs-docsaba-cd4"
     }
   },
-  "/Beaver-Docs/docs-4a4": {
+  "/Beaver-Docs/docs-209": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---beaver-docs-docs-294-747"
   },
-  "/Beaver-Docs/docs-613": {
+  "/Beaver-Docs/docs-bc9": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/Beaver-Docs/docs/category/dev-docs-146": {
@@ -223,13 +223,13 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-dev-docs-how-to-contribure-2-c-1-800"
   },
+  "/Beaver-Docs/docs/dev-docs/Legacy Localization-e33": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---beaver-docs-docs-dev-docs-legacy-localization-8-cc-975"
+  },
   "/Beaver-Docs/docs/dev-docs/Localization-4bd": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-dev-docs-localizationbfa-bf5"
-  },
-  "/Beaver-Docs/docs/dev-docs/Localization - Legacy-cf4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-localization-legacyddf-764"
   },
   "/Beaver-Docs/docs/dev-docs/Packaging the app-bb2": {
     "__comp": "__comp---theme-doc-item-178-a40",

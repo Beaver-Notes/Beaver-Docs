@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/Beaver-Docs/docs',
-    component: ComponentCreator('/Beaver-Docs/docs', 'fc3'),
+    component: ComponentCreator('/Beaver-Docs/docs', '127'),
     routes: [
       {
         path: '/Beaver-Docs/docs',
-        component: ComponentCreator('/Beaver-Docs/docs', '4a4'),
+        component: ComponentCreator('/Beaver-Docs/docs', '209'),
         routes: [
           {
             path: '/Beaver-Docs/docs',
-            component: ComponentCreator('/Beaver-Docs/docs', '613'),
+            component: ComponentCreator('/Beaver-Docs/docs', 'bc9'),
             routes: [
               {
                 path: '/Beaver-Docs/docs/category/dev-docs',
@@ -134,14 +134,14 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Beaver-Docs/docs/dev-docs/Localization',
-                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization', '4bd'),
+                path: '/Beaver-Docs/docs/dev-docs/Legacy Localization',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Legacy Localization', 'e33'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Beaver-Docs/docs/dev-docs/Localization - Legacy',
-                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization - Legacy', 'cf4'),
+                path: '/Beaver-Docs/docs/dev-docs/Localization',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Localization', '4bd'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },

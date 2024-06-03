@@ -42,7 +42,7 @@ Please note that the command-translation feature has been deprecated in Beaver N
 
 ## Export and Import 
 
-To import a locale, simply select the file from your system, choose JSON as the format, and then select the locale you're importing. To export, select the desired locale and then choose JSON as the format. If you prefer to implement your translation into the app manually rather than contacting us, follow the [Localization (Legacy)](./Localization%20-%20Legacy.md) guide to place the file and make the necessary modifications. 
+To import a locale, simply select the file from your system, choose JSON as the format, and then select the locale you're importing. To export, select the desired locale and then choose JSON as the format. If you prefer to implement your translation into the app manually rather than contacting us, follow the [Localization (Legacy)](./Legacy%20Localization.md) guide to place the file and make the necessary modifications. 
 
 **Please note that the command-translation feature has been deprecated in Beaver Notes 3.0.0.**
 

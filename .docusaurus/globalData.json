@@ -21,13 +21,13 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Localization",
-              "path": "/Beaver-Docs/docs/dev-docs/Localization",
+              "id": "dev-docs/Legacy Localization",
+              "path": "/Beaver-Docs/docs/dev-docs/Legacy Localization",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Localization - Legacy",
-              "path": "/Beaver-Docs/docs/dev-docs/Localization - Legacy",
+              "id": "dev-docs/Localization",
+              "path": "/Beaver-Docs/docs/dev-docs/Localization",
               "sidebar": "tutorialSidebar"
             },
             {
