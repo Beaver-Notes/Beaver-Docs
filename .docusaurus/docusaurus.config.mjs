@@ -6,7 +6,7 @@
 export default {
   "title": "Beaver Docs",
   "favicon": "img/favicon.ico",
-  "url": "https://your-docusaurus-site.example.com",
+  "url": "https://beaver-notes.github.io",
   "baseUrl": "/Beaver-Docs/",
   "projectName": "Beaver-Notes.github.io",
   "organizationName": "Beaver-Notes",
