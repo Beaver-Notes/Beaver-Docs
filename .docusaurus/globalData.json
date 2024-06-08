@@ -16,6 +16,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "dev-docs/Beaver Notes/Data API",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "dev-docs/Beaver Notes/How to contribure",
               "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure",
               "sidebar": "tutorialSidebar"

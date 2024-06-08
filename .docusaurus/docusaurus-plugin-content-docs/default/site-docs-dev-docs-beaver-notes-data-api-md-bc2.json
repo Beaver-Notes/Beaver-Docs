@@ -1,0 +1,23 @@
+{
+  "id": "dev-docs/Beaver Notes/Data API",
+  "title": "Data API",
+  "description": "The data api is designed for third party applications to be able to interact with Beaver Notes by creating notes, labels and deleting notes.",
+  "source": "@site/docs/dev-docs/Beaver Notes/Data API.md",
+  "sourceDirName": "dev-docs/Beaver Notes",
+  "slug": "/dev-docs/Beaver Notes/Data API",
+  "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev-docs/Beaver Notes/Data API.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Legacy Localization",
+    "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Legacy Localization"
+  }
+}

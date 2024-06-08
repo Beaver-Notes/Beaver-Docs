@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/Beaver-Docs/docs',
-    component: ComponentCreator('/Beaver-Docs/docs', 'c56'),
+    component: ComponentCreator('/Beaver-Docs/docs', 'ca5'),
     routes: [
       {
         path: '/Beaver-Docs/docs',
-        component: ComponentCreator('/Beaver-Docs/docs', '312'),
+        component: ComponentCreator('/Beaver-Docs/docs', '77d'),
         routes: [
           {
             path: '/Beaver-Docs/docs',
-            component: ComponentCreator('/Beaver-Docs/docs', 'cc1'),
+            component: ComponentCreator('/Beaver-Docs/docs', '7f9'),
             routes: [
               {
                 path: '/Beaver-Docs/docs/category/beaver-notes',
@@ -136,6 +136,12 @@ export default [
               {
                 path: '/Beaver-Docs/docs/dev-docs/Beaver Notes/Building and Testing Beaver Notes',
                 component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Beaver Notes/Building and Testing Beaver Notes', '2ba'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API', 'f24'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },

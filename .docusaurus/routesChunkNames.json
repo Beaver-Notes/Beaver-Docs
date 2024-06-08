@@ -194,17 +194,17 @@
     },
     "content": "content---beaver-docs-markdown-page-393-4cf"
   },
-  "/Beaver-Docs/docs-c56": {
+  "/Beaver-Docs/docs-ca5": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---beaver-docs-docsaba-cd4"
     }
   },
-  "/Beaver-Docs/docs-312": {
+  "/Beaver-Docs/docs-77d": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---beaver-docs-docs-294-747"
   },
-  "/Beaver-Docs/docs-cc1": {
+  "/Beaver-Docs/docs-7f9": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/Beaver-Docs/docs/category/beaver-notes-062": {
@@ -226,6 +226,10 @@
   "/Beaver-Docs/docs/dev-docs/Beaver Notes/Building and Testing Beaver Notes-2ba": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-dev-docs-beaver-notes-building-and-testing-beaver-notes-5-e-2-7a8"
+  },
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API-f24": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-data-ap-ibc-2-a19"
   },
   "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure-02c": {
     "__comp": "__comp---theme-doc-item-178-a40",

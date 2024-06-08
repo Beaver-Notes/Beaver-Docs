@@ -19,5 +19,9 @@
   "previous": {
     "title": "Localization",
     "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Localization"
+  },
+  "next": {
+    "title": "Data API",
+    "permalink": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API"
   }
 }
