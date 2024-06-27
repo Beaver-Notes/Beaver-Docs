@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 7
 ---
 
 On this page, you'll be guided through securing your notes and resetting the password.

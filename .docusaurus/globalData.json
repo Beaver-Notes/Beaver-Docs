@@ -16,13 +16,13 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Beaver Notes/Data API",
-              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API",
+              "id": "dev-docs/Beaver Notes/How to contribure",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "dev-docs/Beaver Notes/How to contribure",
-              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure",
+              "id": "dev-docs/Beaver Notes/Integations",
+              "path": "/Beaver-Docs/docs/dev-docs/Beaver Notes/Integations",
               "sidebar": "tutorialSidebar"
             },
             {
@@ -73,6 +73,11 @@
             {
               "id": "user-docs/Beaver Notes/Set up the Sync",
               "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "user-docs/Beaver Notes/The Mermaid Block",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/The Mermaid Block",
               "sidebar": "tutorialSidebar"
             },
             {

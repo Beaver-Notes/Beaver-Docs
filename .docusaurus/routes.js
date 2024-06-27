@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/Beaver-Docs/docs',
-    component: ComponentCreator('/Beaver-Docs/docs', 'ca5'),
+    component: ComponentCreator('/Beaver-Docs/docs', 'fba'),
     routes: [
       {
         path: '/Beaver-Docs/docs',
-        component: ComponentCreator('/Beaver-Docs/docs', '77d'),
+        component: ComponentCreator('/Beaver-Docs/docs', '425'),
         routes: [
           {
             path: '/Beaver-Docs/docs',
-            component: ComponentCreator('/Beaver-Docs/docs', '7f9'),
+            component: ComponentCreator('/Beaver-Docs/docs', '796'),
             routes: [
               {
                 path: '/Beaver-Docs/docs/category/beaver-notes',
@@ -140,14 +140,14 @@ export default [
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API',
-                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API', 'f24'),
+                path: '/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure', '02c'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure',
-                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure', '02c'),
+                path: '/Beaver-Docs/docs/dev-docs/Beaver Notes/Integations',
+                component: ComponentCreator('/Beaver-Docs/docs/dev-docs/Beaver Notes/Integations', 'e99'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
@@ -208,6 +208,12 @@ export default [
               {
                 path: '/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync',
                 component: ComponentCreator('/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync', '544'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Beaver-Docs/docs/user-docs/Beaver Notes/The Mermaid Block',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Beaver Notes/The Mermaid Block', '238'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }

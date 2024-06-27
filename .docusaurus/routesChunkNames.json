@@ -194,17 +194,17 @@
     },
     "content": "content---beaver-docs-markdown-page-393-4cf"
   },
-  "/Beaver-Docs/docs-ca5": {
+  "/Beaver-Docs/docs-fba": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---beaver-docs-docsaba-cd4"
     }
   },
-  "/Beaver-Docs/docs-77d": {
+  "/Beaver-Docs/docs-425": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---beaver-docs-docs-294-747"
   },
-  "/Beaver-Docs/docs-7f9": {
+  "/Beaver-Docs/docs-796": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/Beaver-Docs/docs/category/beaver-notes-062": {
@@ -227,13 +227,13 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-dev-docs-beaver-notes-building-and-testing-beaver-notes-5-e-2-7a8"
   },
-  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Data API-f24": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-data-ap-ibc-2-a19"
-  },
   "/Beaver-Docs/docs/dev-docs/Beaver Notes/How to contribure-02c": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-dev-docs-beaver-notes-how-to-contribureb-40-a1c"
+  },
+  "/Beaver-Docs/docs/dev-docs/Beaver Notes/Integations-e99": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---beaver-docs-docs-dev-docs-beaver-notes-integations-8-b-4-53b"
   },
   "/Beaver-Docs/docs/dev-docs/Beaver Notes/Legacy Localization-aac": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -274,6 +274,10 @@
   "/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync-544": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-user-docs-beaver-notes-set-up-the-sync-6-f-0-b40"
+  },
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/The Mermaid Block-238": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-the-mermaid-blocke-54-bee"
   },
   "/Beaver-Docs/-8ea": {
     "__comp": "__comp---site-src-pages-index-jsc-4-f-f99",

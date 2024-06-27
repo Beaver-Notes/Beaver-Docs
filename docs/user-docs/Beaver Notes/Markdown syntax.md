@@ -66,11 +66,17 @@ A math block can be inserted by typing $$. Clicking on a math block opens the Ka
 
 ![Katex Example](./imgs/Katex%20example.png)
 
+### Mermaid Block
+
+A mermaid block can be inserted by typing `::mermaid`. The mermaid block supports the Mermaid.js syntax, allowing you to add beautiful flowcharts, diagrams, and charts seamlessly to your notes, making data easier to read. To discover more about using Mermaid, check out the [Mermaid Block page](./The%20Mermaid%20Block.md).
+
+![Mermaid Example](./imgs/mermaid.png)
+
 ### Callouts
 
-Callouts come in yellow, red, blue, green, black, and purple. 
+Callouts come in yellow, red, blue, green, black, and purple.
 
-Simply type >[color name] to insert the callout. Once added, it's ready to grab attention.
+Simply type `::color name` to insert the callout in Beaver Notes 3.3.0 or later. If you are running a previous version, you can insert a callout by typing `>[color name]`. Once added, it's ready to grab attention.
 
 Deleting a callout is effortless—just press the delete key.
 

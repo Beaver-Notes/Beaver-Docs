@@ -1,0 +1,27 @@
+{
+  "id": "user-docs/Beaver Notes/The Mermaid Block",
+  "title": "The Mermaid Block",
+  "description": "The mermaid block allows you to create diagrams using Mermaid.js. It supports a variety of diagram types, including flowcharts, sequence diagrams, class diagrams, state diagrams, Gantt charts, and more.",
+  "source": "@site/docs/user-docs/Beaver Notes/The Mermaid Block.md",
+  "sourceDirName": "user-docs/Beaver Notes",
+  "slug": "/user-docs/Beaver Notes/The Mermaid Block",
+  "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/The Mermaid Block",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/user-docs/Beaver Notes/The Mermaid Block.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Labels",
+    "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Labels"
+  },
+  "next": {
+    "title": "Set up the Sync",
+    "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Set up the Sync"
+  }
+}
