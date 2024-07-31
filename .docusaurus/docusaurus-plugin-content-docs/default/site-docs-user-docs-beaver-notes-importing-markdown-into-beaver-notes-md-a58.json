@@ -1,0 +1,27 @@
+{
+  "id": "user-docs/Beaver Notes/Importing Markdown into Beaver Notes",
+  "title": "Importing Markdown into Beaver Notes",
+  "description": "Beaver Notes 3.5.0 and later versions support importing markdown archives. To ensure a smooth import process, you need to organize your markdown archive correctly. Follow these steps to prepare and import your notes:",
+  "source": "@site/docs/user-docs/Beaver Notes/Importing Markdown into Beaver Notes.md",
+  "sourceDirName": "user-docs/Beaver Notes",
+  "slug": "/user-docs/Beaver Notes/Importing Markdown into Beaver Notes",
+  "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Importing Markdown into Beaver Notes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/user-docs/Beaver Notes/Importing Markdown into Beaver Notes.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 9,
+  "frontMatter": {
+    "sidebar_position": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Password",
+    "permalink": "/Beaver-Docs/docs/user-docs/Beaver Notes/Password"
+  },
+  "next": {
+    "title": "Dev Docs",
+    "permalink": "/Beaver-Docs/docs/category/dev-docs"
+  }
+}

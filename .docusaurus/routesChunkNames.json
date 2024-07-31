@@ -194,17 +194,17 @@
     },
     "content": "content---beaver-docs-markdown-page-393-4cf"
   },
-  "/Beaver-Docs/docs-fba": {
+  "/Beaver-Docs/docs-d3e": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---beaver-docs-docsaba-cd4"
     }
   },
-  "/Beaver-Docs/docs-425": {
+  "/Beaver-Docs/docs-022": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---beaver-docs-docs-294-747"
   },
-  "/Beaver-Docs/docs-796": {
+  "/Beaver-Docs/docs-e18": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/Beaver-Docs/docs/category/beaver-notes-062": {
@@ -254,6 +254,10 @@
   "/Beaver-Docs/docs/user-docs/Beaver Notes/Getting Around-7bf": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---beaver-docs-docs-user-docs-beaver-notes-getting-around-817-f3e"
+  },
+  "/Beaver-Docs/docs/user-docs/Beaver Notes/Importing Markdown-cc6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---beaver-docs-docs-user-docs-beaver-notes-importing-markdown-465-296"
   },
   "/Beaver-Docs/docs/user-docs/Beaver Notes/Install-99b": {
     "__comp": "__comp---theme-doc-item-178-a40",

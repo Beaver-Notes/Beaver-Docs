@@ -99,15 +99,15 @@ export default [
   },
   {
     path: '/Beaver-Docs/docs',
-    component: ComponentCreator('/Beaver-Docs/docs', 'fba'),
+    component: ComponentCreator('/Beaver-Docs/docs', 'd3e'),
     routes: [
       {
         path: '/Beaver-Docs/docs',
-        component: ComponentCreator('/Beaver-Docs/docs', '425'),
+        component: ComponentCreator('/Beaver-Docs/docs', '022'),
         routes: [
           {
             path: '/Beaver-Docs/docs',
-            component: ComponentCreator('/Beaver-Docs/docs', '796'),
+            component: ComponentCreator('/Beaver-Docs/docs', 'e18'),
             routes: [
               {
                 path: '/Beaver-Docs/docs/category/beaver-notes',
@@ -178,6 +178,12 @@ export default [
               {
                 path: '/Beaver-Docs/docs/user-docs/Beaver Notes/Getting Around',
                 component: ComponentCreator('/Beaver-Docs/docs/user-docs/Beaver Notes/Getting Around', '7bf'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/Beaver-Docs/docs/user-docs/Beaver Notes/Importing Markdown',
+                component: ComponentCreator('/Beaver-Docs/docs/user-docs/Beaver Notes/Importing Markdown', 'cc6'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },

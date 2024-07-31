@@ -51,6 +51,11 @@
               "sidebar": "tutorialSidebar"
             },
             {
+              "id": "user-docs/Beaver Notes/Importing Markdown",
+              "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Importing Markdown",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "user-docs/Beaver Notes/Install",
               "path": "/Beaver-Docs/docs/user-docs/Beaver Notes/Install",
               "sidebar": "tutorialSidebar"
