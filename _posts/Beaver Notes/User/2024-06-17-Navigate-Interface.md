@@ -19,7 +19,7 @@ Upon launching Beaver Notes, you'll be greeted by a welcome note, indicating you
   - Switch between dark and light modes.
   - Perform manual synchronization.
 
-    ![image]({{base.url}}/assets/img/docs/interface/editor.png)
+    ![image]({{base.url}}/assets/img/docs/interface/Editor.png)
 
 ---
 
