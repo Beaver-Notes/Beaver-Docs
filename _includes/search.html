@@ -1,0 +1,82 @@
+<div
+  id="search-container"
+  class="fixed inset-x-0 top-10 hidden flex items-center justify-center z-50"
+  role="dialog"
+  aria-labelledby="search-dialog-title"
+  aria-hidden="true"
+>
+  <div
+    class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-lg relative"
+  >
+    <div
+      class="p-2 mx-4 border-b border-b-neutral-100 dark:border-b-neutral-700 outline-none relative flex items-center"
+    >
+      <!-- Search Icon -->
+      <i
+        class="fa-solid fa-magnifying-glass text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg pl-0"
+      ></i>
+
+      <!-- Search Input -->
+      <input
+        id="search-input"
+        type="text"
+        class="text-sm bg-transparent outline-none border-none placeholder-neutral-500 dark:placeholder-neutral-300 dark:text-neutral-300 focus:ring-0 pl-4 pr-10"
+        placeholder="Type to search..."
+        aria-label="Search input"
+      />
+
+      <!-- Close Button -->
+      <button
+        onclick="closeSearch()"
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-black focus:outline-none focus:ring-0"
+        aria-label="Close search dialog"
+      >
+        <i
+          class="fa-solid fa-close text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg"
+        ></i>
+      </button>
+    </div>
+    <ul id="results-container" class="space-y-2 py-2"></ul>
+  </div>
+</div>
+
+<script>
+  function closeSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.add("hidden");
+    } else {
+      console.error("Search container not found");
+    }
+  }
+  // Initialize SimpleJekyllSearch
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const resultsContainer = document.getElementById("results-container");
+
+    // Inject site.baseurl from Jekyll into the JSON path
+    const jsonPath = "{{ site.baseurl }}/assets/search.json"; // Inject site.baseurl here
+
+    if (!searchInput || !resultsContainer) {
+      console.error("Search input or results container not found");
+      return;
+    }
+
+    // Initialize the search with SimpleJekyllSearch
+    SimpleJekyllSearch({
+      searchInput: searchInput,
+      resultsContainer: resultsContainer,
+      searchResultTemplate: `
+        <li>
+          <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+            <div>
+              <p class="text-sm font-bold">{title}</p>
+            </div>
+          </a>
+        </li>`,
+      noResultsText:
+        "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
+      json: jsonPath,
+    });
+  });
+</script>

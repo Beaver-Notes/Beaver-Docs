@@ -1,0 +1,19 @@
+title:      Beaver Docs
+
+# Build settings
+markdown: kramdown
+include:
+  - _post
+
+plugins:
+  - jekyll-paginate
+  - jekyll-postcss
+  - jekyll-seo-tag
+  - jemoji
+  
+postcss:
+  cache: false
+
+
+paginate: 4
+paginate_path: "/page:num/"

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigate the Interface - Beaver Docs</title>
+    <link href="/assets/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      /* Enable smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+    <div
+  id="search-container"
+  class="fixed inset-x-0 top-10 hidden flex items-center justify-center z-50"
+  role="dialog"
+  aria-labelledby="search-dialog-title"
+  aria-hidden="true"
+>
+  <div
+    class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-lg relative"
+  >
+    <div
+      class="p-2 mx-4 border-b border-b-neutral-100 dark:border-b-neutral-700 outline-none relative flex items-center"
+    >
+      <!-- Search Icon -->
+      <i
+        class="fa-solid fa-magnifying-glass text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg pl-0"
+      ></i>
+
+      <!-- Search Input -->
+      <input
+        id="search-input"
+        type="text"
+        class="text-sm bg-transparent outline-none border-none placeholder-neutral-500 dark:placeholder-neutral-300 dark:text-neutral-300 focus:ring-0 pl-4 pr-10"
+        placeholder="Type to search..."
+        aria-label="Search input"
+      />
+
+      <!-- Close Button -->
+      <button
+        onclick="closeSearch()"
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-black focus:outline-none focus:ring-0"
+        aria-label="Close search dialog"
+      >
+        <i
+          class="fa-solid fa-close text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg"
+        ></i>
+      </button>
+    </div>
+    <ul id="results-container" class="space-y-2 py-2"></ul>
+  </div>
+</div>
+
+<script>
+  function closeSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.add("hidden");
+    } else {
+      console.error("Search container not found");
+    }
+  }
+  // Initialize SimpleJekyllSearch
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const resultsContainer = document.getElementById("results-container");
+
+    // Inject site.baseurl from Jekyll into the JSON path
+    const jsonPath = "/assets/search.json"; // Inject site.baseurl here
+
+    if (!searchInput || !resultsContainer) {
+      console.error("Search input or results container not found");
+      return;
+    }
+
+    // Initialize the search with SimpleJekyllSearch
+    SimpleJekyllSearch({
+      searchInput: searchInput,
+      resultsContainer: resultsContainer,
+      searchResultTemplate: `
+        <li>
+          <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+            <div>
+              <p class="text-sm font-bold">{title}</p>
+            </div>
+          </a>
+        </li>`,
+      noResultsText:
+        "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
+      json: jsonPath,
+    });
+  });
+</script>
+
+<nav class="bg-transparent border-b dark:border-neutral-700">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg
+            id="hamburger-icon"
+            class="block size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg
+            id="close-icon"
+            class="hidden size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start"
+      >
+        <!-- Logo and Title -->
+        <a href="/" class="flex shrink-0 items-center">
+          <img
+            class="h-8 w-auto"
+            src="/assets/img/logo.png"
+          />
+          <p class="ml-4 dark:text-gray-100 font-bold">Beaver Docs</p>
+        </a>
+
+        <!-- Search Icon Button -->
+        <button
+          onclick="openSearch()"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+          ></i>
+        </button>
+
+        <!-- Dark Mode Toggle Button -->
+        <button
+          id="dark-mode-toggle"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          onclick="toggleDarkMode()"
+        >
+          <i
+            id="dark-mode-icon"
+            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+  
+      if (html.classList.contains("dark")) {
+        html.classList.remove("dark");
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light"); // Save preference
+      } else {
+        html.classList.add("dark");
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark"); // Save preference
+      }
+    }
+  
+    // Apply saved dark mode preference on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+      const savedTheme = localStorage.getItem("theme");
+  
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+        icon.classList.add("fa-sun");
+        icon.classList.remove("fa-moon");
+      } else {
+        html.classList.remove("dark");
+        icon.classList.add("fa-moon");
+        icon.classList.remove("fa-sun");
+      }
+    });
+  
+    function openSearch() {
+      const searchContainer = document.getElementById("search-container");
+      if (searchContainer) {
+        searchContainer.classList.remove("hidden");
+      } else {
+        console.error("Search container not found");
+      }
+    }
+  </script>
+</nav>  
+    <div class="flex flex-col lg:flex-row">
+      <!-- Left Sidebar for Category Navigation -->
+      <aside
+        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+      >
+        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
+          Posts in Beaver Notes
+        </h2>
+        <ul>
+            
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Navigate-Interface.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Navigate-Interface.html"
+            >
+              Navigate the Interface
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Markdown-Syntax.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Markdown-Syntax.html"
+            >
+              Markdown Syntax
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Sync.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Sync.html"
+            >
+              Syncing Notes
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Labels.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Labels.html"
+            >
+              Using Labels
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Importing-Markdown.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Importing-Markdown.html"
+            >
+              Import Markdown
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Mermaid-Block.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Mermaid-Block.html"
+            >
+              Use Mermaid Block
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Lock-Noted.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Lock-Noted.html"
+            >
+              Lock a Note
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2025/02/03/Reset-Password.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2025/02/03/Reset-Password.html"
+            >
+              Reset a password
+            </a>
+          </li>
+          
+        </ul>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
+        <article>
+          <header class="mb-8 space-y-2">
+            <h1 class="text-4xl dark:text-neutral-100 font-bold">
+              Navigate the Interface
+            </h1>
+            <p class="text-sm text-neutral-600 dark:text-neutral-100">This page showcases the app's user interface.</p>
+          </header>
+
+          <div id="content" class="content prose dark:prose-invert max-w-none">
+            <h1 id="editor">Editor</h1>
+
+<p>Upon launching Beaver Notes, you’ll be greeted by a welcome note, indicating you are in the editor. The editor includes:</p>
+
+<ul>
+  <li><strong>Toolbar</strong>: Located at the top of the editor, it includes formatting options, blocks, and other tools.</li>
+  <li>
+    <p><strong>Navbar</strong>: Positioned on the left-hand side, it allows you to:</p>
+
+    <ul>
+      <li>Navigate to the home or archive sections.</li>
+      <li>Open your last edited notes.</li>
+      <li>Access settings.</li>
+      <li>Switch between dark and light modes.</li>
+      <li>
+        <p>Perform manual synchronization.</p>
+
+        <p><img src="/assets/img/docs/interface/editor.png" alt="image" /></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="home--archive">Home &amp; Archive</h1>
+
+<p>Both the <strong>Home</strong> and <strong>Archive</strong> sections share a similar structure, which includes:</p>
+
+<ul>
+  <li><strong>Search Group</strong>:
+    <ul>
+      <li><strong>Search Bar</strong>: Use it to search note content, titles, or labels by typing <code class="language-plaintext highlighter-rouge">#label</code>.</li>
+      <li><strong>Label Picker</strong>: Filter notes by labels.</li>
+      <li><strong>Order Picker</strong>: Choose the criteria for displaying notes (alphabetical, ascending, or descending order).
+<img src="/assets/img/docs/interface/Search.png" alt="image" /></li>
+    </ul>
+  </li>
+  <li><strong>Bookmarked Section</strong>:
+    <ul>
+      <li>On the home screen, bookmarked notes are displayed in this section. Once a note is archived, the bookmark status becomes irrelevant.</li>
+    </ul>
+  </li>
+  <li><strong>Cards</strong>:
+    <ul>
+      <li>Notes are displayed as cards showing the title, labels, and the first lines of content.</li>
+      <li>When hovered over, the card reveals buttons for the following actions:
+        <ul>
+          <li>Archive/Unarchive</li>
+          <li>Bookmark (only on the home screen)</li>
+          <li>Lock</li>
+          <li>Trash
+<img src="/assets/img/docs/interface/Cards.png" alt="image" /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="settings">Settings</h1>
+
+<p>The settings screen uses vertical tabs to navigate its sections. The available tabs are:</p>
+
+<ul>
+  <li>General</li>
+  <li>Appearance</li>
+  <li>Shortcuts</li>
+  <li>Privacy &amp; Security</li>
+  <li>About</li>
+</ul>
+
+<p>When a tab is selected, its corresponding page is displayed next to the vertical tabs.</p>
+
+<p><img src="/assets/img/docs/interface/Settings.png" alt="image" /></p>
+
+<hr />
+
+<h1 id="useful-shortcuts">Useful Shortcuts</h1>
+
+<p>Below are some useful shortcuts under <strong>Settings &gt; Shortcuts</strong> to help you navigate the interface:</p>
+
+<ul>
+  <li><strong>Ctrl+N / Cmd+N</strong>: Create a new note.</li>
+  <li><strong>Ctrl+F / Cmd+F</strong>: Find or replace text in the editor.</li>
+  <li><strong>Ctrl+Shift+P / Cmd+Shift+P</strong>: Open the Command Prompt.</li>
+  <li><strong>Ctrl+, / Cmd+,</strong>: Navigate to the settings.</li>
+  <li><strong>Ctrl+Shift+W / Cmd+Shift+W</strong>: Open the currently edited note.</li>
+  <li><strong>Ctrl+Shift+N / Cmd+Shift+N</strong>: Navigate to all notes.</li>
+  <li><strong>Ctrl+Shift+A / Cmd+Shift+A</strong>: Navigate to archived notes.</li>
+  <li><strong>Ctrl+Shift+L / Cmd+Shift+L</strong>: Toggle dark mode.</li>
+</ul>
+
+<hr />
+
+<h1 id="command-prompt">Command Prompt</h1>
+
+<p>The <strong>Command Prompt</strong> is available on every page of the app and can be used to navigate and perform actions without lifting your hands from the keyboard. To open the Command Prompt, press <strong>Ctrl+Shift+P / Cmd+Shift+P</strong>.</p>
+
+<p>The prompt allows you to browse and open notes. By typing <code class="language-plaintext highlighter-rouge">&gt;</code>, you can:</p>
+
+<ul>
+  <li>Create a new note.</li>
+  <li>Go to settings.</li>
+  <li>Switch themes.</li>
+</ul>
+
+<p><img src="/assets/img/docs/interface/Prompt.png" alt="image" /></p>
+
+          </div>
+
+          <!-- Navigation for Previous and Next Posts -->
+          <nav
+            class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
+          >
+             
+          </nav>
+        </article>
+      </main>
+
+      <!-- Right Sidebar for Heading Navigation -->
+      <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
+        <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
+          On This Page
+        </h2>
+        <nav class="border-b pb-6 mb-6">
+          <ul id="table-of-contents" class="space-y-2"></ul>
+        </nav>
+        <a class="text-md font-bolder" href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts">
+          <i class="fa-brands fa-github"></i>
+          Edit this page
+        </a>
+      </aside>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const content = document.getElementById("content");
+        const headings = content.querySelectorAll("h1, h2, h3");
+        const toc = document.getElementById("table-of-contents");
+
+        let currentLevel = 1;
+        let currentList = toc; // Start with the main ToC list
+        const listStack = [toc]; // Stack to manage nested lists
+
+        headings.forEach((heading, index) => {
+          const id = `heading-${index}`;
+          heading.setAttribute("id", id);
+
+          const level = parseInt(heading.tagName.substring(1)); // Extract level from h1, h2, h3, etc.
+
+          // Adjust nesting based on heading level
+          while (level > currentLevel) {
+            const newList = document.createElement("ul");
+            newList.classList.add("ml-4", "space-y-2");
+            currentList.lastElementChild.appendChild(newList);
+            listStack.push(newList);
+            currentList = newList;
+            currentLevel++;
+          }
+          while (level < currentLevel) {
+            listStack.pop();
+            currentList = listStack[listStack.length - 1];
+            currentLevel--;
+          }
+
+          // Add the heading to the current list
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
+          currentList.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contributing to the Docs - Beaver Docs</title>
+    <link href="/assets/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      /* Enable smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+    <div
+  id="search-container"
+  class="fixed inset-x-0 top-10 hidden flex items-center justify-center z-50"
+  role="dialog"
+  aria-labelledby="search-dialog-title"
+  aria-hidden="true"
+>
+  <div
+    class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-lg relative"
+  >
+    <div
+      class="p-2 mx-4 border-b border-b-neutral-100 dark:border-b-neutral-700 outline-none relative flex items-center"
+    >
+      <!-- Search Icon -->
+      <i
+        class="fa-solid fa-magnifying-glass text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg pl-0"
+      ></i>
+
+      <!-- Search Input -->
+      <input
+        id="search-input"
+        type="text"
+        class="text-sm bg-transparent outline-none border-none placeholder-neutral-500 dark:placeholder-neutral-300 dark:text-neutral-300 focus:ring-0 pl-4 pr-10"
+        placeholder="Type to search..."
+        aria-label="Search input"
+      />
+
+      <!-- Close Button -->
+      <button
+        onclick="closeSearch()"
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-black focus:outline-none focus:ring-0"
+        aria-label="Close search dialog"
+      >
+        <i
+          class="fa-solid fa-close text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg"
+        ></i>
+      </button>
+    </div>
+    <ul id="results-container" class="space-y-2 py-2"></ul>
+  </div>
+</div>
+
+<script>
+  function closeSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.add("hidden");
+    } else {
+      console.error("Search container not found");
+    }
+  }
+  // Initialize SimpleJekyllSearch
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const resultsContainer = document.getElementById("results-container");
+
+    // Inject site.baseurl from Jekyll into the JSON path
+    const jsonPath = "/assets/search.json"; // Inject site.baseurl here
+
+    if (!searchInput || !resultsContainer) {
+      console.error("Search input or results container not found");
+      return;
+    }
+
+    // Initialize the search with SimpleJekyllSearch
+    SimpleJekyllSearch({
+      searchInput: searchInput,
+      resultsContainer: resultsContainer,
+      searchResultTemplate: `
+        <li>
+          <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+            <div>
+              <p class="text-sm font-bold">{title}</p>
+            </div>
+          </a>
+        </li>`,
+      noResultsText:
+        "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
+      json: jsonPath,
+    });
+  });
+</script>
+
+<nav class="bg-transparent border-b dark:border-neutral-700">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg
+            id="hamburger-icon"
+            class="block size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg
+            id="close-icon"
+            class="hidden size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start"
+      >
+        <!-- Logo and Title -->
+        <a href="/" class="flex shrink-0 items-center">
+          <img
+            class="h-8 w-auto"
+            src="/assets/img/logo.png"
+          />
+          <p class="ml-4 dark:text-gray-100 font-bold">Beaver Docs</p>
+        </a>
+
+        <!-- Search Icon Button -->
+        <button
+          onclick="openSearch()"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+          ></i>
+        </button>
+
+        <!-- Dark Mode Toggle Button -->
+        <button
+          id="dark-mode-toggle"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          onclick="toggleDarkMode()"
+        >
+          <i
+            id="dark-mode-icon"
+            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+  
+      if (html.classList.contains("dark")) {
+        html.classList.remove("dark");
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light"); // Save preference
+      } else {
+        html.classList.add("dark");
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark"); // Save preference
+      }
+    }
+  
+    // Apply saved dark mode preference on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+      const savedTheme = localStorage.getItem("theme");
+  
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+        icon.classList.add("fa-sun");
+        icon.classList.remove("fa-moon");
+      } else {
+        html.classList.remove("dark");
+        icon.classList.add("fa-moon");
+        icon.classList.remove("fa-sun");
+      }
+    });
+  
+    function openSearch() {
+      const searchContainer = document.getElementById("search-container");
+      if (searchContainer) {
+        searchContainer.classList.remove("hidden");
+      } else {
+        console.error("Search container not found");
+      }
+    }
+  </script>
+</nav>  
+    <div class="flex flex-col lg:flex-row">
+      <!-- Left Sidebar for Category Navigation -->
+      <aside
+        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+      >
+        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
+          Posts in Beaver Notes (DEV)
+        </h2>
+        <ul>
+            
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+            >
+              How to contribute
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+            >
+              Contributing to the Docs
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+            >
+              Contributing to the Blog
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
+            >
+              Translations
+            </a>
+          </li>
+          
+        </ul>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
+        <article>
+          <header class="mb-8 space-y-2">
+            <h1 class="text-4xl dark:text-neutral-100 font-bold">
+              Contributing to the Docs
+            </h1>
+            <p class="text-sm text-neutral-600 dark:text-neutral-100">Good documentation is the foundation of a great project.</p>
+          </header>
+
+          <div id="content" class="content prose dark:prose-invert max-w-none">
+            <p>Beaver’s Documentation website is built using Jekyll, a static site generator. This makes collaboration straightforward, even if you’re not a developer. There are two main ways to contribute to the docs:</p>
+
+<ol>
+  <li><a href="#heading-0">Contributing using your computer</a></li>
+  <li><a href="#heading-10">Using GitHub code spaces</a></li>
+</ol>
+
+<p>The first involves getting your hands dirty. If you have some experience or are willing to install some programs and tinker a bit, this step is for you. If you prefer a straightforward approach, the second option is better. Feel free to skip to the step you prefer.</p>
+
+<blockquote>
+  <p><strong>If you’re not ready to create a post or make technical edits, you can still contribute by simply proofreading and suggesting improvements.</strong></p>
+</blockquote>
+
+<h1 id="contributing-using-your-computer">Contributing Using Your Computer</h1>
+
+<p>Before we get started, you’ll need to install a couple of packages. To set everything up, check out the <a href="https://jekyllrb.com/docs/installation/">Jekyll docs</a> and return when you’re ready. You’ll also need a GitHub account. If you don’t have one yet, you can create one by following this guide: <a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">Creating an account on GitHub</a>. Once you’re ready, you can begin by forking the repository</p>
+
+<h2 id="1-fork-the-repository">1. <strong>Fork the Repository</strong></h2>
+
+<ol>
+  <li>Navigate to the Beaver Docs repository: <a href="https://github.com/Beaver-Notes/Beaver-Docs.git">Beaver Docs on GitHub</a>.</li>
+  <li>Click the <strong>Fork</strong> button in the upper-right corner to create a copy of the repository under your own GitHub account.</li>
+</ol>
+
+<p><img src="/assets/img/docs/contributing-docs/fork.png" alt="image" /></p>
+
+<h2 id="2-clone-your-fork">2. <strong>Clone Your Fork</strong></h2>
+
+<p>Clone your forked repository to your local machine:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/your-username/Beaver-Docs.git
+<span class="nb">cd </span>Beaver-Docs
+</code></pre></div></div>
+
+<h2 id="3-set-the-upstream-remote">3. <strong>Set the Upstream Remote</strong></h2>
+
+<p>Add the original repository as the upstream remote. This will help keep your fork up-to-date with the original repository:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream https://github.com/Beaver-Notes/Beaver-Docs.git
+</code></pre></div></div>
+
+<h2 id="4-create-a-new-branch">4. <strong>Create a New Branch</strong></h2>
+
+<p>Create a new branch in your fork for making changes:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> contributing-to-the-docs
+</code></pre></div></div>
+
+<h2 id="5-create-a-page">5. <strong>Create a Page</strong></h2>
+
+<ol>
+  <li>Locate the <code class="language-plaintext highlighter-rouge">_posts</code> directory. Inside, you’ll find two folders: <code class="language-plaintext highlighter-rouge">Beaver Notes</code> and <code class="language-plaintext highlighter-rouge">Beaver Pocket</code>, each containing <code class="language-plaintext highlighter-rouge">Dev</code> and <code class="language-plaintext highlighter-rouge">User</code> subfolders.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── Beaver Notes
+│   ├── Dev
+│   │   └── 2025-01-03-How-to-contribute.md
+│   └── User
+│       ├── 2025-01-03-Getting-Started.md
+│       ├── 2025-01-04-Common-Issues.md
+│       └── 2025-01-05-User-Tips.md
+└── Beaver Pocket
+    ├── Dev
+    │   └── 2025-01-04-Contributing-to-Beaver-Pocket.md
+    └── User
+        ├── 2025-01-03-Getting-Started.md
+        ├── 2025-01-04-Common-Issues.md
+        └── 2025-01-05-User-Tips.md
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Create a file named <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code> (replace <code class="language-plaintext highlighter-rouge">YYYY-MM-DD</code> with the current date and <code class="language-plaintext highlighter-rouge">title</code> with the name of your page).</p>
+  </li>
+  <li>
+    <p>Every file must start with the following section:</p>
+  </li>
+</ol>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Untitled</span>
+<span class="na">details</span><span class="pi">:</span> <span class="s">This is a description.</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">Beaver Notes (DEV)</span>
+<span class="na">position</span><span class="pi">:</span> <span class="m">1</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h4 id="adding-images"><strong>Adding Images</strong></h4>
+
+<p>If your page requires images:</p>
+
+<ol>
+  <li>Create a new folder under <code class="language-plaintext highlighter-rouge">assets/img/docs</code> named after your page (e.g., <code class="language-plaintext highlighter-rouge">assets/img/docs/page-name</code>).</li>
+  <li>Place your images in that folder.</li>
+  <li>Use the following format for image URLs in your Markdown file:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">alt text</span><span class="p">](</span><span class="sx">/path-to-image</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="install-dependencies-and-run-live-reload">Install Dependencies and Run Live Reload</h4>
+
+<p>To set up Jekyll and enable live reload during development:</p>
+
+<ol>
+  <li>Install Jekyll and Bundler if not already installed:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<ol>
+  <li>Install project dependencies:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Run the Jekyll server with live reload enabled:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Access the development site at:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:4000
+</code></pre></div></div>
+
+<h2 id="6-stage-and-commit-changes">6. <strong>Stage and Commit Changes</strong></h2>
+
+<p>Add your changes to the staging area and commit them with a descriptive message:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Describe the changes"</span>
+</code></pre></div></div>
+
+<h2 id="7-push-your-changes">7. <strong>Push Your Changes</strong></h2>
+
+<p>Push your branch to your forked repository:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin contributing-to-the-docs
+</code></pre></div></div>
+
+<h2 id="8-submit-a-pull-request">8. <strong>Submit a Pull Request</strong></h2>
+
+<ol>
+  <li>Go to your forked repository on GitHub.</li>
+  <li>Click <strong>Compare &amp; pull request</strong>.</li>
+  <li>Ensure you’re submitting your pull request to the original repository’s main branch (or the appropriate branch).</li>
+  <li>Add a descriptive title and explanation of your changes, then submit the pull request.</li>
+</ol>
+
+<h3 id="keeping-your-fork-updated">Keeping Your Fork Updated</h3>
+
+<p>To actively contribute to the documentation, regularly update your fork with changes from the original repository. Run the following commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+</code></pre></div></div>
+
+<h1 id="using-github-codespaces-to-contribute"><strong>Using GitHub Codespaces to Contribute</strong></h1>
+
+<h2 id="1-fork-the-repository-1">1. <strong>Fork the Repository</strong></h2>
+
+<ol>
+  <li>Navigate to the Beaver Docs repository: <a href="https://github.com/Beaver-Notes/Beaver-Docs.git">Beaver Docs on GitHub</a>.</li>
+  <li>Click the <strong>Fork</strong> button in the upper-right corner to create a copy of the repository under your own GitHub account.<br />
+<img src="/assets/img/docs/contributing-docs/fork.png" alt="image" /></li>
+</ol>
+
+<h2 id="2-create-a-new-branch">2. <strong>Create a New Branch</strong></h2>
+
+<p>Create a new branch in your fork to make changes:</p>
+
+<ol>
+  <li>
+    <p>Click the <strong>main branch</strong> button in the upper-left corner, then select <strong>View all branches</strong>.<br />
+<img src="/assets/img/docs/contributing-docs/view-branches.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>In the upper-right corner, click the <strong>New branch</strong> button. Enter a branch name, such as “math-block-page,” then click <strong>Create new branch</strong>.<br />
+<img src="/assets/img/docs/contributing-docs/new-branch-button.png" alt="image" /><br />
+<img src="/assets/img/docs/contributing-docs/new-branch-dialog.png" alt="image" /></p>
+  </li>
+</ol>
+
+<h2 id="3-create-a-codespace">3. <strong>Create a Codespace</strong></h2>
+
+<p>After creating your branch, select it by:</p>
+
+<ol>
+  <li>
+    <p>Click the <strong>main branch</strong> button in the upper-left corner, then select <strong>View all branches</strong> and choose your branch.<br />
+<img src="/assets/img/docs/contributing-docs/view-branches.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>In the upper-right corner, click <strong>Code</strong> &gt; <strong>Codespaces</strong> &gt; <strong>Create codespace on [branch name]</strong>.<br />
+<img src="/assets/img/docs/contributing-docs/codespaces-button.png" alt="image" /><br />
+<img src="/assets/img/docs/contributing-docs/create-codespace.png" alt="image" /></p>
+  </li>
+</ol>
+
+<h2 id="4-working-on-the-docs">4. <strong>Working on the Docs</strong></h2>
+
+<p>Once your Codespace is open, you’ll see an interface similar to the one shown below. In the sidebar, locate the <code class="language-plaintext highlighter-rouge">_posts</code> folder.</p>
+
+<p>Here’s a graphical representation of the posts folder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── Beaver Notes
+│   ├── Dev
+│   │   └── 2025-01-03-How-to-contribute.md
+│   └── User
+│       ├── 2025-01-03-Getting-Started.md
+│       ├── 2025-01-04-Common-Issues.md
+│       └── 2025-01-05-User-Tips.md
+└── Beaver Pocket
+    ├── Dev
+    │   └── 2025-01-04-Contributing-to-Beaver-Pocket.md
+    └── User
+        ├── 2025-01-03-Getting-Started.md
+        ├── 2025-01-04-Common-Issues.md
+        └── 2025-01-05-User-Tips.md
+</code></pre></div></div>
+
+<p><img src="/assets/img/docs/contributing-docs/codespace.png" alt="image" /></p>
+
+<h3 id="adding-a-new-post"><strong>Adding a New Post</strong></h3>
+
+<ol>
+  <li>
+    <p>In the <code class="language-plaintext highlighter-rouge">_posts</code> folder, navigate to the appropriate subfolder:</p>
+
+    <ul>
+      <li><strong>Beaver Notes &gt; Dev</strong>: For everything related to the project or desktop app development.</li>
+      <li><strong>Beaver Notes / Pocket &gt; User</strong>: For everything related to the user experience of the desktop or mobile app.</li>
+      <li><strong>Beaver Pocket &gt; Dev</strong>: For everything specific to mobile app development.</li>
+      <li><strong>General topics</strong> (e.g., blog, documentation, website): These should go under <strong>Beaver Notes</strong>.</li>
+    </ul>
+  </li>
+  <li>Right-click on the subfolder, and select <strong>New File</strong>.</li>
+  <li>Name the file using the format <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code>.</li>
+  <li>
+    <p>Paste the following content into the file, and adjust the <code class="language-plaintext highlighter-rouge">position</code> value based on existing files in the folder:</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Untitled</span>
+<span class="na">details</span><span class="pi">:</span> <span class="s">This is a description.</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">Beaver Notes (DEV)</span>
+<span class="na">position</span><span class="pi">:</span> <span class="m">1</span>
+<span class="nn">---</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="adding-images-1"><strong>Adding Images</strong></h4>
+
+<p>If your page requires images:</p>
+
+<ol>
+  <li>Create a new folder under <code class="language-plaintext highlighter-rouge">assets/img/docs</code> named after your page (e.g., <code class="language-plaintext highlighter-rouge">assets/img/docs/page-name</code>).</li>
+  <li>Place your images in that folder.</li>
+  <li>Use the following format for image URLs in your Markdown file:
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">alt text</span><span class="p">](</span><span class="sx">/path-to-image</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="install-dependencies-and-run-live-reload-1">Install Dependencies and Run Live Reload</h4>
+
+<p>To set up Jekyll and enable live reload during development:</p>
+
+<ol>
+  <li>Install Jekyll and Bundler if not already installed:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<ol>
+  <li>Install project dependencies:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Run the Jekyll server with live reload enabled:</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--livereload</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Access the development site at:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:4000
+</code></pre></div></div>
+
+<h2 id="5-push-your-changes-and-open-a-pull-request">5. <strong>Push Your Changes and Open a Pull Request</strong></h2>
+
+<h3 id="push-changes"><strong>Push Changes</strong></h3>
+
+<ol>
+  <li>Once your changes are complete, go to the <strong>Source Control</strong> tab in the Codespace.</li>
+  <li>Stage your changes by clicking the <strong>+</strong> icon next to the changes dropdown.</li>
+  <li>Write a commit message (e.g., “Add new math block page”) and click <strong>Commit</strong>.</li>
+  <li>Push your branch by clicking the <strong>Publish Branch</strong> button.</li>
+</ol>
+
+<p><img src="/assets/img/docs/contributing-docs/source-control.png" alt="image" /></p>
+
+<h3 id="open-a-pull-request"><strong>Open a Pull Request</strong></h3>
+
+<ol>
+  <li>Go to your forked repository on GitHub.</li>
+  <li>GitHub will display a banner prompting you to open a pull request. Click <strong>Compare &amp; pull request</strong>.
+<img src="/assets/img/docs/contributing-docs/compare-&amp;-pull.png" alt="image" /></li>
+  <li>Add a title and description for your pull request.</li>
+  <li>Ensure the base repository is the original repository (<code class="language-plaintext highlighter-rouge">Beaver-Notes/Beaver-Docs</code>) and the base branch is <code class="language-plaintext highlighter-rouge">main</code>.</li>
+  <li>Click <strong>Create Pull Request</strong>.</li>
+</ol>
+
+          </div>
+
+          <!-- Navigation for Previous and Next Posts -->
+          <nav
+            class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
+          >
+             
+          </nav>
+        </article>
+      </main>
+
+      <!-- Right Sidebar for Heading Navigation -->
+      <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
+        <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
+          On This Page
+        </h2>
+        <nav class="border-b pb-6 mb-6">
+          <ul id="table-of-contents" class="space-y-2"></ul>
+        </nav>
+        <a class="text-md font-bolder" href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts">
+          <i class="fa-brands fa-github"></i>
+          Edit this page
+        </a>
+      </aside>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const content = document.getElementById("content");
+        const headings = content.querySelectorAll("h1, h2, h3");
+        const toc = document.getElementById("table-of-contents");
+
+        let currentLevel = 1;
+        let currentList = toc; // Start with the main ToC list
+        const listStack = [toc]; // Stack to manage nested lists
+
+        headings.forEach((heading, index) => {
+          const id = `heading-${index}`;
+          heading.setAttribute("id", id);
+
+          const level = parseInt(heading.tagName.substring(1)); // Extract level from h1, h2, h3, etc.
+
+          // Adjust nesting based on heading level
+          while (level > currentLevel) {
+            const newList = document.createElement("ul");
+            newList.classList.add("ml-4", "space-y-2");
+            currentList.lastElementChild.appendChild(newList);
+            listStack.push(newList);
+            currentList = newList;
+            currentLevel++;
+          }
+          while (level < currentLevel) {
+            listStack.pop();
+            currentList = listStack[listStack.length - 1];
+            currentLevel--;
+          }
+
+          // Add the heading to the current list
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
+          currentList.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

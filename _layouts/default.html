@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+    {% include nav.html %}
+    <!-- Banner Section -->
+    <header
+      class="h-80 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+    >
+      <!-- Left Content -->
+      <div class="relative z-10 text-left pt-10 sm:pt-auto sm:pl-8">
+        <h1 class="text-4xl font-bold dark:text-neutral-100">Beaver Docs</h1>
+        <p class="mt-2 text-lg dark:text-gray-300">
+          Help for wherever you are on your Beaver journey.
+        </p>
+      </div>
+
+      <!-- Right Image -->
+      <div class="relative h-full w-1/3">
+        <img
+          src="{{ base.url }}/assets/img/home/mac.png"
+          alt="Documentation Image"
+          class="sm:w-[80%] object-cover object-bottom sm:object-top mt-10"
+        />
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      {% assign categories = site.posts | map: "category" | uniq %}
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
+        {% for category in categories %}
+        <!-- Category Section -->
+        <div class="flex flex-col">
+          <h2 class="text-xl dark:text-neutral-100 font-semibold mb-4">
+            {{ category }}
+          </h2>
+          <div class="overflow-auto">
+            <ul class="space-y-2">
+              {% assign posts_in_category = site.posts | where: "category", category | sort: "position" %}
+              {% for post in posts_in_category %}
+              <li>
+                <a href="{{ post.url }}" class="text-amber-400 hover:underline">
+                  {{ post.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% include footer.html %}
+    </main>
+  </body>
+</html>

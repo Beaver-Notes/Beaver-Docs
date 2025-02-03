@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use Mermaid Block - Beaver Docs</title>
+    <link href="/assets/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      /* Enable smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+    <div
+  id="search-container"
+  class="fixed inset-x-0 top-10 hidden flex items-center justify-center z-50"
+  role="dialog"
+  aria-labelledby="search-dialog-title"
+  aria-hidden="true"
+>
+  <div
+    class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-lg relative"
+  >
+    <div
+      class="p-2 mx-4 border-b border-b-neutral-100 dark:border-b-neutral-700 outline-none relative flex items-center"
+    >
+      <!-- Search Icon -->
+      <i
+        class="fa-solid fa-magnifying-glass text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg pl-0"
+      ></i>
+
+      <!-- Search Input -->
+      <input
+        id="search-input"
+        type="text"
+        class="text-sm bg-transparent outline-none border-none placeholder-neutral-500 dark:placeholder-neutral-300 dark:text-neutral-300 focus:ring-0 pl-4 pr-10"
+        placeholder="Type to search..."
+        aria-label="Search input"
+      />
+
+      <!-- Close Button -->
+      <button
+        onclick="closeSearch()"
+        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-black focus:outline-none focus:ring-0"
+        aria-label="Close search dialog"
+      >
+        <i
+          class="fa-solid fa-close text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg"
+        ></i>
+      </button>
+    </div>
+    <ul id="results-container" class="space-y-2 py-2"></ul>
+  </div>
+</div>
+
+<script>
+  function closeSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.add("hidden");
+    } else {
+      console.error("Search container not found");
+    }
+  }
+  // Initialize SimpleJekyllSearch
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("search-input");
+    const resultsContainer = document.getElementById("results-container");
+
+    // Inject site.baseurl from Jekyll into the JSON path
+    const jsonPath = "/assets/search.json"; // Inject site.baseurl here
+
+    if (!searchInput || !resultsContainer) {
+      console.error("Search input or results container not found");
+      return;
+    }
+
+    // Initialize the search with SimpleJekyllSearch
+    SimpleJekyllSearch({
+      searchInput: searchInput,
+      resultsContainer: resultsContainer,
+      searchResultTemplate: `
+        <li>
+          <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+            <div>
+              <p class="text-sm font-bold">{title}</p>
+            </div>
+          </a>
+        </li>`,
+      noResultsText:
+        "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
+      json: jsonPath,
+    });
+  });
+</script>
+
+<nav class="bg-transparent border-b dark:border-neutral-700">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg
+            id="hamburger-icon"
+            class="block size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg
+            id="close-icon"
+            class="hidden size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start"
+      >
+        <!-- Logo and Title -->
+        <a href="/" class="flex shrink-0 items-center">
+          <img
+            class="h-8 w-auto"
+            src="/assets/img/logo.png"
+          />
+          <p class="ml-4 dark:text-gray-100 font-bold">Beaver Docs</p>
+        </a>
+
+        <!-- Search Icon Button -->
+        <button
+          onclick="openSearch()"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+          ></i>
+        </button>
+
+        <!-- Dark Mode Toggle Button -->
+        <button
+          id="dark-mode-toggle"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          onclick="toggleDarkMode()"
+        >
+          <i
+            id="dark-mode-icon"
+            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+  
+      if (html.classList.contains("dark")) {
+        html.classList.remove("dark");
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light"); // Save preference
+      } else {
+        html.classList.add("dark");
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark"); // Save preference
+      }
+    }
+  
+    // Apply saved dark mode preference on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+      const savedTheme = localStorage.getItem("theme");
+  
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+        icon.classList.add("fa-sun");
+        icon.classList.remove("fa-moon");
+      } else {
+        html.classList.remove("dark");
+        icon.classList.add("fa-moon");
+        icon.classList.remove("fa-sun");
+      }
+    });
+  
+    function openSearch() {
+      const searchContainer = document.getElementById("search-container");
+      if (searchContainer) {
+        searchContainer.classList.remove("hidden");
+      } else {
+        console.error("Search container not found");
+      }
+    }
+  </script>
+</nav>  
+    <div class="flex flex-col lg:flex-row">
+      <!-- Left Sidebar for Category Navigation -->
+      <aside
+        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+      >
+        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
+          Posts in Beaver Notes
+        </h2>
+        <ul>
+            
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Navigate-Interface.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Navigate-Interface.html"
+            >
+              Navigate the Interface
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Markdown-Syntax.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Markdown-Syntax.html"
+            >
+              Markdown Syntax
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Sync.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Sync.html"
+            >
+              Syncing Notes
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Labels.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Labels.html"
+            >
+              Using Labels
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Importing-Markdown.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Importing-Markdown.html"
+            >
+              Import Markdown
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Mermaid-Block.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Mermaid-Block.html"
+            >
+              Use Mermaid Block
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2024/06/17/Lock-Noted.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Lock-Noted.html"
+            >
+              Lock a Note
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes/2025/02/03/Reset-Password.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2025/02/03/Reset-Password.html"
+            >
+              Reset a password
+            </a>
+          </li>
+          
+        </ul>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
+        <article>
+          <header class="mb-8 space-y-2">
+            <h1 class="text-4xl dark:text-neutral-100 font-bold">
+              Use Mermaid Block
+            </h1>
+            <p class="text-sm text-neutral-600 dark:text-neutral-100">Create diagrams using Mermaid.js</p>
+          </header>
+
+          <div id="content" class="content prose dark:prose-invert max-w-none">
+            <p>A mermaid Block supports multiple diagram types, including flowcharts, sequence diagrams, class diagrams, state diagrams, Gantt charts, and more.</p>
+
+<p>Insert a mermaid block by typing <code class="language-plaintext highlighter-rouge">::mermaid</code> in the editor and press enter. A blank block will appear. By clicking on it, you’ll be able to edit its contents, much like with the math block.</p>
+
+<h2 id="flowcharts">Flowcharts</h2>
+
+<pre><code class="language-mermaid">graph TD
+    A[Start] --&gt; B[Process]
+    B --&gt; C{Decision}
+    C --&gt;|Yes| D[Result 1]
+    C --&gt;|No| E[Result 2]
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">graph D</code> specifies the direction of the flowchart (top to bottom in this case). You can also use <code class="language-plaintext highlighter-rouge">LR for left to right</code>, <code class="language-plaintext highlighter-rouge">RL for right to left</code>, and <code class="language-plaintext highlighter-rouge">BT for bottom to top</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">A[Start]</code> creates a node labeled “Start”.</li>
+  <li><code class="language-plaintext highlighter-rouge">--&gt;</code> creates a directed link from one node to another.</li>
+  <li><code class="language-plaintext highlighter-rouge">{Decision}</code> creates a decision node (diamond-shaped).</li>
+  <li><code class="language-plaintext highlighter-rouge">--&gt; |Yes|</code> creates a conditional link labeled “Yes”.</li>
+</ul>
+
+<h2 id="sequence-diagrams">Sequence Diagrams</h2>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant A as Alice
+    participant B as Bob
+    A-&gt;&gt;B: Hello Bob, how are you?
+    B--&gt;&gt;A: I am good thanks!
+    Note right of B: Bob thinks
+    B-&gt;&gt;C: How about you?
+    C--&gt;&gt;B: I'm fine too!
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sequenceDiagram</code> specifies the start of a sequence diagram.</li>
+  <li><code class="language-plaintext highlighter-rouge">participant A</code> as Alice defines a participant with a display name.</li>
+  <li><code class="language-plaintext highlighter-rouge">A-&gt;&gt;B: Message</code> sends a message from A to B.</li>
+  <li><code class="language-plaintext highlighter-rouge">Note right of B</code> adds a note to the right of participant B.</li>
+</ul>
+
+<h2 id="advanced-sequence-diagrams">Advanced Sequence Diagrams</h2>
+
+<p>Sequence diagrams can be enhanced with loops, alternatives (alt), and options (opt).</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant A as Alice
+    participant B as Bob
+    A-&gt;&gt;B: Hello Bob
+    alt Is Bob busy?
+        B--&gt;&gt;A: Yes, I am busy
+    else
+        B--&gt;&gt;A: No, I am free
+        opt Extra time?
+            B--&gt;&gt;A: Let's grab a coffee
+        end
+    end
+    loop Daily routine
+        B--&gt;&gt;A: Check email
+    end
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">alt ... else</code> creates an alternative block with conditions.</li>
+  <li><code class="language-plaintext highlighter-rouge">opt</code> creates an optional block.</li>
+  <li><code class="language-plaintext highlighter-rouge">loop</code> creates a loop block.</li>
+</ul>
+
+<h2 id="class-diagrams">Class Diagrams</h2>
+
+<pre><code class="language-mermaid">classDiagram
+    class Animal {
+        +String name
+        +int age
+        +makeSound()
+    }
+    class Dog {
+        +String breed
+    }
+    Animal &lt;|-- Dog
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">classDiagram</code> specifies the start of a class diagram.</li>
+  <li><code class="language-plaintext highlighter-rouge">class Animal {}</code> defines a class named Animal.</li>
+  <li><code class="language-plaintext highlighter-rouge">+String name</code> defines a public attribute.</li>
+  <li><code class="language-plaintext highlighter-rouge">+makeSound()</code> defines a public method.</li>
+  <li><code class="language-plaintext highlighter-rouge">Animal &lt;-- Dog</code> indicates inheritance, where Dog inherits from Animal.</li>
+</ul>
+
+<h2 id="state-diagrams">State Diagrams</h2>
+
+<pre><code class="language-mermaid">stateDiagram
+    [*] --&gt; Idle
+    Idle --&gt; Processing : Event1
+    Processing --&gt; Done : Event2
+    Done --&gt; [*]
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">stateDiagram</code> specifies the start of a state diagram.</li>
+  <li><code class="language-plaintext highlighter-rouge">[ * ]</code> represents the start state.</li>
+  <li><code class="language-plaintext highlighter-rouge">Idle --&gt; Processing : Event1</code> defines a transition from Idle to Processing triggered by Event1.</li>
+</ul>
+
+<h2 id="gantt-charts">Gantt Charts</h2>
+
+<pre><code class="language-mermaid">gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    Task1           :a1, 2023-01-01, 30d
+    Task2           :after a1  , 20d
+    Task3           : 2023-01-15, 25d
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gantt</code> specifies the start of a Gantt chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">title</code> sets the title of the chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">dateFormat</code> specifies the date format.</li>
+  <li><code class="language-plaintext highlighter-rouge">section</code> defines a section of tasks.</li>
+  <li><code class="language-plaintext highlighter-rouge">Task1 :a1, 2023-01-01, 30d</code> defines a task with an <code class="language-plaintext highlighter-rouge">ID, start date, and duration.</code></li>
+  <li><code class="language-plaintext highlighter-rouge">:after a1</code> schedules the task to start after task a1 completes.</li>
+</ul>
+
+<h2 id="pie-charts">Pie Charts</h2>
+
+<p>Pie charts are used to represent data in a circular graph.</p>
+
+<pre><code class="language-mermaid">pie
+    title Pie Chart Example
+    "Category A" : 40
+    "Category B" : 20
+    "Category C" : 30
+    "Category D" : 10
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pie</code> specifies the start of a pie chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">title</code> sets the title of the chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">"Category A" : 40</code> defines a segment of the pie chart with a <code class="language-plaintext highlighter-rouge">label and value</code>.</li>
+</ul>
+
+<h2 id="entity-relationship-diagrams-erd">Entity Relationship Diagrams (ERD)</h2>
+
+<p>ERDs are used to represent the relationships between entities in a database.</p>
+
+<pre><code class="language-mermaid">erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string address
+    }
+    ORDER {
+        int id
+        string product
+        int quantity
+    }
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">erDiagram</code> specifies the start of an ER diagram.</li>
+  <li><code class="language-plaintext highlighter-rouge">CUSTOMER ||--o{ ORDER : places</code> defines a relationship where a customer places orders.</li>
+  <li><code class="language-plaintext highlighter-rouge">CUSTOMER {}</code> defines an entity with attributes.</li>
+  <li><code class="language-plaintext highlighter-rouge">int id</code> defines an attribute with a type.</li>
+</ul>
+
+<h2 id="commit-flow-diagram">Commit Flow Diagram</h2>
+
+<pre><code class="language-mermaid">gitGraph
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   branch feature-1
+   checkout feature-1
+   commit
+   checkout develop
+   merge feature-1
+   commit
+   checkout main
+   merge develop
+   commit
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gitGraph</code> specifies the start of a commit flow diagram.</li>
+  <li><code class="language-plaintext highlighter-rouge">commit</code> creates a commit.</li>
+  <li><code class="language-plaintext highlighter-rouge">branch develop</code> creates a new branch named develop.</li>
+  <li><code class="language-plaintext highlighter-rouge">checkout develop</code> switches to the develop branch.</li>
+  <li><code class="language-plaintext highlighter-rouge">merge feature-1</code> merges the <code class="language-plaintext highlighter-rouge">feature-1</code> branch into the <code class="language-plaintext highlighter-rouge">current branch</code>.</li>
+</ul>
+
+<h2 id="user-journey-diagram">User Journey Diagram</h2>
+
+<pre><code class="language-mermaid">journey
+    title User Journey for Booking a Flight
+    section Search
+      User searches for flights: 5: User
+    section Select
+      User selects a flight: 5: User
+      System shows flight details: 3: System
+    section Book
+      User enters passenger details: 5: User
+      System confirms booking: 4: System
+</code></pre>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">journey</code> specifies the start of a user journey diagram.</li>
+  <li><code class="language-plaintext highlighter-rouge">section</code> creates a new section in the journey.</li>
+  <li><code class="language-plaintext highlighter-rouge">User searches for flights: 5: User</code> describes an action, a <code class="language-plaintext highlighter-rouge">rating, and an actor</code>.</li>
+</ul>
+
+<h2 id="quadrant-chart">Quadrant Chart</h2>
+
+<pre><code class="language-mermaid">quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --&gt; High Reach
+    y-axis Low Engagement --&gt; High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    Campaign A: [0.3, 0.6]
+    Campaign B: [0.45, 0.23]
+    Campaign C: [0.57, 0.69]
+    Campaign D: [0.78, 0.34]
+    Campaign E: [0.40, 0.34]
+    Campaign F: [0.35, 0.78]
+</code></pre>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">quadrantChart</code> specifies the start of a quadrant chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">title Reach and Engagement of Campaigns</code> sets the title of the chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">x-axis Low Reach --&gt; High Reach</code> labels the <code class="language-plaintext highlighter-rouge">x-axis</code> with a range.</li>
+  <li><code class="language-plaintext highlighter-rouge">y-axis Low Engagement --&gt; High Engagement labels</code> the <code class="language-plaintext highlighter-rouge">y-axis</code> with a range.</li>
+  <li><code class="language-plaintext highlighter-rouge">quadrant-1: We should expand</code> to <code class="language-plaintext highlighter-rouge">quadrant-4: May be improved</code> label the four quadrants.</li>
+  <li><code class="language-plaintext highlighter-rouge">"Campaign A" : [0.3, 0.6]</code> plots a point representing Campaign A with specific coordinates.</li>
+</ul>
+
+<h2 id="xy-chart-xychart-beta">XY Chart (XYChart-Beta)</h2>
+
+<pre><code class="language-mermaid">xychart-beta
+    title "Sales Revenue"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --&gt; 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+</code></pre>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">xychart-beta</code> specifies the start of an XY chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">title "Sales Revenue"</code> sets the title of the chart.</li>
+  <li><code class="language-plaintext highlighter-rouge">x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]</code> labels the x-axis with months.</li>
+  <li><code class="language-plaintext highlighter-rouge">y-axis "Revenue (in $)" 4000 --&gt; 11000</code> labels the y-axis with a range for revenue.</li>
+  <li><code class="language-plaintext highlighter-rouge">bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]</code> plots a bar chart with the given data points.</li>
+  <li><code class="language-plaintext highlighter-rouge">line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]</code> plots a line chart with the same data points.</li>
+</ul>
+
+          </div>
+
+          <!-- Navigation for Previous and Next Posts -->
+          <nav
+            class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
+          >
+            
+            <a
+              href="/beaver%20notes/2024/06/17/Markdown-Syntax.html"
+              class="text-sm text-blue-500 dark:text-blue-400 hover:underline"
+            >
+              &larr; Previous: Markdown Syntax
+            </a>
+             
+            <a
+              href="/beaver%20notes/2024/06/17/Navigate-Interface.html"
+              class="text-sm text-blue-500 dark:text-blue-400 hover:underline"
+            >
+              Next: Navigate the Interface &rarr;
+            </a>
+            
+          </nav>
+        </article>
+      </main>
+
+      <!-- Right Sidebar for Heading Navigation -->
+      <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
+        <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
+          On This Page
+        </h2>
+        <nav class="border-b pb-6 mb-6">
+          <ul id="table-of-contents" class="space-y-2"></ul>
+        </nav>
+        <a class="text-md font-bolder" href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts">
+          <i class="fa-brands fa-github"></i>
+          Edit this page
+        </a>
+      </aside>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const content = document.getElementById("content");
+        const headings = content.querySelectorAll("h1, h2, h3");
+        const toc = document.getElementById("table-of-contents");
+
+        let currentLevel = 1;
+        let currentList = toc; // Start with the main ToC list
+        const listStack = [toc]; // Stack to manage nested lists
+
+        headings.forEach((heading, index) => {
+          const id = `heading-${index}`;
+          heading.setAttribute("id", id);
+
+          const level = parseInt(heading.tagName.substring(1)); // Extract level from h1, h2, h3, etc.
+
+          // Adjust nesting based on heading level
+          while (level > currentLevel) {
+            const newList = document.createElement("ul");
+            newList.classList.add("ml-4", "space-y-2");
+            currentList.lastElementChild.appendChild(newList);
+            listStack.push(newList);
+            currentList = newList;
+            currentLevel++;
+          }
+          while (level < currentLevel) {
+            listStack.pop();
+            currentList = listStack[listStack.length - 1];
+            currentLevel--;
+          }
+
+          // Add the heading to the current list
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
+          currentList.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

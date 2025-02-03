@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <style>
+      /* Enable smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+    {% include nav.html %}
+    <div class="flex flex-col lg:flex-row">
+      <!-- Left Sidebar for Category Navigation -->
+      <aside
+        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+      >
+        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
+          Posts in {{ page.category }}
+        </h2>
+        <ul>
+          {% assign filtered_posts = site.posts | where: "category",
+          page.category %} {% assign sorted_posts = filtered_posts | sort:
+          "position" %} {% for post in sorted_posts %}
+          <li class="mb-2">
+            <a
+              href="{{ post.url }}"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg {{ post.url == page.url ? 'font-bold' : '' }}"
+            >
+              {{ post.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
+        <article>
+          <header class="mb-8 space-y-2">
+            <h1 class="text-4xl dark:text-neutral-100 font-bold">
+              {{ page.title }}
+            </h1>
+            <p class="text-sm text-neutral-600 dark:text-neutral-100">{{ page.details }}</p>
+          </header>
+
+          <div id="content" class="content prose dark:prose-invert max-w-none">
+            {{ content | markdownify }}
+          </div>
+
+          <!-- Navigation for Previous and Next Posts -->
+          <nav
+            class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
+          >
+            {% if page.previous %}
+            <a
+              href="{{ page.previous.url }}"
+              class="text-sm text-blue-500 dark:text-blue-400 hover:underline"
+            >
+              &larr; Previous: {{ page.previous.title }}
+            </a>
+            {% endif %} {% if page.next %}
+            <a
+              href="{{ page.next.url }}"
+              class="text-sm text-blue-500 dark:text-blue-400 hover:underline"
+            >
+              Next: {{ page.next.title }} &rarr;
+            </a>
+            {% endif %}
+          </nav>
+        </article>
+      </main>
+
+      <!-- Right Sidebar for Heading Navigation -->
+      <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
+        <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
+          On This Page
+        </h2>
+        <nav class="border-b pb-6 mb-6">
+          <ul id="table-of-contents" class="space-y-2"></ul>
+        </nav>
+        <a class="text-md font-bolder" href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts">
+          <i class="fa-brands fa-github"></i>
+          Edit this page
+        </a>
+      </aside>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const content = document.getElementById("content");
+        const headings = content.querySelectorAll("h1, h2, h3");
+        const toc = document.getElementById("table-of-contents");
+
+        let currentLevel = 1;
+        let currentList = toc; // Start with the main ToC list
+        const listStack = [toc]; // Stack to manage nested lists
+
+        headings.forEach((heading, index) => {
+          const id = `heading-${index}`;
+          heading.setAttribute("id", id);
+
+          const level = parseInt(heading.tagName.substring(1)); // Extract level from h1, h2, h3, etc.
+
+          // Adjust nesting based on heading level
+          while (level > currentLevel) {
+            const newList = document.createElement("ul");
+            newList.classList.add("ml-4", "space-y-2");
+            currentList.lastElementChild.appendChild(newList);
+            listStack.push(newList);
+            currentList = newList;
+            currentLevel++;
+          }
+          while (level < currentLevel) {
+            listStack.pop();
+            currentList = listStack[listStack.length - 1];
+            currentLevel--;
+          }
+
+          // Add the heading to the current list
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
+          currentList.appendChild(li);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Beaver Docs</title>
+    <link>http://localhost:4000</link>
+    <description></description>
+    <lastBuildDate>Mon, 03 Feb 2025 15:17:29 +0100</lastBuildDate>
+    <language>en-us</language>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Reset a password</title>
+      <link>http://localhost:4000/beaver%20notes/2025/02/03/Reset-Password.html</link>
+      <description>Changing the Password
+</description>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2025/02/03/Reset-Password</guid>
+    </item>
+    
+    <item>
+      <title>Translations</title>
+      <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/translate.html</link>
+      <description>Rather than relying solely on an internal translation team, we invite you to contribute by submitting translations effortlessly, even without technical expertise. To help new translators get started, we’ve created this translation guide.
+</description>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/translate</guid>
+    </item>
+    
+    <item>
+      <title>Contributing to the Blog</title>
+      <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html</link>
+      <description>Beaver’s Blog website, like the docs, is built using Jekyll, a static site generator. To contribute to the blog, you don’t need to be an artist, blogger, or developer.
+</description>
+      <pubDate>Mon, 06 Jan 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog</guid>
+    </item>
+    
+    <item>
+      <title>Contributing to the Docs</title>
+      <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html</link>
+      <description>Beaver’s Documentation website is built using Jekyll, a static site generator. This makes collaboration straightforward, even if you’re not a developer. There are two main ways to contribute to the docs:
+</description>
+      <pubDate>Sun, 05 Jan 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs</guid>
+    </item>
+    
+    <item>
+      <title>How to contribute</title>
+      <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html</link>
+      <description>Beaver Notes is a 100% open-source indie project, enjoyed by people all around the world. Our mission is to deliver a privacy-focused, easy-to-use note-taking app, and you can be part of our mission even if you are not a programmer. There are many ways to contribute to an open-source project.
+</description>
+      <pubDate>Fri, 03 Jan 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/03/How-to-contribute</guid>
+    </item>
+    
+    <item>
+      <title>Syncing Notes</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Sync.html</link>
+      <description>Before diving in, make sure you’ve got a cloud provider installed on your PC—something like Dropbox, OneDrive, or iCloud will do the trick. If you don’t already have one, just search for “[Your Cloud Provider Name] + [Your Operating System]” on Google to get started. Alternatively, you can check out services like Syncthing or even set up your own server if that’s an option for you.
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Sync</guid>
+    </item>
+    
+    <item>
+      <title>Navigate the Interface</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Navigate-Interface.html</link>
+      <description>Editor
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Navigate-Interface</guid>
+    </item>
+    
+    <item>
+      <title>Use Mermaid Block</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Mermaid-Block.html</link>
+      <description>A mermaid Block supports multiple diagram types, including flowcharts, sequence diagrams, class diagrams, state diagrams, Gantt charts, and more.
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Mermaid-Block</guid>
+    </item>
+    
+    <item>
+      <title>Markdown Syntax</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Markdown-Syntax.html</link>
+      <description>Headings
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Markdown-Syntax</guid>
+    </item>
+    
+    <item>
+      <title>Lock a Note</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Lock-Noted.html</link>
+      <description>
+  ⚠️ For security purposes, please note that a new password cannot be set without knowing the old one. Be sure to save your password in a secure place, such as a trustworthy password manager, to avoid losing access to your locked notes.
+
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Lock-Noted</guid>
+    </item>
+    
+    <item>
+      <title>Using Labels</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Labels.html</link>
+      <description>Adding a label
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Labels</guid>
+    </item>
+    
+    <item>
+      <title>Import Markdown</title>
+      <link>http://localhost:4000/beaver%20notes/2024/06/17/Importing-Markdown.html</link>
+      <description>Beaver Notes 3.5.0 and later versions support importing Markdown archives. To ensure a smooth import process, you need to organize your Markdown archive correctly. Follow these steps to prepare and import your notes:
+</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0200</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2024/06/17/Importing-Markdown</guid>
+    </item>
+    
+  </channel>
+</rss>

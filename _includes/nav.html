@@ -1,0 +1,131 @@
+{% include search.html %}
+<nav class="bg-transparent border-b dark:border-neutral-700">
+  <div class="mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed -->
+          <svg
+            id="hamburger-icon"
+            class="block size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <!-- Icon when menu is open -->
+          <svg
+            id="close-icon"
+            class="hidden size-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start"
+      >
+        <!-- Logo and Title -->
+        <a href="{{ "/" | relative_url }}" class="flex shrink-0 items-center">
+          <img
+            class="h-8 w-auto"
+            src="{{ site.baseurl }}/assets/img/logo.png"
+          />
+          <p class="ml-4 dark:text-gray-100 font-bold">Beaver Docs</p>
+        </a>
+
+        <!-- Search Icon Button -->
+        <button
+          onclick="openSearch()"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+          ></i>
+        </button>
+
+        <!-- Dark Mode Toggle Button -->
+        <button
+          id="dark-mode-toggle"
+          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          onclick="toggleDarkMode()"
+        >
+          <i
+            id="dark-mode-icon"
+            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+  
+      if (html.classList.contains("dark")) {
+        html.classList.remove("dark");
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light"); // Save preference
+      } else {
+        html.classList.add("dark");
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark"); // Save preference
+      }
+    }
+  
+    // Apply saved dark mode preference on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      const html = document.documentElement;
+      const icon = document.getElementById("dark-mode-icon");
+      const savedTheme = localStorage.getItem("theme");
+  
+      if (savedTheme === "dark") {
+        html.classList.add("dark");
+        icon.classList.add("fa-sun");
+        icon.classList.remove("fa-moon");
+      } else {
+        html.classList.remove("dark");
+        icon.classList.add("fa-moon");
+        icon.classList.remove("fa-sun");
+      }
+    });
+  
+    function openSearch() {
+      const searchContainer = document.getElementById("search-container");
+      if (searchContainer) {
+        searchContainer.classList.remove("hidden");
+      } else {
+        console.error("Search container not found");
+      }
+    }
+  </script>
+</nav>  
