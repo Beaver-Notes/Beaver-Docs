@@ -2,14 +2,30 @@
 ---
 [
   {% for post in site.posts %}
-    {% assign author = site.authors[post.author] | default: site.authors["anonymous"] %}
+    {% if site.authors[post.author].name %}
+      {% assign author = site.authors[post.author] %}
+    {% else %}
+      {% assign author = site.authors["anonymous"] %}
+    {% endif %}
 
     {% unless post.hidden %}
       {
         "title": "{{ post.title | escape }}",
-        "description": "{% if post.description %}{{ post.excerpt | strip_html }}{% else %}{{ post.date | date: "%a, %b %e, %Y" }}{% endif %}",
+
+        {% if post.details %}
+          "details": "{{ post.details | strip_html }}",
+        {% else %}
+          "details": "{{ post.date | date: "%a, %b %e, %Y" }}",
+        {% endif %}
+
         "content": {{ post.content | jsonify }},
-        "image": "{% if post.image %}{{ post.image }}{% else %}https://www.gravatar.com/avatar/{{ author.gravatar }}?s=84&d=blank{% endif %}",
+
+        {% if post.image %}
+          "image": "{{ post.image }}",
+        {% else %}
+          "image": "https://www.gravatar.com/avatar/{{ author.gravatar }}?s=84&d=blank",
+        {% endif %}
+
         "url": "{{ site.baseurl }}{{ post.url }}",
         "tags": "{{ post.tags | join: ', ' }}",
         "date": "{{ post.date }}"

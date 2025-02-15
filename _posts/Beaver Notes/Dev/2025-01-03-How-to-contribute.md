@@ -14,17 +14,15 @@ One of the biggest ways to contribute is by helping with our documentation. We a
 
 # Blog Posts
 
-A blog is one of the best means for a project to grow and update its users on the work that is being done. Contributing to the blog means getting in touch with the developers to see what’s new, writing release articles, sharing tips and tricks, etc. In the following guide, [link to guide](), we’ll show you how you can contribute to the blog.
+A blog is one of the best means for a project to grow and update its users on the work that is being done. Contributing to the blog means getting in touch with the developers to see what’s new, writing release articles, sharing tips and tricks, etc. In the [following guide]({% post_url 2025-01-06-Contribute-to-blog %}), we’ll show you how you can contribute to the blog.
 
 # Code Contributions
 
-Code is obviously a great way to contribute to the project. By hunting down bugs, fixing issues open on GitHub, or implementing new features from the roadmap, you’ll be sure to leave your mark on Beaver and its growth. Follow this guide, [link to guide](), to set up the environment and get started. 
-
-If you don't feel quite ready to contribute to the app you can also contribute to Beaver’s website code, by following this guide: [link to guide]().
+Code is obviously a great way to contribute to the project. By hunting down bugs, fixing issues open on GitHub, or implementing new features from the roadmap, you’ll be sure to leave your mark on Beaver and its growth. Follow [this guide]({% post_url 2025-02-13-Code-Contributions %}), to set up the environment and get started. 
 
 # Translation 
 
-Beaver is enjoyed by people all around the world. You can help us reach even more people by helping us translate the desktop app. You could be the first to translate the app or update an existing translation. All translations are done using an open-source platform called [Traduora](). Check out this page to contribute to translations: [link to guide]()
+Beaver is enjoyed by people all around the world. You can help us reach even more people by helping us translate the desktop app. You could be the first to translate the app or update an existing translation. All translations are done using an open-source platform called Traduora. Check out [this page]({% post_url 2025-01-06-translate %}) to contribute to translations.
 
 # UI and UX 
 

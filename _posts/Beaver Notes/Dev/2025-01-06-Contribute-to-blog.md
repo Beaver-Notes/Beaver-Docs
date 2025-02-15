@@ -3,7 +3,7 @@ layout: post
 title: Contributing to the Blog
 details: An engaging blog is a good blog.
 category: Beaver Notes (DEV)
-position: 3
+position: 4
 ---
 
 Beaver's Blog website, like the docs, is built using Jekyll, a static site generator. To contribute to the blog, you don't need to be an artist, blogger, or developer.

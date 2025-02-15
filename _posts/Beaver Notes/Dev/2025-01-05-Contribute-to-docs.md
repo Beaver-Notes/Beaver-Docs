@@ -3,7 +3,7 @@ layout: post
 title: Contributing to the Docs
 details: Good documentation is the foundation of a great project.
 category: Beaver Notes (DEV)
-position: 2
+position: 3
 ---
 
 Beaver's Documentation website is built using Jekyll, a static site generator. This makes collaboration straightforward, even if you’re not a developer. There are two main ways to contribute to the docs:

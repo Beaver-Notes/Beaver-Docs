@@ -20,43 +20,36 @@
   <body class="bg-white text-gray-800 dark:bg-neutral-900">
     <div
   id="search-container"
-  class="fixed inset-x-0 top-10 hidden flex items-center justify-center z-50"
-  role="dialog"
-  aria-labelledby="search-dialog-title"
-  aria-hidden="true"
+  class="fixed inset-0 bg-slate-900/25 backdrop-blur transition-opacity w-screen h-screen hidden flex z-50"
 >
   <div
-    class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-lg relative"
+    role="dialog"
+    aria-labelledby="search-dialog-title"
+    aria-hidden="true"
+    class="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24"
   >
     <div
-      class="p-2 mx-4 border-b border-b-neutral-100 dark:border-b-neutral-700 outline-none relative flex items-center"
+      class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-xl relative"
     >
-      <!-- Search Icon -->
-      <i
-        class="fa-solid fa-magnifying-glass text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg pl-0"
-      ></i>
-
-      <!-- Search Input -->
-      <input
-        id="search-input"
-        type="text"
-        class="text-sm bg-transparent outline-none border-none placeholder-neutral-500 dark:placeholder-neutral-300 dark:text-neutral-300 focus:ring-0 pl-4 pr-10"
-        placeholder="Type to search..."
-        aria-label="Search input"
-      />
-
-      <!-- Close Button -->
-      <button
-        onclick="closeSearch()"
-        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-black focus:outline-none focus:ring-0"
-        aria-label="Close search dialog"
+      <div
+        class="p-3 border-b border-b-neutral-100 dark:border-b-neutral-700 outline-none relative flex items-center justify-between"
       >
+        <!-- Search Input -->
+        <input
+          id="search-input"
+          type="text"
+          class="flex-1 text-sm bg-transparent outline-none border-none placeholder-neutral-500 dark:placeholder-neutral-300 dark:text-neutral-300 focus:ring-0"
+          placeholder="Type to search..."
+          aria-label="Search input"
+        />
+
+        <!-- Search Icon -->
         <i
-          class="fa-solid fa-close text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg"
+          class="fa-solid fa-magnifying-glass p-2 text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg cursor-pointer"
         ></i>
-      </button>
+      </div>
+      <ul id="results-container" class="pb-2"></ul>
     </div>
-    <ul id="results-container" class="space-y-2 py-2"></ul>
   </div>
 </div>
 
@@ -69,13 +62,22 @@
       console.error("Search container not found");
     }
   }
+
   // Initialize SimpleJekyllSearch
   document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     const resultsContainer = document.getElementById("results-container");
 
+    // Add ESC key listener
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault(); // Prevent default to avoid bubbling
+        closeSearch();
+      }
+    });
+
     // Inject site.baseurl from Jekyll into the JSON path
-    const jsonPath = "/assets/search.json"; // Inject site.baseurl here
+    const jsonPath = "/assets/search.json";
 
     if (!searchInput || !resultsContainer) {
       console.error("Search input or results container not found");
@@ -89,8 +91,11 @@
       searchResultTemplate: `
         <li>
           <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
-            <div>
+            <div class="flex flex-row">
+              <div class="flex flex-col ml-2">
               <p class="text-sm font-bold">{title}</p>
+              <p class="text-sm">{details}</p>
+              </div>
             </div>
           </a>
         </li>`,
@@ -229,6 +234,13 @@
         console.error("Search container not found");
       }
     }
+
+    document.addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault(); // Prevent default browser action
+        openSearch();
+      }
+    });
   </script>
 </nav>  
     <div class="flex flex-col lg:flex-row">
@@ -247,6 +259,15 @@
               class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
             >
               How to contribute
+            </a>
+          </li>
+          
+          <li class="mb-2">
+            <a
+              href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+            >
+              Code Contributions
             </a>
           </li>
           
@@ -288,7 +309,7 @@
               How to contribute
             </h1>
             <p class="text-sm text-neutral-600 dark:text-neutral-100">
-              Everyone can make a difference, even if you're not a programmer.
+              
             </p>
           </header>
 
@@ -301,17 +322,15 @@
 
 <h1 id="blog-posts">Blog Posts</h1>
 
-<p>A blog is one of the best means for a project to grow and update its users on the work that is being done. Contributing to the blog means getting in touch with the developers to see what’s new, writing release articles, sharing tips and tricks, etc. In the following guide, <a href="">link to guide</a>, we’ll show you how you can contribute to the blog.</p>
+<p>A blog is one of the best means for a project to grow and update its users on the work that is being done. Contributing to the blog means getting in touch with the developers to see what’s new, writing release articles, sharing tips and tricks, etc. In the <a href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html">following guide</a>, we’ll show you how you can contribute to the blog.</p>
 
 <h1 id="code-contributions">Code Contributions</h1>
 
-<p>Code is obviously a great way to contribute to the project. By hunting down bugs, fixing issues open on GitHub, or implementing new features from the roadmap, you’ll be sure to leave your mark on Beaver and its growth. Follow this guide, <a href="">link to guide</a>, to set up the environment and get started.</p>
-
-<p>If you don’t feel quite ready to contribute to the app you can also contribute to Beaver’s website code, by following this guide: <a href="">link to guide</a>.</p>
+<p>Code is obviously a great way to contribute to the project. By hunting down bugs, fixing issues open on GitHub, or implementing new features from the roadmap, you’ll be sure to leave your mark on Beaver and its growth. Follow <a href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html">this guide</a>, to set up the environment and get started.</p>
 
 <h1 id="translation">Translation</h1>
 
-<p>Beaver is enjoyed by people all around the world. You can help us reach even more people by helping us translate the desktop app. You could be the first to translate the app or update an existing translation. All translations are done using an open-source platform called <a href="">Traduora</a>. Check out this page to contribute to translations: <a href="">link to guide</a></p>
+<p>Beaver is enjoyed by people all around the world. You can help us reach even more people by helping us translate the desktop app. You could be the first to translate the app or update an existing translation. All translations are done using an open-source platform called Traduora. Check out <a href="/beaver%20notes%20(dev)/2025/01/06/translate.html">this page</a> to contribute to translations.</p>
 
 <h1 id="ui-and-ux">UI and UX</h1>
 
@@ -320,22 +339,17 @@
           </div>
 
           <!-- Navigation for Previous and Next Posts -->
+             
+
           <nav
             class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
           >
-            
+              
             <a
-              href="/beaver%20notes/2024/06/17/Sync.html"
+              href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
               class="px-4 py-2 text-sm font-medium text-amber-400"
             >
-              &larr; Previous: Syncing Notes
-            </a>
-             
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-              class="px-4 py-2 text-sm font-medium text-amber-400"
-            >
-              Next: Contributing to the Docs &rarr;
+              Next: Code Contributions &rarr;
             </a>
             
           </nav>

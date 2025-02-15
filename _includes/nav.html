@@ -127,5 +127,12 @@
         console.error("Search container not found");
       }
     }
+
+    document.addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault(); // Prevent default browser action
+        openSearch();
+      }
+    });
   </script>
 </nav>  

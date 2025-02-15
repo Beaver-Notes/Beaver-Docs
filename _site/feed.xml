@@ -4,9 +4,18 @@
     <title>Beaver Docs</title>
     <link>http://localhost:4000</link>
     <description></description>
-    <lastBuildDate>Mon, 03 Feb 2025 15:35:03 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 15 Feb 2025 08:01:03 +0100</lastBuildDate>
     <language>en-us</language>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Code Contributions</title>
+      <link>http://localhost:4000/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html</link>
+      <description>Thank you for your interest in contributing to Beaver Notes! We are thrilled to have you on board.
+</description>
+      <pubDate>Thu, 13 Feb 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/02/13/Code-Contributions</guid>
+    </item>
     
     <item>
       <title>Reset a password</title>
