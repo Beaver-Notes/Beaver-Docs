@@ -80,7 +80,7 @@ A math block can be inserted by typing $$. Clicking on a math block opens the Ka
 
 # Mermaid Block
 
-A mermaid block can be inserted by typing ::mermaid. The mermaid block supports the Mermaid.js syntax, allowing you to add beautiful flowcharts, diagrams, and charts seamlessly to your notes, making data easier to read. To discover more about using Mermaid, check out the [Contributing to the Docs]({% post_url 2024-06-17-Mermaid-Block %})
+A mermaid block can be inserted by typing ::mermaid. The mermaid block supports the Mermaid.js syntax, allowing you to add beautiful flowcharts, diagrams, and charts seamlessly to your notes, making data easier to read. To discover more about using Mermaid, check out the [Mermaid Block page]({% post_url 2024-06-17-Mermaid-Block %}).
 
 Callouts come in **yellow, red, blue, green, black, and purple**.
 

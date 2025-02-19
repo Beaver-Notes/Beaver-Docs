@@ -4,7 +4,7 @@
     <title>Beaver Docs</title>
     <link>http://localhost:4000</link>
     <description></description>
-    <lastBuildDate>Sat, 15 Feb 2025 08:01:03 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2025 10:53:02 +0100</lastBuildDate>
     <language>en-us</language>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
@@ -24,6 +24,15 @@
 </description>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:4000/beaver%20notes/2025/02/03/Reset-Password</guid>
+    </item>
+    
+    <item>
+      <title>Download and Install Beaver Notes</title>
+      <link>http://localhost:4000/beaver%20notes/2025/01/19/Install.html</link>
+      <description>This guide lists all supported ways to download and install Beaver Notes on Windows, macOS, Linux (including Flatpak, DEB, RPM and AUR)
+</description>
+      <pubDate>Sun, 19 Jan 2025 00:00:00 +0100</pubDate>
+      <guid>http://localhost:4000/beaver%20notes/2025/01/19/Install</guid>
     </item>
     
     <item>

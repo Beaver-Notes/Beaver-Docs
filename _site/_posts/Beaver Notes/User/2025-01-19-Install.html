@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reset a password - Beaver Docs</title>
+    <title>Download and Install Beaver Notes - Beaver Docs</title>
     <link href="/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
@@ -342,7 +342,7 @@
         <article>
           <header class="mb-8 space-y-2">
             <h1 class="text-4xl dark:text-neutral-100 font-bold">
-              Reset a password
+              Download and Install Beaver Notes
             </h1>
             <p class="text-sm text-neutral-600 dark:text-neutral-100">
               
@@ -350,17 +350,162 @@
           </header>
 
           <div id="content" class="content prose dark:prose-invert max-w-none">
-            <h1 id="changing-the-password">Changing the Password</h1>
+            <p>This guide lists all supported ways to download and install Beaver Notes on Windows, macOS, Linux (including Flatpak, DEB, RPM and AUR)</p>
 
-<p>To change your password, go to <strong>Settings &gt; Privacy &amp; Security</strong>, then click <strong>“Reset Password.”</strong></p>
+<blockquote>
+  <p>If you are using a package manager (e.g., Scoop, Flathub, Homebrew), it is recommended to disable auto-updates in <strong>Settings &gt; About</strong> to avoid potential conflicts.</p>
+</blockquote>
 
-<p>You will be prompted to enter your current password before setting up a new one.</p>
+<h2 id="install-on-windows">Install on Windows</h2>
 
-<p><img src="/assets/img/docs/lock-notes/current-password.png" alt="Current Password" /></p>
+<h3 id="default-setup-64-bit">Default Setup (64-bit)</h3>
 
-<p>Next, enter your new password, which will replace the old one. <strong>Be sure to store your password somewhere secure, preferably in a trustworthy password manager.</strong></p>
+<ol>
+  <li>Open your browser and go to <a href="https://beavernotes.com/#/Download">Download Beaver Notes</a>.</li>
+  <li>Click <strong>Download</strong> and select <strong>Setup (64-bit)</strong> to download the installer.</li>
+  <li>Open the downloaded file and follow the installation instructions.</li>
+</ol>
 
-<p><img src="/assets/img/docs/lock-notes/new-password.png" alt="New Password" /></p>
+<h3 id="portable-version-64-bit">Portable Version (64-bit)</h3>
+
+<ol>
+  <li>Open your browser and go to <a href="https://beavernotes.com/#/Download">Download Beaver Notes</a>.</li>
+  <li>Click <strong>Download</strong> and select <strong>Portable (64-bit)</strong> to download the portable version.</li>
+  <li>Open the <code class="language-plaintext highlighter-rouge">.exe</code> file to run the app directly from the folder. Your data will be stored in a <code class="language-plaintext highlighter-rouge">data</code> folder located in the same directory as the <code class="language-plaintext highlighter-rouge">.exe</code> file.</li>
+</ol>
+
+<h3 id="scoop-package-manager">Scoop (Package Manager)</h3>
+
+<ol>
+  <li>Open a PowerShell terminal.</li>
+  <li>Run the following command to add the extras repository:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scoop bucket add extras
+</code></pre></div>    </div>
+  </li>
+  <li>Install Beaver Notes by running:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scoop <span class="nb">install </span>extras/beaver-notes
+</code></pre></div>    </div>
+  </li>
+  <li>Beaver Notes will be updated automatically when you update Scoop.</li>
+</ol>
+
+<h2 id="install-on-macos">Install on macOS</h2>
+
+<h3 id="dmg-default-setup">DMG (Default Setup)</h3>
+
+<ol>
+  <li>Open your browser and go to <a href="https://beavernotes.com/#/Download">Download Beaver Notes</a>.</li>
+  <li>Click <strong>Download</strong> to get the <code class="language-plaintext highlighter-rouge">.dmg</code> file.</li>
+  <li>Open the installation file and drag the app icon into the Applications folder.</li>
+</ol>
+
+<h3 id="homebrew">Homebrew</h3>
+
+<ol>
+  <li>Open a terminal window.</li>
+  <li>Run the following command to install Beaver Notes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install</span> <span class="nt">--cask</span> beaver-notes
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="install-on-linux">Install on Linux</h2>
+
+<p>The installation method may vary depending on the Linux distribution and package manager you use.</p>
+
+<h3 id="flatpak-recommended">Flatpak (Recommended)</h3>
+
+<h4 id="from-software-store-gnome-software-discover-etc">From Software Store (GNOME Software, Discover, etc.)</h4>
+
+<ol>
+  <li>Open your distro’s software store (e.g., GNOME Software or Discover).</li>
+  <li>Search for <strong>Beaver Notes</strong>.</li>
+  <li>Click <strong>Install</strong> and enter your password if prompted.</li>
+</ol>
+
+<h4 id="from-terminal">From Terminal</h4>
+
+<ol>
+  <li>Open a terminal window.</li>
+  <li>Run the following command to install Beaver Notes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flatpak <span class="nb">install </span>flathub com.beavernotes.beavernotes
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="deb-for-debian-and-ubuntu-based-distros">DEB (For Debian and Ubuntu-based Distros)</h3>
+
+<ol>
+  <li>Open your browser and go to <a href="https://beavernotes.com/#/Download">Download Beaver Notes</a>.</li>
+  <li>Click <strong>Download</strong> and select <strong>Deb x64</strong> or <strong>Deb ARM</strong> (64-bit). If unsure, choose <strong>x64</strong>.</li>
+  <li>Open the installation file and follow the prompts to install. You may be asked for your password.</li>
+</ol>
+
+<h3 id="rpm-for-fedora-and-centos-based-distros">RPM (For Fedora and CentOS-based Distros)</h3>
+
+<ol>
+  <li>Open your browser and go to <a href="https://beavernotes.com/#/Download">Download Beaver Notes</a>.</li>
+  <li>Click <strong>Download</strong> and select <strong>RPM x64</strong> or <strong>RPM ARM</strong> (64-bit). If unsure, choose <strong>x64</strong>.</li>
+  <li>Open the installation file and follow the prompts to install. You may be asked for your password.</li>
+</ol>
+
+<h3 id="aur-for-arch-linux">AUR (For Arch Linux)</h3>
+
+<h4 id="1-using-yay-recommended-aur-helper"><strong>1. Using <code class="language-plaintext highlighter-rouge">yay</code> (Recommended AUR Helper)</strong></h4>
+
+<ol>
+  <li>Open a terminal window.</li>
+  <li>Run the following command to install Beaver Notes:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yay <span class="nt">-S</span> beaver-notes
+</code></pre></div>    </div>
+    <p>This will download, compile, and install Beaver Notes automatically.</p>
+  </li>
+</ol>
+
+<h4 id="2-manually-compiling-with-makepkg--si"><strong>2. Manually Compiling with <code class="language-plaintext highlighter-rouge">makepkg -si</code></strong></h4>
+
+<p>If you prefer to install without an AUR helper:</p>
+
+<ol>
+  <li>Ensure you have <code class="language-plaintext highlighter-rouge">git</code> and <code class="language-plaintext highlighter-rouge">base-devel</code> installed:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>pacman <span class="nt">-S</span> <span class="nt">--needed</span> git base-devel
+</code></pre></div>    </div>
+  </li>
+  <li>Clone the AUR repository for the standard version (compiling from source):
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://aur.archlinux.org/beaver-notes.git
+<span class="nb">cd </span>beaver-notes
+</code></pre></div>    </div>
+    <p>Or for the binary version (precompiled):</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://aur.archlinux.org/beaver-notes-bin.git
+<span class="nb">cd </span>beaver-notes-bin
+</code></pre></div>    </div>
+  </li>
+  <li>Build and install the package:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>makepkg <span class="nt">-si</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="appimage-portable">AppImage (Portable)</h2>
+
+<ol>
+  <li>Open your browser and go to <a href="https://beavernotes.com/#/Download">Download Beaver Notes</a>.</li>
+  <li>Click <strong>Download</strong> and select <strong>AppImage x64</strong> or <strong>AppImage ARM</strong> (64-bit). If unsure, choose <strong>x64</strong>.</li>
+  <li>Open the <code class="language-plaintext highlighter-rouge">.appimage</code> file to run the app directly, like any other portable application.</li>
+</ol>
+
+<h2 id="-special-thanks">💖 Special Thanks</h2>
+
+<p>A heartfelt thank you to the dedicated contributors who help make Beaver Notes more accessible:</p>
+
+<ul>
+  <li><a href="https://github.com/o-l-a-v"><strong>o-l-a-v</strong></a> – Maintainer of our Scoop package.</li>
+  <li>The amazing teams behind <a href="https://scoop.sh"><strong>Scoop.sh</strong></a> and <a href="https://brew.sh"><strong>Homebrew</strong></a>.</li>
+  <li><a href="https://github.com/moabeat-berlin"><strong>Moabeat</strong></a> – Maintainer of the <a href="https://aur.archlinux.org/beaver-notes.git">AUR package</a>.</li>
+  <li><a href="https://github.com/begin-theadventure"><strong>begin-theadventure</strong></a> – Maintainer of the <a href="https://aur.archlinux.org/beaver-notes-bin.git">AUR binary package</a>.</li>
+</ul>
+
+<p>Beaver wouldn’t be possible without your contribution.</p>
 
           </div>
 
