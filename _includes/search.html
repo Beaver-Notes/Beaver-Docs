@@ -6,7 +6,7 @@
     role="dialog"
     aria-labelledby="search-dialog-title"
     aria-hidden="true"
-    class="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24"
+    class="fixed inset-0 mx-4 z-50 flex items-start justify-center pt-16 sm:pt-24"
   >
     <div
       class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-xl relative"
@@ -22,11 +22,13 @@
           placeholder="Type to search..."
           aria-label="Search input"
         />
-
-        <!-- Search Icon -->
-        <i
-          class="fa-solid fa-magnifying-glass p-2 text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg cursor-pointer"
-        ></i>
+        
+        <!-- Close Button (visible on all screens) -->
+        <button onclick="closeSearch()">
+          <i
+            class="fa-solid fa-close p-2 text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg cursor-pointer"
+          ></i>
+        </button>
       </div>
       <ul id="results-container" class="pb-2"></ul>
     </div>

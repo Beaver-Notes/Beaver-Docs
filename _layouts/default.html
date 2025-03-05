@@ -15,10 +15,10 @@
     {% include nav.html %}
     <!-- Banner Section -->
     <header
-      class="h-80 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+      class="h-80 p-4 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
     >
       <!-- Left Content -->
-      <div class="relative z-10 text-left pt-10 sm:pt-auto sm:pl-8">
+      <div class="relative z-10 text-left sm:pt-10 sm:pt-auto sm:pl-8">
         <h1 class="text-4xl font-bold dark:text-neutral-100">Beaver Docs</h1>
         <p class="mt-2 text-lg dark:text-gray-300">
           Help for wherever you are on your Beaver journey.
@@ -26,11 +26,11 @@
       </div>
 
       <!-- Right Image -->
-      <div class="relative h-full w-1/3">
+      <div class="relative h-full sm:w-1/3 w-2/3">
         <img
           src="{{ base.url }}/assets/img/home/Mac.png"
           alt="Documentation Image"
-          class="sm:w-[80%] object-cover object-bottom sm:object-top mt-10"
+          class="w-full sm:w-[80%] object-cover object-bottom sm:object-top mt-5 sm:mt-10"
         />
       </div>
     </header>

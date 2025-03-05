@@ -20,7 +20,7 @@
     role="dialog"
     aria-labelledby="search-dialog-title"
     aria-hidden="true"
-    class="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24"
+    class="fixed inset-0 mx-4 z-50 flex items-start justify-center pt-16 sm:pt-24"
   >
     <div
       class="bg-white dark:bg-neutral-700 w-full max-w-xl rounded-lg shadow-xl relative"
@@ -36,11 +36,13 @@
           placeholder="Type to search..."
           aria-label="Search input"
         />
-
-        <!-- Search Icon -->
-        <i
-          class="fa-solid fa-magnifying-glass p-2 text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg cursor-pointer"
-        ></i>
+        
+        <!-- Close Button (visible on all screens) -->
+        <button onclick="closeSearch()">
+          <i
+            class="fa-solid fa-close p-2 text-neutral-600 dark:text-neutral-100 hover:text-amber-400 text-lg cursor-pointer"
+          ></i>
+        </button>
       </div>
       <ul id="results-container" class="pb-2"></ul>
     </div>
@@ -103,51 +105,6 @@
 <nav class="bg-transparent border-b dark:border-neutral-700">
   <div class="mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <!-- Mobile menu button -->
-        <button
-          id="mobile-menu-button"
-          type="button"
-          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-neutral-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <span class="absolute -inset-0.5"></span>
-          <span class="sr-only">Open main menu</span>
-          <!-- Icon when menu is closed -->
-          <svg
-            id="hamburger-icon"
-            class="block size-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-          <!-- Icon when menu is open -->
-          <svg
-            id="close-icon"
-            class="hidden size-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
       <div
         class="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start"
       >
@@ -239,10 +196,10 @@
 </nav>  
     <!-- Banner Section -->
     <header
-      class="h-80 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+      class="h-80 p-4 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
     >
       <!-- Left Content -->
-      <div class="relative z-10 text-left pt-10 sm:pt-auto sm:pl-8">
+      <div class="relative z-10 text-left sm:pt-10 sm:pt-auto sm:pl-8">
         <h1 class="text-4xl font-bold dark:text-neutral-100">Beaver Docs</h1>
         <p class="mt-2 text-lg dark:text-gray-300">
           Help for wherever you are on your Beaver journey.
@@ -250,11 +207,11 @@
       </div>
 
       <!-- Right Image -->
-      <div class="relative h-full w-1/3">
+      <div class="relative h-full sm:w-1/3 w-2/3">
         <img
           src="/assets/img/home/Mac.png"
           alt="Documentation Image"
-          class="sm:w-[80%] object-cover object-bottom sm:object-top mt-10"
+          class="w-full sm:w-[80%] object-cover object-bottom sm:object-top mt-5 sm:mt-10"
         />
       </div>
     </header>
@@ -335,14 +292,14 @@
               </li>
               
               <li>
-                <a href="/beaver%20notes/2024/06/17/Labels.html" class="text-amber-400 hover:underline">
-                  Using Labels
+                <a href="/beaver%20notes/2024/06/17/Sync.html" class="text-amber-400 hover:underline">
+                  Syncing Notes
                 </a>
               </li>
               
               <li>
-                <a href="/beaver%20notes/2024/06/17/Sync.html" class="text-amber-400 hover:underline">
-                  Syncing Notes
+                <a href="/beaver%20notes/2024/06/17/Labels.html" class="text-amber-400 hover:underline">
+                  Using Labels
                 </a>
               </li>
               
@@ -456,7 +413,7 @@
 
     <!-- BlueSky -->
     <a
-      href="https://bsky.app/profile/beavernotes.bsky.social"
+      href="https://bsky.app/profile/beavernotes.com"
       class="text-neutral-400 hover:text-blue-500"
     >
       <span class="sr-only">BlueSky</span>
