@@ -22,7 +22,7 @@
           placeholder="Type to search..."
           aria-label="Search input"
         />
-        
+
         <!-- Close Button (visible on all screens) -->
         <button onclick="closeSearch()">
           <i
@@ -45,20 +45,9 @@
     }
   }
 
-  // Initialize SimpleJekyllSearch
   document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     const resultsContainer = document.getElementById("results-container");
-
-    // Add ESC key listener
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        e.preventDefault(); // Prevent default to avoid bubbling
-        closeSearch();
-      }
-    });
-
-    // Inject site.baseurl from Jekyll into the JSON path
     const jsonPath = "{{ site.baseurl }}/assets/search.json";
 
     if (!searchInput || !resultsContainer) {
@@ -66,8 +55,8 @@
       return;
     }
 
-    // Initialize the search with SimpleJekyllSearch
-    SimpleJekyllSearch({
+    // Initialize SimpleJekyllSearch
+    const sjs = SimpleJekyllSearch({
       searchInput: searchInput,
       resultsContainer: resultsContainer,
       searchResultTemplate: `
@@ -75,8 +64,8 @@
           <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
             <div class="flex flex-row">
               <div class="flex flex-col ml-2">
-              <p class="text-sm font-bold">{title}</p>
-              <p class="text-sm">{details}</p>
+                <p class="text-sm font-bold">{title}</p>
+                <p class="text-sm">{details}</p>
               </div>
             </div>
           </a>
@@ -84,6 +73,40 @@
       noResultsText:
         "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
       json: jsonPath,
+    });
+
+    // Fetch JSON manually to show 3 default results when empty
+    fetch(jsonPath)
+      .then((res) => res.json())
+      .then((data) => {
+        // Pick first 3 results (or random 3)
+        const defaults = data.slice(0, 3);
+        resultsContainer.innerHTML = defaults
+          .map(
+            (item) => `
+            <li>
+              <a href="${
+                item.url
+              }" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+                <div class="flex flex-row">
+                  <div class="flex flex-col ml-2">
+                    <p class="text-sm font-bold">${item.title}</p>
+                    <p class="text-sm">${item.details || ""}</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          `
+          )
+          .join("");
+      });
+
+    // ESC key closes search
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeSearch();
+      }
     });
   });
 </script>

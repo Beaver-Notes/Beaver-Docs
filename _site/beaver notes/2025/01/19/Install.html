@@ -42,7 +42,7 @@
           placeholder="Type to search..."
           aria-label="Search input"
         />
-        
+
         <!-- Close Button (visible on all screens) -->
         <button onclick="closeSearch()">
           <i
@@ -65,20 +65,9 @@
     }
   }
 
-  // Initialize SimpleJekyllSearch
   document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     const resultsContainer = document.getElementById("results-container");
-
-    // Add ESC key listener
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        e.preventDefault(); // Prevent default to avoid bubbling
-        closeSearch();
-      }
-    });
-
-    // Inject site.baseurl from Jekyll into the JSON path
     const jsonPath = "/assets/search.json";
 
     if (!searchInput || !resultsContainer) {
@@ -86,8 +75,8 @@
       return;
     }
 
-    // Initialize the search with SimpleJekyllSearch
-    SimpleJekyllSearch({
+    // Initialize SimpleJekyllSearch
+    const sjs = SimpleJekyllSearch({
       searchInput: searchInput,
       resultsContainer: resultsContainer,
       searchResultTemplate: `
@@ -95,8 +84,8 @@
           <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
             <div class="flex flex-row">
               <div class="flex flex-col ml-2">
-              <p class="text-sm font-bold">{title}</p>
-              <p class="text-sm">{details}</p>
+                <p class="text-sm font-bold">{title}</p>
+                <p class="text-sm">{details}</p>
               </div>
             </div>
           </a>
@@ -104,6 +93,40 @@
       noResultsText:
         "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
       json: jsonPath,
+    });
+
+    // Fetch JSON manually to show 3 default results when empty
+    fetch(jsonPath)
+      .then((res) => res.json())
+      .then((data) => {
+        // Pick first 3 results (or random 3)
+        const defaults = data.slice(0, 3);
+        resultsContainer.innerHTML = defaults
+          .map(
+            (item) => `
+            <li>
+              <a href="${
+                item.url
+              }" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+                <div class="flex flex-row">
+                  <div class="flex flex-col ml-2">
+                    <p class="text-sm font-bold">${item.title}</p>
+                    <p class="text-sm">${item.details || ""}</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          `
+          )
+          .join("");
+      });
+
+    // ESC key closes search
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeSearch();
+      }
     });
   });
 </script>
@@ -126,22 +149,22 @@
         <!-- Search Icon Button -->
         <button
           onclick="openSearch()"
-          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+          class="p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto text-gray-600 dark:text-neutral-100 hover:text-amber-400"
         >
           <i
-            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+            class="ri-search-line"
           ></i>
         </button>
 
         <!-- Dark Mode Toggle Button -->
         <button
           id="dark-mode-toggle"
-          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          class="p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4 text-gray-600 dark:text-neutral-100 hover:text-amber-400"
           onclick="toggleDarkMode()"
         >
           <i
             id="dark-mode-icon"
-            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+            class="ri-moon-line"
           ></i>
         </button>
       </div>
@@ -155,12 +178,12 @@
 
     if (isDark) {
       html.classList.add("dark");
-      icon.classList.add("fa-sun");
-      icon.classList.remove("fa-moon");
+      icon.classList.add("ri-sun-line");
+      icon.classList.remove("ri-moon-line");
     } else {
       html.classList.remove("dark");
-      icon.classList.add("fa-moon");
-      icon.classList.remove("fa-sun");
+      icon.classList.add("ri-moon-line");
+      icon.classList.remove("ri-sun-line");
     }
   }
 
@@ -623,31 +646,37 @@
         const toc = document.getElementById("table-of-contents");
 
         let currentLevel = 1;
-        let currentList = toc; // Start with the main ToC list
-        const listStack = [toc]; // Stack to manage nested lists
+        let currentList = toc;
+        const listStack = [toc];
 
         headings.forEach((heading, index) => {
           const id = `heading-${index}`;
           heading.setAttribute("id", id);
 
-          const level = parseInt(heading.tagName.substring(1)); // Extract level from h1, h2, h3, etc.
+          const level = parseInt(heading.tagName.substring(1));
 
-          // Adjust nesting based on heading level
+          // Handle deeper nesting safely
           while (level > currentLevel) {
             const newList = document.createElement("ul");
             newList.classList.add("ml-4", "space-y-2");
-            currentList.lastElementChild.appendChild(newList);
-            listStack.push(newList);
-            currentList = newList;
+
+            const lastLi = currentList.lastElementChild;
+            if (lastLi) {
+              lastLi.appendChild(newList);
+              currentList = newList;
+              listStack.push(newList);
+            }
             currentLevel++;
           }
+
+          // Handle going back up
           while (level < currentLevel) {
             listStack.pop();
             currentList = listStack[listStack.length - 1];
             currentLevel--;
           }
 
-          // Add the heading to the current list
+          // Add heading link
           const li = document.createElement("li");
           li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
           currentList.appendChild(li);

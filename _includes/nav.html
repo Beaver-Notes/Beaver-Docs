@@ -17,22 +17,22 @@
         <!-- Search Icon Button -->
         <button
           onclick="openSearch()"
-          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+          class="p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto text-gray-600 dark:text-neutral-100 hover:text-amber-400"
         >
           <i
-            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+            class="ri-search-line"
           ></i>
         </button>
 
         <!-- Dark Mode Toggle Button -->
         <button
           id="dark-mode-toggle"
-          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          class="p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4 text-gray-600 dark:text-neutral-100 hover:text-amber-400"
           onclick="toggleDarkMode()"
         >
           <i
             id="dark-mode-icon"
-            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+            class="ri-moon-line"
           ></i>
         </button>
       </div>
@@ -46,12 +46,12 @@
 
     if (isDark) {
       html.classList.add("dark");
-      icon.classList.add("fa-sun");
-      icon.classList.remove("fa-moon");
+      icon.classList.add("ri-sun-line");
+      icon.classList.remove("ri-moon-line");
     } else {
       html.classList.remove("dark");
-      icon.classList.add("fa-moon");
-      icon.classList.remove("fa-sun");
+      icon.classList.add("ri-moon-line");
+      icon.classList.remove("ri-sun-line");
     }
   }
 

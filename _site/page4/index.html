@@ -36,7 +36,7 @@
           placeholder="Type to search..."
           aria-label="Search input"
         />
-        
+
         <!-- Close Button (visible on all screens) -->
         <button onclick="closeSearch()">
           <i
@@ -59,20 +59,9 @@
     }
   }
 
-  // Initialize SimpleJekyllSearch
   document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search-input");
     const resultsContainer = document.getElementById("results-container");
-
-    // Add ESC key listener
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        e.preventDefault(); // Prevent default to avoid bubbling
-        closeSearch();
-      }
-    });
-
-    // Inject site.baseurl from Jekyll into the JSON path
     const jsonPath = "/assets/search.json";
 
     if (!searchInput || !resultsContainer) {
@@ -80,8 +69,8 @@
       return;
     }
 
-    // Initialize the search with SimpleJekyllSearch
-    SimpleJekyllSearch({
+    // Initialize SimpleJekyllSearch
+    const sjs = SimpleJekyllSearch({
       searchInput: searchInput,
       resultsContainer: resultsContainer,
       searchResultTemplate: `
@@ -89,8 +78,8 @@
           <a href="{url}" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
             <div class="flex flex-row">
               <div class="flex flex-col ml-2">
-              <p class="text-sm font-bold">{title}</p>
-              <p class="text-sm">{details}</p>
+                <p class="text-sm font-bold">{title}</p>
+                <p class="text-sm">{details}</p>
               </div>
             </div>
           </a>
@@ -98,6 +87,40 @@
       noResultsText:
         "<li class='p-4 text-neutral-500 dark:text-neutral-100'>No Result Found</li>",
       json: jsonPath,
+    });
+
+    // Fetch JSON manually to show 3 default results when empty
+    fetch(jsonPath)
+      .then((res) => res.json())
+      .then((data) => {
+        // Pick first 3 results (or random 3)
+        const defaults = data.slice(0, 3);
+        resultsContainer.innerHTML = defaults
+          .map(
+            (item) => `
+            <li>
+              <a href="${
+                item.url
+              }" class="flex items-center p-2 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-600">
+                <div class="flex flex-row">
+                  <div class="flex flex-col ml-2">
+                    <p class="text-sm font-bold">${item.title}</p>
+                    <p class="text-sm">${item.details || ""}</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          `
+          )
+          .join("");
+      });
+
+    // ESC key closes search
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeSearch();
+      }
     });
   });
 </script>
@@ -120,22 +143,22 @@
         <!-- Search Icon Button -->
         <button
           onclick="openSearch()"
-          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto"
+          class="p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-auto text-gray-600 dark:text-neutral-100 hover:text-amber-400"
         >
           <i
-            class="fa-solid fa-magnifying-glass text-gray-600 dark:text-neutral-100 hover:text-amber-400"
+            class="ri-search-line"
           ></i>
         </button>
 
         <!-- Dark Mode Toggle Button -->
         <button
           id="dark-mode-toggle"
-          class="text-neutral-100 p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4"
+          class="p-2 rounded-lg hover:bg-amber-400 hover:bg-opacity-10 flex items-center justify-center ml-4 text-gray-600 dark:text-neutral-100 hover:text-amber-400"
           onclick="toggleDarkMode()"
         >
           <i
             id="dark-mode-icon"
-            class="fa-solid fa-moon text-gray-600 dark:text-neutral-100"
+            class="ri-moon-line"
           ></i>
         </button>
       </div>
@@ -149,12 +172,12 @@
 
     if (isDark) {
       html.classList.add("dark");
-      icon.classList.add("fa-sun");
-      icon.classList.remove("fa-moon");
+      icon.classList.add("ri-sun-line");
+      icon.classList.remove("ri-moon-line");
     } else {
       html.classList.remove("dark");
-      icon.classList.add("fa-moon");
-      icon.classList.remove("fa-sun");
+      icon.classList.add("ri-moon-line");
+      icon.classList.remove("ri-sun-line");
     }
   }
 
@@ -218,7 +241,7 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
       
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 sm:grid-col-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         
         <!-- Category Section -->
         <div class="flex flex-col">
@@ -226,7 +249,7 @@
             class="text-xl dark:text-neutral-100 font-semibold mb-4 flex items-center gap-2"
           >
             <i
-              class="ri-terminal-line "
+              class="mr-2 ri-terminal-line "
             ></i>
             Beaver Notes (DEV)
           </h2>
@@ -273,7 +296,7 @@
             class="text-xl dark:text-neutral-100 font-semibold mb-4 flex items-center gap-2"
           >
             <i
-              class="ri-edit-line "
+              class="mr-2 ri-edit-line "
             ></i>
             Beaver Notes
           </h2>

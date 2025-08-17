@@ -38,7 +38,7 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
       {% assign categories = site.posts | map: "category" | uniq %}
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 sm:grid-col-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {% for category in categories %}
         <!-- Category Section -->
         <div class="flex flex-col">
@@ -46,7 +46,7 @@
             class="text-xl dark:text-neutral-100 font-semibold mb-4 flex items-center gap-2"
           >
             <i
-              class="{% case category %} {% when 'Beaver Notes' %}ri-edit-line {% when 'Beaver Notes (DEV)' %}ri-terminal-line {% when 'Beaver Pocket' %}ri-device-line {% when 'Beaver Pocket (DEV)' %}ri-braces-line {% else %}ri-folder-line {% endcase %}"
+              class="mr-2 {% case category %} {% when 'Beaver Notes' %}ri-edit-line {% when 'Beaver Notes (DEV)' %}ri-terminal-line {% when 'Beaver Pocket' %}ri-device-line {% when 'Beaver Pocket (DEV)' %}ri-braces-line {% else %}ri-folder-line {% endcase %}"
             ></i>
             {{ category }}
           </h2>
