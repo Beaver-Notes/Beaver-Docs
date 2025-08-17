@@ -6,9 +6,9 @@ category: Beaver Notes (DEV)
 position: 2
 ---
 
-Thank you for your interest in contributing to Beaver Notes! We are thrilled to have you on board.
+Thank you for your interest in contributing to Beaver Notes! We are thrilled to have you on board 💖
 
-# Prerequisites
+## Prerequisites
 
 Before contributing to the project, make sure you have the necessary tools installed:
 
@@ -22,7 +22,7 @@ node -v
 yarn -v
 ```
 
-# Getting Started
+## Getting Started
 
 **1. Fork the Repository**
 
@@ -56,7 +56,7 @@ Use a descriptive name for your branch:
 git checkout -b feature/add-dark-mode
 ```
 
-# Code Style & Quality
+## Code Style & Quality
 
 ### Linting
 
@@ -99,7 +99,7 @@ When attempting to commit, Husky will invoke the lint-staged script, which runs 
 }
 ```
 
-# 6. Commit and Push Changes
+## Commit and Push Changes
 
 After making changes, commit and push them to the repository. Here’s a typical workflow:
 
@@ -124,10 +124,10 @@ git push origin branch-name
 ```
 
 
-# 9. Submitting a Pull Request
+## Submitting a Pull Request
 
-> If you’re planning to make significant changes or add new features, ensure that you follow the project’s conventions. This includes:
-- Keeping the code consistent with the existing style.
-- Running Prettier and ESLint checks before pushing your changes.
+**Before opening a PR:**
+- Keep code consistent with project style.
+- Run Prettier and ESLint.
 
-Once your changes are committed and pushed to your branch, you can open a pull request (PR) to merge your changes into the development branch. They will be merged into the main branch once a new release is ready. Make sure to describe the changes in the PR description, including any important details. Also, check the relevant checkboxes. We know it can be boring, but it helps get your PR accepted faster.
+Open your PR against the **development branch**, with a clear description and completed checklist, it helps us review and merge faster 🚀.

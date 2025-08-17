@@ -7,8 +7,8 @@
     <link href="/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <style>
       /* Enable smooth scrolling */
@@ -17,7 +17,7 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+  <body class="bg-white text-neutral-800 dark:bg-neutral-900">
     <div
   id="search-container"
   class="fixed inset-0 bg-slate-900/25 backdrop-blur transition-opacity w-screen h-screen hidden flex z-50"
@@ -147,115 +147,127 @@
       </div>
     </div>
   </div>
-  <script>
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-  
-      if (html.classList.contains("dark")) {
-        html.classList.remove("dark");
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light"); // Save preference
-      } else {
-        html.classList.add("dark");
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark"); // Save preference
-      }
-    }
-  
-    // Apply saved dark mode preference on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-      const savedTheme = localStorage.getItem("theme");
-  
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-        icon.classList.add("fa-sun");
-        icon.classList.remove("fa-moon");
-      } else {
-        html.classList.remove("dark");
-        icon.classList.add("fa-moon");
-        icon.classList.remove("fa-sun");
-      }
-    });
-  
-    function openSearch() {
-      const searchContainer = document.getElementById("search-container");
-      if (searchContainer) {
-        searchContainer.classList.remove("hidden");
-      } else {
-        console.error("Search container not found");
-      }
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault(); // Prevent default browser action
-        openSearch();
-      }
-    });
-  </script>
 </nav>  
+<script>
+  function setDarkMode(isDark) {
+    const html = document.documentElement;
+    const icon = document.getElementById("dark-mode-icon");
+
+    if (isDark) {
+      html.classList.add("dark");
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+    } else {
+      html.classList.remove("dark");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setDarkMode(!isDark);
+  }
+
+  // Apply theme on first load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      // Use system preference if no saved theme
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+    }
+  });
+
+  function openSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.remove("hidden");
+    }
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openSearch();
+    }
+  });
+</script>
+
     <div class="flex flex-col lg:flex-row">
       <!-- Left Sidebar for Category Navigation -->
       <aside
-        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+        class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
       >
-        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
-          Posts in Beaver Notes (DEV)
-        </h2>
-        <ul>
+        <div
+          class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
+        >
+          <button
+            class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
+            aria-label="Go Back"
+            href="/"
+          >
+            <i class="ri-arrow-left-line text-xl"></i>
+          </button>
+          <h2 class="text-xl font-semibold dark:text-white text-neutral-800">
+            Beaver Notes (DEV)
+          </h2>
+        </div>
+        <div class="p-4">
+          <ul>
+              
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+              >
+                How to Contribute
+              </a>
+            </li>
             
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
-            >
-              How to contribute
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
-            >
-              Code Contributions
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-            >
-              Contributing to the Docs
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
-            >
-              Contributing to the Blog
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
-            >
-              Translations
-            </a>
-          </li>
-          
-        </ul>
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+              >
+                Code Contributions
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+              >
+                Contributing to the Docs
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+              >
+                Contributing to the Blog
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
+              >
+                Translations
+              </a>
+            </li>
+            
+          </ul>
+        </div>
       </aside>
 
       <!-- Main Content Area -->
@@ -271,22 +283,27 @@
           </header>
 
           <div id="content" class="content prose dark:prose-invert max-w-none">
-            <p>Beaver’s Blog website, like the docs, is built using Jekyll, a static site generator. To contribute to the blog, you don’t need to be an artist, blogger, or developer.</p>
+            <p>Beaver’s Blog, like the docs, is built with <strong>Jekyll</strong> (a static site generator). You don’t need to be a developer or a designer to contribute, just a willingness to share ideas!</p>
+
+<h2 id="-quick-start-tldr">⚡ Quick Start (TL;DR)</h2>
 
 <ol>
-  <li><a href="#heading-0">Contributing using your computer</a></li>
-  <li><a href="#heading-10">Using GitHub Codespaces</a></li>
+  <li>Fork <a href="https://github.com/Beaver-Notes/Beaver-Blog">Beaver Blog on GitHub</a>.</li>
+  <li>Create a new branch for your post.</li>
+  <li>Add a file in <code class="language-plaintext highlighter-rouge">_posts/YYYY/</code> called <code class="language-plaintext highlighter-rouge">YYYY-MM-DD-title.md</code>.</li>
+  <li>Write your post + add artwork (simple or detailed).</li>
+  <li>Open a Pull Request 🚀.</li>
 </ol>
 
-<p>The first involves getting your hands dirty. If you have some experience or are willing to install some programs and tinker a bit, this step is for you. If you prefer a straightforward approach, the second option is better. Feel free to skip to the step you prefer.</p>
+<p>If you prefer not to install anything, skip setup and use <strong><a href="#using-github-codespaces-to-contribute">GitHub Codespaces</a></strong>.</p>
 
 <blockquote>
-  <p><strong>If you’re not ready to create a post or make technical edits, you can still contribute by simply proofreading and suggesting improvements.</strong></p>
+  <p>💡 Not ready to write posts? You can still help by proofreading and suggesting edits</p>
 </blockquote>
 
-<h1 id="contributing-using-your-computer">Contributing Using Your Computer</h1>
+<h1 id="️-contributing-using-your-computer">🖥️ Contributing Using Your Computer</h1>
 
-<p>Before we get started, you’ll need to install a couple of packages. To set everything up, check out the <a href="https://jekyllrb.com/docs/installation/">Jekyll docs</a> and return when you’re ready. You’ll also need a GitHub account. If you don’t have one yet, you can create one by following this guide: <a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">Creating an account on GitHub</a>. Once you’re ready, you can begin by forking the repository.</p>
+<p>Before starting, you’ll need to install a couple of packages. Check out the <a href="https://jekyllrb.com/docs/installation/">Jekyll docs</a> and return when you’re ready. You’ll also need a GitHub account. If you don’t have one yet, you can create one by following this guide: <a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">Creating an account on GitHub</a>. Once you’re ready, you can begin by forking the repository.</p>
 
 <h2 id="1-fork-the-repository">1. <strong>Fork the Repository</strong></h2>
 
@@ -339,13 +356,14 @@
 <span class="nn">---</span>
 </code></pre></div></div>
 
-<ul>
-  <li>Every post needs to have its artwork. It doesn’t need to be anything complicated—it can be as easy as an icon with an inner shadow or something more intricate. You are allowed to reach out if you need any help. You can use any software, from <a href="">Figma</a> to <a href="">Gimp</a>. Every artwork must be saved under the folder <code class="language-plaintext highlighter-rouge">assets/img/YYYY</code> and called <code class="language-plaintext highlighter-rouge">YYYY-MM-DD.png</code>. Here are two examples of artworks from current articles on the blog:</li>
-</ul>
+<blockquote>
+  <p>Every post should include an artwork image. It can be simple (like an icon with a shadow) or more detailed, whatever you’re comfortable with. Feel free to ask for help if needed. You can use any tool (e.g. Figma or Gimp). Save the file in assets/img/YYYY as YYYY-MM-DD.png.</p>
+</blockquote>
 
+<p>Here are two examples from current articles:</p>
 <p class="text-sm text-neutral-600 dark:text-neutral-200 text-center"><img src="/assets/img/docs/contributing-blog/example-1.png" alt="Image" />Easy artwork example</p>
 
-<p class="text-sm text-neutral-600 dark:text-neutral-200 text-center"><img src="/assets/img/docs/contributing-blog/example-2.png" alt="Image" />Complicated artwork example</p>
+<p class="text-sm text-neutral-600 dark:text-neutral-200 text-center"><img src="/assets/img/docs/contributing-blog/example-2.png" alt="Image" />Complex artwork example</p>
 
 <h4 id="adding-images"><strong>Adding Images</strong></h4>
 
@@ -600,14 +618,14 @@ git push origin main
         <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
           On This Page
         </h2>
-        <nav class="border-b pb-6 mb-6">
+        <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
           <ul id="table-of-contents" class="space-y-2"></ul>
         </nav>
         <a
-          class="text-md font-bolder"
+          class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
           href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
         >
-          <i class="fa-brands fa-github"></i>
+          <i class="ri-github-fill"></i>
           Edit this page
         </a>
       </aside>

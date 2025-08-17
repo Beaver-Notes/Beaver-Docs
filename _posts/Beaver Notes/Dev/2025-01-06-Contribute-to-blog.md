@@ -6,18 +6,24 @@ category: Beaver Notes (DEV)
 position: 4
 ---
 
-Beaver's Blog website, like the docs, is built using Jekyll, a static site generator. To contribute to the blog, you don't need to be an artist, blogger, or developer.
 
-1. [Contributing using your computer](#heading-0)
-2. [Using GitHub Codespaces](#heading-10)
+Beaver’s Blog, like the docs, is built with **Jekyll** (a static site generator). You don’t need to be a developer or a designer to contribute, just a willingness to share ideas!
 
-The first involves getting your hands dirty. If you have some experience or are willing to install some programs and tinker a bit, this step is for you. If you prefer a straightforward approach, the second option is better. Feel free to skip to the step you prefer.
+## ⚡ Quick Start (TL;DR)
 
-> **If you're not ready to create a post or make technical edits, you can still contribute by simply proofreading and suggesting improvements.**
+1. Fork [Beaver Blog on GitHub](https://github.com/Beaver-Notes/Beaver-Blog).  
+2. Create a new branch for your post.  
+3. Add a file in `_posts/YYYY/` called `YYYY-MM-DD-title.md`.  
+4. Write your post + add artwork (simple or detailed).  
+5. Open a Pull Request 🚀.  
 
-# Contributing Using Your Computer
+If you prefer not to install anything, skip setup and use **[GitHub Codespaces](#using-github-codespaces-to-contribute)**.
 
-Before we get started, you'll need to install a couple of packages. To set everything up, check out the [Jekyll docs](https://jekyllrb.com/docs/installation/) and return when you're ready. You'll also need a GitHub account. If you don't have one yet, you can create one by following this guide: [Creating an account on GitHub](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). Once you're ready, you can begin by forking the repository.
+> 💡 Not ready to write posts? You can still help by proofreading and suggesting edits
+
+# 🖥️ Contributing Using Your Computer
+
+Before starting, you'll need to install a couple of packages. Check out the [Jekyll docs](https://jekyllrb.com/docs/installation/) and return when you're ready. You'll also need a GitHub account. If you don't have one yet, you can create one by following this guide: [Creating an account on GitHub](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). Once you're ready, you can begin by forking the repository.
 
 ## 1. **Fork the Repository**
 
@@ -70,11 +76,12 @@ excerpt_separator: <!--more-->
 ---
 ```
 
-- Every post needs to have its artwork. It doesn't need to be anything complicated—it can be as easy as an icon with an inner shadow or something more intricate. You are allowed to reach out if you need any help. You can use any software, from [Figma]() to [Gimp](). Every artwork must be saved under the folder `assets/img/YYYY` and called `YYYY-MM-DD.png`. Here are two examples of artworks from current articles on the blog:
+> Every post should include an artwork image. It can be simple (like an icon with a shadow) or more detailed, whatever you’re comfortable with. Feel free to ask for help if needed. You can use any tool (e.g. Figma or Gimp). Save the file in assets/img/YYYY as YYYY-MM-DD.png.
 
+Here are two examples from current articles:
 <p class="text-sm text-neutral-600 dark:text-neutral-200 text-center"><img src="{{base.url}}/assets/img/docs/contributing-blog/example-1.png" alt="Image">Easy artwork example</p>
 
-<p class="text-sm text-neutral-600 dark:text-neutral-200 text-center"><img src="{{base.url}}/assets/img/docs/contributing-blog/example-2.png" alt="Image">Complicated artwork example</p>
+<p class="text-sm text-neutral-600 dark:text-neutral-200 text-center"><img src="{{base.url}}/assets/img/docs/contributing-blog/example-2.png" alt="Image">Complex artwork example</p>
 
 #### **Adding Images**
 

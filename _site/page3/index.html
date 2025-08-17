@@ -7,8 +7,8 @@
     <link href="/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
   </head>
   <body class="bg-white text-gray-800 dark:bg-neutral-900">
@@ -141,59 +141,58 @@
       </div>
     </div>
   </div>
-  <script>
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-  
-      if (html.classList.contains("dark")) {
-        html.classList.remove("dark");
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light"); // Save preference
-      } else {
-        html.classList.add("dark");
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark"); // Save preference
-      }
-    }
-  
-    // Apply saved dark mode preference on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-      const savedTheme = localStorage.getItem("theme");
-  
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-        icon.classList.add("fa-sun");
-        icon.classList.remove("fa-moon");
-      } else {
-        html.classList.remove("dark");
-        icon.classList.add("fa-moon");
-        icon.classList.remove("fa-sun");
-      }
-    });
-  
-    function openSearch() {
-      const searchContainer = document.getElementById("search-container");
-      if (searchContainer) {
-        searchContainer.classList.remove("hidden");
-      } else {
-        console.error("Search container not found");
-      }
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault(); // Prevent default browser action
-        openSearch();
-      }
-    });
-  </script>
 </nav>  
+<script>
+  function setDarkMode(isDark) {
+    const html = document.documentElement;
+    const icon = document.getElementById("dark-mode-icon");
+
+    if (isDark) {
+      html.classList.add("dark");
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+    } else {
+      html.classList.remove("dark");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setDarkMode(!isDark);
+  }
+
+  // Apply theme on first load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      // Use system preference if no saved theme
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+    }
+  });
+
+  function openSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.remove("hidden");
+    }
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openSearch();
+    }
+  });
+</script>
+
     <!-- Banner Section -->
     <header
       class="h-80 p-4 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
@@ -223,16 +222,20 @@
         
         <!-- Category Section -->
         <div class="flex flex-col">
-          <h2 class="text-xl dark:text-neutral-100 font-semibold mb-4">
+          <h2
+            class="text-xl dark:text-neutral-100 font-semibold mb-4 flex items-center gap-2"
+          >
+            <i
+              class="ri-terminal-line "
+            ></i>
             Beaver Notes (DEV)
           </h2>
           <div class="overflow-auto">
             <ul class="space-y-2">
-              
-              
+               
               <li>
                 <a href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html" class="text-amber-400 hover:underline">
-                  How to contribute
+                  How to Contribute
                 </a>
               </li>
               
@@ -266,13 +269,17 @@
         
         <!-- Category Section -->
         <div class="flex flex-col">
-          <h2 class="text-xl dark:text-neutral-100 font-semibold mb-4">
+          <h2
+            class="text-xl dark:text-neutral-100 font-semibold mb-4 flex items-center gap-2"
+          >
+            <i
+              class="ri-edit-line "
+            ></i>
             Beaver Notes
           </h2>
           <div class="overflow-auto">
             <ul class="space-y-2">
-              
-              
+               
               <li>
                 <a href="/beaver%20notes/2025/01/19/Install.html" class="text-amber-400 hover:underline">
                   Download and Install Beaver Notes
@@ -292,14 +299,14 @@
               </li>
               
               <li>
-                <a href="/beaver%20notes/2024/06/17/Sync.html" class="text-amber-400 hover:underline">
-                  Syncing Notes
+                <a href="/beaver%20notes/2024/06/17/Labels.html" class="text-amber-400 hover:underline">
+                  Using Labels
                 </a>
               </li>
               
               <li>
-                <a href="/beaver%20notes/2024/06/17/Labels.html" class="text-amber-400 hover:underline">
-                  Using Labels
+                <a href="/beaver%20notes/2024/06/17/Sync.html" class="text-amber-400 hover:underline">
+                  Syncing Notes
                 </a>
               </li>
               

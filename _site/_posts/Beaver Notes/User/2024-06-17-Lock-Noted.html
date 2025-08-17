@@ -7,8 +7,8 @@
     <link href="/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <style>
       /* Enable smooth scrolling */
@@ -17,7 +17,7 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+  <body class="bg-white text-neutral-800 dark:bg-neutral-900">
     <div
   id="search-container"
   class="fixed inset-0 bg-slate-900/25 backdrop-blur transition-opacity w-screen h-screen hidden flex z-50"
@@ -147,151 +147,163 @@
       </div>
     </div>
   </div>
-  <script>
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-  
-      if (html.classList.contains("dark")) {
-        html.classList.remove("dark");
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light"); // Save preference
-      } else {
-        html.classList.add("dark");
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark"); // Save preference
-      }
-    }
-  
-    // Apply saved dark mode preference on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-      const savedTheme = localStorage.getItem("theme");
-  
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-        icon.classList.add("fa-sun");
-        icon.classList.remove("fa-moon");
-      } else {
-        html.classList.remove("dark");
-        icon.classList.add("fa-moon");
-        icon.classList.remove("fa-sun");
-      }
-    });
-  
-    function openSearch() {
-      const searchContainer = document.getElementById("search-container");
-      if (searchContainer) {
-        searchContainer.classList.remove("hidden");
-      } else {
-        console.error("Search container not found");
-      }
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault(); // Prevent default browser action
-        openSearch();
-      }
-    });
-  </script>
 </nav>  
+<script>
+  function setDarkMode(isDark) {
+    const html = document.documentElement;
+    const icon = document.getElementById("dark-mode-icon");
+
+    if (isDark) {
+      html.classList.add("dark");
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+    } else {
+      html.classList.remove("dark");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setDarkMode(!isDark);
+  }
+
+  // Apply theme on first load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      // Use system preference if no saved theme
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+    }
+  });
+
+  function openSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.remove("hidden");
+    }
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openSearch();
+    }
+  });
+</script>
+
     <div class="flex flex-col lg:flex-row">
       <!-- Left Sidebar for Category Navigation -->
       <aside
-        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+        class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
       >
-        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
-          Posts in Beaver Notes
-        </h2>
-        <ul>
+        <div
+          class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
+        >
+          <button
+            class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
+            aria-label="Go Back"
+            href="/"
+          >
+            <i class="ri-arrow-left-line text-xl"></i>
+          </button>
+          <h2 class="text-xl font-semibold dark:text-white text-neutral-800">
+            Beaver Notes
+          </h2>
+        </div>
+        <div class="p-4">
+          <ul>
+              
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2025/01/19/Install.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2025/01/19/Install.html"
+              >
+                Download and Install Beaver Notes
+              </a>
+            </li>
             
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2025/01/19/Install.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2025/01/19/Install.html"
-            >
-              Download and Install Beaver Notes
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Navigate-Interface.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Navigate-Interface.html"
-            >
-              Navigate the Interface
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Markdown-Syntax.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Markdown-Syntax.html"
-            >
-              Markdown Syntax
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Sync.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Sync.html"
-            >
-              Syncing Notes
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Labels.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Labels.html"
-            >
-              Using Labels
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Importing-Markdown.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Importing-Markdown.html"
-            >
-              Import Markdown
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Mermaid-Block.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Mermaid-Block.html"
-            >
-              Use Mermaid Block
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2024/06/17/Lock-Noted.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Lock-Noted.html"
-            >
-              Lock a Note
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes/2025/02/03/Reset-Password.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2025/02/03/Reset-Password.html"
-            >
-              Reset a password
-            </a>
-          </li>
-          
-        </ul>
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Navigate-Interface.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Navigate-Interface.html"
+              >
+                Navigate the Interface
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Markdown-Syntax.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Markdown-Syntax.html"
+              >
+                Markdown Syntax
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Labels.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Labels.html"
+              >
+                Using Labels
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Sync.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Sync.html"
+              >
+                Syncing Notes
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Importing-Markdown.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Importing-Markdown.html"
+              >
+                Import Markdown
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Mermaid-Block.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Mermaid-Block.html"
+              >
+                Use Mermaid Block
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2024/06/17/Lock-Noted.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2024/06/17/Lock-Noted.html"
+              >
+                Lock a Note
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes/2025/02/03/Reset-Password.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes/2025/02/03/Reset-Password.html"
+              >
+                Reset a password
+              </a>
+            </li>
+            
+          </ul>
+        </div>
       </aside>
 
       <!-- Main Content Area -->
@@ -449,14 +461,14 @@
         <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
           On This Page
         </h2>
-        <nav class="border-b pb-6 mb-6">
+        <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
           <ul id="table-of-contents" class="space-y-2"></ul>
         </nav>
         <a
-          class="text-md font-bolder"
+          class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
           href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
         >
-          <i class="fa-brands fa-github"></i>
+          <i class="ri-github-fill"></i>
           Edit this page
         </a>
       </aside>

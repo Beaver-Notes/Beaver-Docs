@@ -38,56 +38,54 @@
       </div>
     </div>
   </div>
-  <script>
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-  
-      if (html.classList.contains("dark")) {
-        html.classList.remove("dark");
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light"); // Save preference
-      } else {
-        html.classList.add("dark");
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark"); // Save preference
-      }
-    }
-  
-    // Apply saved dark mode preference on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-      const savedTheme = localStorage.getItem("theme");
-  
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-        icon.classList.add("fa-sun");
-        icon.classList.remove("fa-moon");
-      } else {
-        html.classList.remove("dark");
-        icon.classList.add("fa-moon");
-        icon.classList.remove("fa-sun");
-      }
-    });
-  
-    function openSearch() {
-      const searchContainer = document.getElementById("search-container");
-      if (searchContainer) {
-        searchContainer.classList.remove("hidden");
-      } else {
-        console.error("Search container not found");
-      }
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault(); // Prevent default browser action
-        openSearch();
-      }
-    });
-  </script>
 </nav>  
+<script>
+  function setDarkMode(isDark) {
+    const html = document.documentElement;
+    const icon = document.getElementById("dark-mode-icon");
+
+    if (isDark) {
+      html.classList.add("dark");
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+    } else {
+      html.classList.remove("dark");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setDarkMode(!isDark);
+  }
+
+  // Apply theme on first load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      // Use system preference if no saved theme
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+    }
+  });
+
+  function openSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.remove("hidden");
+    }
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openSearch();
+    }
+  });
+</script>

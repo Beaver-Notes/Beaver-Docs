@@ -4,14 +4,14 @@
     <title>Beaver Docs</title>
     <link>http://localhost:4000</link>
     <description></description>
-    <lastBuildDate>Wed, 05 Mar 2025 23:24:58 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 17 Aug 2025 11:21:24 +0200</lastBuildDate>
     <language>en-us</language>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Code Contributions</title>
       <link>http://localhost:4000/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html</link>
-      <description>Thank you for your interest in contributing to Beaver Notes! We are thrilled to have you on board.
+      <description>Thank you for your interest in contributing to Beaver Notes! We are thrilled to have you on board 💖
 </description>
       <pubDate>Thu, 13 Feb 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/02/13/Code-Contributions</guid>
@@ -38,7 +38,8 @@
     <item>
       <title>Translations</title>
       <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/translate.html</link>
-      <description>Rather than relying solely on an internal translation team, we invite you to contribute by submitting translations effortlessly, even without technical expertise. To help new translators get started, we’ve created this translation guide.
+      <description>Beaver Notes translations are community-driven, anyone can help, no coding required! 
+To get started, follow this guide:
 </description>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/translate</guid>
@@ -47,7 +48,7 @@
     <item>
       <title>Contributing to the Blog</title>
       <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html</link>
-      <description>Beaver’s Blog website, like the docs, is built using Jekyll, a static site generator. To contribute to the blog, you don’t need to be an artist, blogger, or developer.
+      <description>Beaver’s Blog, like the docs, is built with Jekyll (a static site generator). You don’t need to be a developer or a designer to contribute, just a willingness to share ideas!
 </description>
       <pubDate>Mon, 06 Jan 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog</guid>
@@ -56,16 +57,16 @@
     <item>
       <title>Contributing to the Docs</title>
       <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html</link>
-      <description>Beaver’s Documentation website is built using Jekyll, a static site generator. This makes collaboration straightforward, even if you’re not a developer. There are two main ways to contribute to the docs:
+      <description>Beaver’s docs run on Jekyll, making collaboration easy even if you’re not a developer. You can contribute in two ways:
 </description>
       <pubDate>Sun, 05 Jan 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs</guid>
     </item>
     
     <item>
-      <title>How to contribute</title>
+      <title>How to Contribute</title>
       <link>http://localhost:4000/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html</link>
-      <description>Beaver Notes is a 100% open-source indie project, enjoyed by people all around the world. Our mission is to deliver a privacy-focused, easy-to-use note-taking app, and you can be part of our mission even if you are not a programmer. There are many ways to contribute to an open-source project.
+      <description>Beaver Notes is a fully open-source indie project. Our mission is to deliver a privacy-focused, easy-to-use note-taking app, and you can be part of it, even if you’re not a programmer.
 </description>
       <pubDate>Fri, 03 Jan 2025 00:00:00 +0100</pubDate>
       <guid>http://localhost:4000/beaver%20notes%20(dev)/2025/01/03/How-to-contribute</guid>

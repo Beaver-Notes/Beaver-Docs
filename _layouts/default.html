@@ -7,8 +7,8 @@
     <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
   </head>
   <body class="bg-white text-gray-800 dark:bg-neutral-900">
@@ -42,13 +42,18 @@
         {% for category in categories %}
         <!-- Category Section -->
         <div class="flex flex-col">
-          <h2 class="text-xl dark:text-neutral-100 font-semibold mb-4">
+          <h2
+            class="text-xl dark:text-neutral-100 font-semibold mb-4 flex items-center gap-2"
+          >
+            <i
+              class="{% case category %} {% when 'Beaver Notes' %}ri-edit-line {% when 'Beaver Notes (DEV)' %}ri-terminal-line {% when 'Beaver Pocket' %}ri-device-line {% when 'Beaver Pocket (DEV)' %}ri-braces-line {% else %}ri-folder-line {% endcase %}"
+            ></i>
             {{ category }}
           </h2>
           <div class="overflow-auto">
             <ul class="space-y-2">
-              {% assign posts_in_category = site.posts | where: "category", category | sort: "position" %}
-              {% for post in posts_in_category %}
+              {% assign posts_in_category = site.posts | where: "category",
+              category | sort: "position" %} {% for post in posts_in_category %}
               <li>
                 <a href="{{ post.url }}" class="text-amber-400 hover:underline">
                   {{ post.title }}

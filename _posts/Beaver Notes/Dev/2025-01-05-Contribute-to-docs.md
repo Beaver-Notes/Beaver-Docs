@@ -6,18 +6,16 @@ category: Beaver Notes (DEV)
 position: 3
 ---
 
-Beaver's Documentation website is built using Jekyll, a static site generator. This makes collaboration straightforward, even if you’re not a developer. There are two main ways to contribute to the docs:
+Beaver’s docs run on **Jekyll**, making collaboration easy even if you’re not a developer. You can contribute in two ways:
 
-1. [Contributing using your computer](#heading-0)
-2. [Using GitHub code spaces](#heading-10)
+1. [On your computer](#heading-0)  
+2. [Using GitHub Codespaces](#heading-10)
 
-The first involves getting your hands dirty. If you have some experience or are willing to install some programs and tinker a bit, this step is for you. If you prefer a straightforward approach, the second option is better. Feel free to skip to the step you prefer.
 
-> **If you're not ready to create a post or make technical edits, you can still contribute by simply proofreading and suggesting improvements.**
 
 # Contributing Using Your Computer
 
-Before we get started, you'll need to install a couple of packages. To set everything up, check out the [Jekyll docs](https://jekyllrb.com/docs/installation/) and return when you're ready. You'll also need a GitHub account. If you don't have one yet, you can create one by following this guide: [Creating an account on GitHub](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). Once you're ready, you can begin by forking the repository
+Before starting, you'll need to install a couple of packages. Check out the [Jekyll docs](https://jekyllrb.com/docs/installation/) and return when you're ready. You'll also need a GitHub account. If you don't have one yet, you can create one by following this guide: [Creating an account on GitHub](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). Once you're ready, you can begin by forking the repository.
 
 ## 1. **Fork the Repository**
 

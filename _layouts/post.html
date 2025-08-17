@@ -7,8 +7,8 @@
     <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <style>
       /* Enable smooth scrolling */
@@ -17,30 +17,43 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+  <body class="bg-white text-neutral-800 dark:bg-neutral-900">
     {% include nav.html %}
     <div class="flex flex-col lg:flex-row">
       <!-- Left Sidebar for Category Navigation -->
       <aside
-        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+        class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
       >
-        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
-          Posts in {{ page.category }}
-        </h2>
-        <ul>
-          {% assign filtered_posts = site.posts | where: "category",
-          page.category %} {% assign sorted_posts = filtered_posts | sort:
-          "position" %} {% for post in sorted_posts %}
-          <li class="mb-2">
-            <a
-              href="{{ post.url }}"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg {{ post.url == page.url ? 'font-bold' : '' }}"
-            >
-              {{ post.title }}
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
+        <div
+          class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
+        >
+          <button
+            class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
+            aria-label="Go Back"
+            href="/"
+          >
+            <i class="ri-arrow-left-line text-xl"></i>
+          </button>
+          <h2 class="text-xl font-semibold dark:text-white text-neutral-800">
+            {{ page.category }}
+          </h2>
+        </div>
+        <div class="p-4">
+          <ul>
+            {% assign filtered_posts = site.posts | where: "category",
+            page.category %} {% assign sorted_posts = filtered_posts | sort:
+            "position" %} {% for post in sorted_posts %}
+            <li class="mb-2">
+              <a
+                href="{{ post.url }}"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg {{ post.url == page.url ? 'font-bold' : '' }}"
+              >
+                {{ post.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
       </aside>
 
       <!-- Main Content Area -->
@@ -97,14 +110,14 @@
         <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
           On This Page
         </h2>
-        <nav class="border-b pb-6 mb-6">
+        <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
           <ul id="table-of-contents" class="space-y-2"></ul>
         </nav>
         <a
-          class="text-md font-bolder"
+          class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
           href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
         >
-          <i class="fa-brands fa-github"></i>
+          <i class="ri-github-fill"></i>
           Edit this page
         </a>
       </aside>

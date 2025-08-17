@@ -7,8 +7,8 @@
     <link href="/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <style>
       /* Enable smooth scrolling */
@@ -17,7 +17,7 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+  <body class="bg-white text-neutral-800 dark:bg-neutral-900">
     <div
   id="search-container"
   class="fixed inset-0 bg-slate-900/25 backdrop-blur transition-opacity w-screen h-screen hidden flex z-50"
@@ -147,115 +147,127 @@
       </div>
     </div>
   </div>
-  <script>
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-  
-      if (html.classList.contains("dark")) {
-        html.classList.remove("dark");
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light"); // Save preference
-      } else {
-        html.classList.add("dark");
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark"); // Save preference
-      }
-    }
-  
-    // Apply saved dark mode preference on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-      const savedTheme = localStorage.getItem("theme");
-  
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-        icon.classList.add("fa-sun");
-        icon.classList.remove("fa-moon");
-      } else {
-        html.classList.remove("dark");
-        icon.classList.add("fa-moon");
-        icon.classList.remove("fa-sun");
-      }
-    });
-  
-    function openSearch() {
-      const searchContainer = document.getElementById("search-container");
-      if (searchContainer) {
-        searchContainer.classList.remove("hidden");
-      } else {
-        console.error("Search container not found");
-      }
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault(); // Prevent default browser action
-        openSearch();
-      }
-    });
-  </script>
 </nav>  
+<script>
+  function setDarkMode(isDark) {
+    const html = document.documentElement;
+    const icon = document.getElementById("dark-mode-icon");
+
+    if (isDark) {
+      html.classList.add("dark");
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+    } else {
+      html.classList.remove("dark");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setDarkMode(!isDark);
+  }
+
+  // Apply theme on first load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      // Use system preference if no saved theme
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+    }
+  });
+
+  function openSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.remove("hidden");
+    }
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openSearch();
+    }
+  });
+</script>
+
     <div class="flex flex-col lg:flex-row">
       <!-- Left Sidebar for Category Navigation -->
       <aside
-        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+        class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
       >
-        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
-          Posts in Beaver Notes (DEV)
-        </h2>
-        <ul>
+        <div
+          class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
+        >
+          <button
+            class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
+            aria-label="Go Back"
+            href="/"
+          >
+            <i class="ri-arrow-left-line text-xl"></i>
+          </button>
+          <h2 class="text-xl font-semibold dark:text-white text-neutral-800">
+            Beaver Notes (DEV)
+          </h2>
+        </div>
+        <div class="p-4">
+          <ul>
+              
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+              >
+                How to Contribute
+              </a>
+            </li>
             
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
-            >
-              How to contribute
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
-            >
-              Code Contributions
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-            >
-              Contributing to the Docs
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
-            >
-              Contributing to the Blog
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
-            >
-              Translations
-            </a>
-          </li>
-          
-        </ul>
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+              >
+                Code Contributions
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+              >
+                Contributing to the Docs
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+              >
+                Contributing to the Blog
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
+              >
+                Translations
+              </a>
+            </li>
+            
+          </ul>
+        </div>
       </aside>
 
       <!-- Main Content Area -->
@@ -271,13 +283,21 @@
           </header>
 
           <div id="content" class="content prose dark:prose-invert max-w-none">
-            <p>Rather than relying solely on an internal translation team, we invite you to contribute by submitting translations effortlessly, even without technical expertise. To help new translators get started, we’ve created this translation guide.</p>
+            <p>Beaver Notes translations are <strong>community-driven</strong>, anyone can help, no coding required! 
+To get started, follow this guide:</p>
 
-<h1 id="using-traduora">Using Traduora</h1>
+<h2 id="accessing-traduora">Accessing Traduora</h2>
 
-<p>Our apps are translated using Traduora, an Open Translation Management Platform. To submit a translation, email us at <a href="mailto:danielerolli@proton.me">danielerolli@proton.me</a> with the project(s) you’d like access to. No additional details are required, but feel free to include them if necessary. You’ll receive an invitation link within 24 hours. Once added, you’ll need to sign up and will have editor access to the selected project(s).</p>
+<p>We use <a href="https://traduora.com/">Traduora</a>, an open-source translation management platform.</p>
 
-<h1 id="adding-a-new-term">Adding a New Term</h1>
+<p>To join:</p>
+<ul>
+  <li>Email us at <a href="mailto:danielerolli@proton.me">danielerolli@proton.me</a> with the project(s) you’d like access to.</li>
+  <li>Within 24 hours, you’ll receive an invitation link.</li>
+  <li>Sign up, and you’ll have editor access to contribute.</li>
+</ul>
+
+<h2 id="adding-a-new-term">Adding a New Term</h2>
 
 <p>Click <strong>“Add a New Term”</strong>, then select its value from existing ones, such as <code class="language-plaintext highlighter-rouge">"about.description"</code> or <code class="language-plaintext highlighter-rouge">"index.archived"</code>. Please avoid creating new values unless they correspond to a new function or page.</p>
 
@@ -288,11 +308,11 @@
 <p><img src="/assets/img/docs/translations/new-term.png" alt="image" /><br />
 <img src="/assets/img/docs/translations/add-term.png" alt="image" /></p>
 
-<h1 id="adding-a-new-locale">Adding a New Locale</h1>
+<h2 id="adding-a-new-locale">Adding a New Locale</h2>
 
 <p>To add a new locale, go to <strong>Translations</strong> and click <strong>“New Locale”</strong> in the top right corner. Choose from over 558 available languages, select a reference locale, and start translating.</p>
 
-<h1 id="exporting-and-importing">Exporting and Importing</h1>
+<h2 id="exporting-and-importing">Exporting and Importing</h2>
 
 <p>To import a locale, select the file from your system, choose <strong>JSON</strong> as the format, and select the locale you’re importing. To export, choose the desired locale and select <strong>JSON</strong> as the format.</p>
 
@@ -427,14 +447,14 @@
         <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
           On This Page
         </h2>
-        <nav class="border-b pb-6 mb-6">
+        <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
           <ul id="table-of-contents" class="space-y-2"></ul>
         </nav>
         <a
-          class="text-md font-bolder"
+          class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
           href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
         >
-          <i class="fa-brands fa-github"></i>
+          <i class="ri-github-fill"></i>
           Edit this page
         </a>
       </aside>

@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to contribute - Beaver Docs</title>
+    <title>How to Contribute - Beaver Docs</title>
     <link href="/assets/main.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
     <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <style>
       /* Enable smooth scrolling */
@@ -17,7 +17,7 @@
       }
     </style>
   </head>
-  <body class="bg-white text-gray-800 dark:bg-neutral-900">
+  <body class="bg-white text-neutral-800 dark:bg-neutral-900">
     <div
   id="search-container"
   class="fixed inset-0 bg-slate-900/25 backdrop-blur transition-opacity w-screen h-screen hidden flex z-50"
@@ -147,115 +147,127 @@
       </div>
     </div>
   </div>
-  <script>
-    // Function to toggle dark mode
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-  
-      if (html.classList.contains("dark")) {
-        html.classList.remove("dark");
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-        localStorage.setItem("theme", "light"); // Save preference
-      } else {
-        html.classList.add("dark");
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-        localStorage.setItem("theme", "dark"); // Save preference
-      }
-    }
-  
-    // Apply saved dark mode preference on page load
-    document.addEventListener("DOMContentLoaded", () => {
-      const html = document.documentElement;
-      const icon = document.getElementById("dark-mode-icon");
-      const savedTheme = localStorage.getItem("theme");
-  
-      if (savedTheme === "dark") {
-        html.classList.add("dark");
-        icon.classList.add("fa-sun");
-        icon.classList.remove("fa-moon");
-      } else {
-        html.classList.remove("dark");
-        icon.classList.add("fa-moon");
-        icon.classList.remove("fa-sun");
-      }
-    });
-  
-    function openSearch() {
-      const searchContainer = document.getElementById("search-container");
-      if (searchContainer) {
-        searchContainer.classList.remove("hidden");
-      } else {
-        console.error("Search container not found");
-      }
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        event.preventDefault(); // Prevent default browser action
-        openSearch();
-      }
-    });
-  </script>
 </nav>  
+<script>
+  function setDarkMode(isDark) {
+    const html = document.documentElement;
+    const icon = document.getElementById("dark-mode-icon");
+
+    if (isDark) {
+      html.classList.add("dark");
+      icon.classList.add("fa-sun");
+      icon.classList.remove("fa-moon");
+    } else {
+      html.classList.remove("dark");
+      icon.classList.add("fa-moon");
+      icon.classList.remove("fa-sun");
+    }
+  }
+
+  function toggleDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const newTheme = isDark ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setDarkMode(!isDark);
+  }
+
+  // Apply theme on first load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setDarkMode(savedTheme === "dark");
+    } else {
+      // Use system preference if no saved theme
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      setDarkMode(prefersDark);
+    }
+  });
+
+  function openSearch() {
+    const searchContainer = document.getElementById("search-container");
+    if (searchContainer) {
+      searchContainer.classList.remove("hidden");
+    }
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      openSearch();
+    }
+  });
+</script>
+
     <div class="flex flex-col lg:flex-row">
       <!-- Left Sidebar for Category Navigation -->
       <aside
-        class="w-full lg:w-1/5 p-4 border-b lg:border-r border-gray-300 dark:border-neutral-700"
+        class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
       >
-        <h2 class="text-lg font-bold mb-4 dark:text-neutral-100">
-          Posts in Beaver Notes (DEV)
-        </h2>
-        <ul>
+        <div
+          class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
+        >
+          <button
+            class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
+            aria-label="Go Back"
+            href="/"
+          >
+            <i class="ri-arrow-left-line text-xl"></i>
+          </button>
+          <h2 class="text-xl font-semibold dark:text-white text-neutral-800">
+            Beaver Notes (DEV)
+          </h2>
+        </div>
+        <div class="p-4">
+          <ul>
+              
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
+              >
+                How to Contribute
+              </a>
+            </li>
             
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/03/How-to-contribute.html"
-            >
-              How to contribute
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
-            >
-              Code Contributions
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
-            >
-              Contributing to the Docs
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
-            >
-              Contributing to the Blog
-            </a>
-          </li>
-          
-          <li class="mb-2">
-            <a
-              href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
-              class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
-            >
-              Translations
-            </a>
-          </li>
-          
-        </ul>
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html"
+              >
+                Code Contributions
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html"
+              >
+                Contributing to the Docs
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html"
+              >
+                Contributing to the Blog
+              </a>
+            </li>
+            
+            <li class="mb-2">
+              <a
+                href="/beaver%20notes%20(dev)/2025/01/06/translate.html"
+                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg /beaver%20notes%20(dev)/2025/01/06/translate.html"
+              >
+                Translations
+              </a>
+            </li>
+            
+          </ul>
+        </div>
       </aside>
 
       <!-- Main Content Area -->
@@ -263,7 +275,7 @@
         <article>
           <header class="mb-8 space-y-2">
             <h1 class="text-4xl dark:text-neutral-100 font-bold">
-              How to contribute
+              How to Contribute
             </h1>
             <p class="text-sm text-neutral-600 dark:text-neutral-100">
               
@@ -271,27 +283,68 @@
           </header>
 
           <div id="content" class="content prose dark:prose-invert max-w-none">
-            <p>Beaver Notes is a 100% open-source indie project, enjoyed by people all around the world. Our mission is to deliver a privacy-focused, easy-to-use note-taking app, and you can be part of our mission even if you are not a programmer. There are many ways to contribute to an open-source project.</p>
+            <p>Beaver Notes is a fully open-source indie project. Our mission is to deliver a privacy-focused, easy-to-use note-taking app, and you can be part of it, even if you’re not a programmer.</p>
 
-<h1 id="documentation">Documentation</h1>
+<h2 id="-code-contributions">💻 Code Contributions</h2>
 
-<p>One of the biggest ways to contribute is by helping with our documentation. We are a small project, and the time spent documenting new features is time not spent working on them. Therefore, your help in documenting the app is truly appreciated, even if you’re not a developer. In the following guide, <a href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html">Contributing to the Docs</a>, we’ll show you how you can assist in documenting the app and making it easier for everyone to use.</p>
+<p>Code is at the heart of Beaver. You can:</p>
 
-<h1 id="blog-posts">Blog Posts</h1>
+<ul>
+  <li>Fix bugs</li>
+  <li>Work on GitHub issues</li>
+  <li>Implement roadmap features</li>
+</ul>
 
-<p>A blog is one of the best means for a project to grow and update its users on the work that is being done. Contributing to the blog means getting in touch with the developers to see what’s new, writing release articles, sharing tips and tricks, etc. In the <a href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html">following guide</a>, we’ll show you how you can contribute to the blog.</p>
+<p>👉 <a href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html">Start contributing to code</a></p>
 
-<h1 id="code-contributions">Code Contributions</h1>
+<h2 id="-translations">🌍 Translations</h2>
 
-<p>Code is obviously a great way to contribute to the project. By hunting down bugs, fixing issues open on GitHub, or implementing new features from the roadmap, you’ll be sure to leave your mark on Beaver and its growth. Follow <a href="/beaver%20notes%20(dev)/2025/02/13/Code-Contributions.html">this guide</a>, to set up the environment and get started.</p>
+<p>Beaver is used worldwide, help us reach more people by translating the desktop app.<br />
+You can start a brand-new translation or improve an existing one using <strong>Traduora</strong>.</p>
 
-<h1 id="translation">Translation</h1>
+<p>👉 <a href="/beaver%20notes%20(dev)/2025/01/06/translate.html">Help translate Beaver Notes</a></p>
 
-<p>Beaver is enjoyed by people all around the world. You can help us reach even more people by helping us translate the desktop app. You could be the first to translate the app or update an existing translation. All translations are done using an open-source platform called Traduora. Check out <a href="/beaver%20notes%20(dev)/2025/01/06/translate.html">this page</a> to contribute to translations.</p>
+<h2 id="-documentation">📖 Documentation</h2>
 
-<h1 id="ui-and-ux">UI and UX</h1>
+<p>Helping with documentation is one of the biggest ways you can contribute.<br />
+Every new feature needs clear docs, and your help means more time for developers to code.</p>
 
-<p>If you happen to have an eye for design, you can contribute by opening an issue on GitHub, contributing to the code, or submitting your design proposal at <a href="mailto:danieleorolli@proton.me">danieleorolli@proton.me</a>.</p>
+<p>👉 <a href="/beaver%20notes%20(dev)/2025/01/05/Contribute-to-docs.html">Start contributing to the Docs</a></p>
+
+<h2 id="-blog-posts">📝 Blog Posts</h2>
+
+<p>The blog keeps users updated and helps the project grow. You can contribute by:</p>
+
+<ul>
+  <li>Writing release articles</li>
+  <li>Sharing tips &amp; tricks</li>
+  <li>Interviewing contributors</li>
+</ul>
+
+<p>👉 <a href="/beaver%20notes%20(dev)/2025/01/06/Contribute-to-blog.html">Start contributing to the Blog</a></p>
+
+<h2 id="-ui--ux">🎨 UI &amp; UX</h2>
+
+<p>Got an eye for design? You can:</p>
+
+<ul>
+  <li>Open a GitHub issue with ideas</li>
+  <li>Submit design proposals on <a href="https://github.com/orgs/Beaver-Notes/discussions">GitHub Discussions</a> or <a href="https://www.reddit.com/r/BeaverNotes/">Reddit</a>.</li>
+  <li>Contribute code to improve UI/UX</li>
+</ul>
+
+<p>👉 Submit your proposal on <a href="https://github.com/orgs/Beaver-Notes/discussions">GitHub Discussions</a> or <a href="https://www.reddit.com/r/BeaverNotes/">Reddit</a></p>
+
+<h2 id="-first-steps">🚀 First Steps</h2>
+<p>Not sure where to begin?</p>
+<ul>
+  <li>Join the community on <a href="https://www.reddit.com/r/BeaverNotes/">Reddit</a> or <a href="https://github.com/orgs/Beaver-Notes/discussions">GitHub Discussions</a></li>
+  <li>Browse our <a href="https://github.com/Beaver-Notes/Beaver-Notes/labels/good%20first%20issue">Good First Issues</a></li>
+  <li>Pick a small issue or translation task</li>
+  <li>Say hello and ask questions, we’re here to help</li>
+</ul>
+
+<p>Every contribution, big or small, helps Beaver Notes grow 💖</p>
 
           </div>
 
@@ -421,14 +474,14 @@
         <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
           On This Page
         </h2>
-        <nav class="border-b pb-6 mb-6">
+        <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
           <ul id="table-of-contents" class="space-y-2"></ul>
         </nav>
         <a
-          class="text-md font-bolder"
+          class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
           href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
         >
-          <i class="fa-brands fa-github"></i>
+          <i class="ri-github-fill"></i>
           Edit this page
         </a>
       </aside>
