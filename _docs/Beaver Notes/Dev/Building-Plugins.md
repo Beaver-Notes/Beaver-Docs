@@ -505,7 +505,10 @@ Beaver Notes has an in-app plugin browser (Settings → Plugins → Browse) back
   "author": "Your Name",
   "description": "What it does",
   "repo": "your-username/your-plugin-repo",
-  "branch": "main"
+  "branch": "main",
+  "screenshots": [],
+  "tags": [],
+  "homepage": ""
 }
 ```
 

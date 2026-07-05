@@ -1030,6 +1030,9 @@ video {
 .flex {
   display: flex;
 }
+.inline-flex {
+  display: inline-flex;
+}
 .grid {
   display: grid;
 }
@@ -1114,6 +1117,9 @@ video {
 .justify-between {
   justify-content: space-between;
 }
+.gap-1\.5 {
+  gap: 0.375rem;
+}
 .gap-2 {
   gap: 0.5rem;
 }
@@ -1149,6 +1155,9 @@ video {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.border {
+  border-width: 1px;
+}
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1157,6 +1166,10 @@ video {
 }
 .border-none {
   border-style: none;
+}
+.border-neutral-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity, 1));
 }
 .border-b-neutral-100 {
   --tw-border-opacity: 1;
@@ -1197,6 +1210,10 @@ video {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1204,6 +1221,10 @@ video {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
 }
 .py-12 {
   padding-top: 3rem;
@@ -1291,6 +1312,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(82 82 82 / var(--tw-text-opacity, 1));
 }
+.text-neutral-700 {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity, 1));
+}
 .text-neutral-800 {
   --tw-text-opacity: 1;
   color: rgb(38 38 38 / var(--tw-text-opacity, 1));
@@ -1331,15 +1356,110 @@ video {
 }
 
 .content {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
-.content pre,
-.content code {
-  white-space: pre-wrap;
-  word-break: break-word;
+/* -------- DARK MODE SYNTAX HIGHLIGHTING OVERRIDES -------- */
+.dark .hljs {
+    color: #c9d1d9;
+    background: #0d1117;
+}
+.dark .hljs-doctag,
+.dark .hljs-keyword,
+.dark .hljs-meta .hljs-keyword,
+.dark .hljs-template-tag,
+.dark .hljs-template-variable,
+.dark .hljs-type,
+.dark .hljs-variable.language_ {
+    color: #ff7b72;
+}
+.dark .hljs-title,
+.dark .hljs-title.class_,
+.dark .hljs-title.class_.inherited__,
+.dark .hljs-title.function_ {
+    color: #d2a8ff;
+}
+.dark .hljs-attr,
+.dark .hljs-attribute,
+.dark .hljs-literal,
+.dark .hljs-meta,
+.dark .hljs-number,
+.dark .hljs-operator,
+.dark .hljs-variable,
+.dark .hljs-selector-attr,
+.dark .hljs-selector-class,
+.dark .hljs-selector-id {
+    color: #79c0ff;
+}
+.dark .hljs-regexp,
+.dark .hljs-string,
+.dark .hljs-meta .hljs-string {
+    color: #a5d6ff;
+}
+.dark .hljs-built_in,
+.dark .hljs-symbol {
+    color: #ffa657;
+}
+.dark .hljs-comment,
+.dark .hljs-code,
+.dark .hljs-formula {
+    color: #8b949e;
+}
+.dark .hljs-name,
+.dark .hljs-quote,
+.dark .hljs-selector-tag,
+.dark .hljs-selector-pseudo {
+    color: #7ee787;
+}
+.dark .hljs-subst {
+    color: #c9d1d9;
+}
+.dark .hljs-section {
+    color: #1f6feb;
+    font-weight: bold;
+}
+.dark .hljs-bullet {
+    color: #f2cc60;
+}
+.dark .hljs-emphasis {
+    color: #c9d1d9;
+    font-style: italic;
+}
+.dark .hljs-strong {
+    color: #c9d1d9;
+    font-weight: bold;
+}
+.dark .hljs-addition {
+    color: #aff5b4;
+    background-color: #033a16;
+}
+.dark .hljs-deletion {
+    color: #ffdcd7;
+    background-color: #67060c;
+}
+
+/* -------- CODE BLOCK / INLINE CODE STYLING -------- */
+.prose pre {
+    background: none;
+    overflow-x: auto;
+}
+
+pre {
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(229 229 229 / var(--tw-border-opacity, 1));
+}
+
+pre:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(38 38 38 / var(--tw-border-opacity, 1));
+}
+
+.prose code {
+    overflow-wrap: break-word;
 }
 
 .dark\:prose-invert:is(.dark *) {
@@ -1417,6 +1537,11 @@ video {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.dark\:border-neutral-600:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(82 82 82 / var(--tw-border-opacity, 1));
+}
+
 .dark\:border-neutral-700:is(.dark *) {
   --tw-border-opacity: 1;
   border-color: rgb(64 64 64 / var(--tw-border-opacity, 1));
@@ -1490,6 +1615,11 @@ video {
 .dark\:hover\:bg-neutral-700:hover:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(64 64 64 / var(--tw-bg-opacity, 1));
+}
+
+.dark\:hover\:bg-neutral-800:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
 }
 
 .dark\:hover\:text-neutral-100:hover:is(.dark *) {

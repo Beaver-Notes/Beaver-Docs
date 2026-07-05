@@ -1,170 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <style>
-      /* Enable smooth scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  </head>
-  <body class="bg-white text-neutral-800 dark:bg-neutral-900">
-    {% include nav.html %}
-    <div class="flex flex-col lg:flex-row">
-      <!-- Left Sidebar for Category Navigation -->
-      <aside
-        class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
-      >
-        <div
-          class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
-        >
-          <button
-            class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
-            aria-label="Go Back"
-            href="/"
-          >
-            <i class="ri-arrow-left-line text-xl"></i>
-          </button>
-          <h2 class="text-xl font-semibold dark:text-white text-neutral-800">
-            {{ page.category }}
-          </h2>
-        </div>
-        <div class="p-4">
-          <ul>
-            {% assign filtered_posts = site.posts | where: "category",
-            page.category %} {% assign sorted_posts = filtered_posts | sort:
-            "position" %} {% for post in sorted_posts %}
-            <li class="mb-2">
-              <a
-                href="{{ post.url }}"
-                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg {{ post.url == page.url ? 'font-bold' : '' }}"
-              >
-                {{ post.title }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </aside>
-
-      <!-- Main Content Area -->
-      <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
-        <article>
-          <header class="mb-8 space-y-2">
-            <h1 class="text-4xl dark:text-neutral-100 font-bold">
-              {{ page.title }}
-            </h1>
-            <p class="text-sm text-neutral-600 dark:text-neutral-100">
-              {{ page.description }}
-            </p>
-          </header>
-
-          <div id="content" class="content prose dark:prose-invert max-w-none">
-            {{ content | markdownify }}
-          </div>
-
-          <!-- Navigation for Previous and Next Posts -->
-          {% assign posts_in_category = site.posts | where: "category",
-          page.category | sort: "position" %} {% for post in posts_in_category
-          %} {% if post.url == page.url %} {% assign current_index =
-          forloop.index0 %} {% endif %} {% endfor %} {% assign previous_index =
-          current_index | minus: 1 %} {% assign next_index = current_index |
-          plus: 1 %}
-
-          <nav
-            class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
-          >
-            {% if previous_index >= 0 %} {% assign previous_post =
-            posts_in_category[previous_index] %}
-            <a
-              href="{{ previous_post.url }}"
-              class="px-4 py-2 text-sm font-medium text-amber-400"
-            >
-              &larr; Previous: {{ previous_post.title }}
-            </a>
-            {% endif %} {% if next_index < posts_in_category.size %} {% assign
-            next_post = posts_in_category[next_index] %}
-            <a
-              href="{{ next_post.url }}"
-              class="px-4 py-2 text-sm font-medium text-amber-400"
-            >
-              Next: {{ next_post.title }} &rarr;
-            </a>
-            {% endif %}
-          </nav>
-        </article>
-        {% include footer.html %}
-      </main>
-
-      <!-- Right Sidebar for Heading Navigation -->
-      <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
-        <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
-          On This Page
-        </h2>
-        <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
-          <ul id="table-of-contents" class="space-y-2"></ul>
-        </nav>
-        <a
-          class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
-          href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
-        >
-          <i class="ri-github-fill"></i>
-          Edit this page
-        </a>
-      </aside>
-    </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const content = document.getElementById("content");
-        const headings = content.querySelectorAll("h1, h2, h3");
-        const toc = document.getElementById("table-of-contents");
-
-        let currentLevel = 1;
-        let currentList = toc;
-        const listStack = [toc];
-
-        headings.forEach((heading, index) => {
-          const id = `heading-${index}`;
-          heading.setAttribute("id", id);
-
-          const level = parseInt(heading.tagName.substring(1));
-
-          // Handle deeper nesting safely
-          while (level > currentLevel) {
-            const newList = document.createElement("ul");
-            newList.classList.add("ml-4", "space-y-2");
-
-            const lastLi = currentList.lastElementChild;
-            if (lastLi) {
-              lastLi.appendChild(newList);
-              currentList = newList;
-              listStack.push(newList);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ page.title }} - {{ site.title }}</title>
+        <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+        />
+        <style>
+            /* Enable smooth scrolling */
+            html {
+                scroll-behavior: smooth;
             }
-            currentLevel++;
-          }
+        </style>
+        <!-- Mermaid.js diagram support -->
+        <script type="module">
+            import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
 
-          // Handle going back up
-          while (level < currentLevel) {
-            listStack.pop();
-            currentList = listStack[listStack.length - 1];
-            currentLevel--;
-          }
+            function renderMermaid() {
+                var isDark =
+                    document.documentElement.classList.contains("dark");
+                mermaid.initialize({
+                    startOnLoad: false,
+                    theme: isDark ? "dark" : "default",
+                });
 
-          // Add heading link
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
-          currentList.appendChild(li);
-        });
-      });
-    </script>
-  </body>
+                document
+                    .querySelectorAll("pre code.language-mermaid")
+                    .forEach(function (code) {
+                        var pre = code.parentElement;
+                        if (!pre.classList.contains("mermaid-processed")) {
+                            pre.classList.add("mermaid", "mermaid-processed");
+                            pre.textContent = code.textContent;
+                        }
+                    });
+
+                var elements = document.querySelectorAll("pre.mermaid");
+                if (elements.length > 0) {
+                    mermaid.run({ nodes: elements });
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", renderMermaid);
+
+            var origToggle = window.toggleDarkMode;
+            window.toggleDarkMode = function () {
+                if (origToggle) origToggle();
+                setTimeout(renderMermaid, 150);
+            };
+        </script>
+    </head>
+    <body class="bg-white text-neutral-800 dark:bg-neutral-900">
+        {% include nav.html %}
+        <div class="flex flex-col lg:flex-row">
+            <!-- Left Sidebar for Category Navigation -->
+            <aside
+                class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
+            >
+                <div
+                    class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
+                >
+                    <button
+                        class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
+                        aria-label="Go Back"
+                        href="/"
+                    >
+                        <i class="ri-arrow-left-line text-xl"></i>
+                    </button>
+                    <h2
+                        class="text-xl font-semibold dark:text-white text-neutral-800"
+                    >
+                        {{ page.category }}
+                    </h2>
+                </div>
+                <div class="p-4">
+                    <ul>
+                        {% assign filtered_docs = site.docs | where: "category",
+                        page.category %} {% assign sorted_docs = filtered_docs |
+                        sort: "position" %} {% for doc in sorted_docs %}
+                        <li class="mb-2">
+                            <a
+                                href="{{ doc.url }}"
+                                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg{% if doc.url == page.url %} font-bold{% endif %}"
+                            >
+                                {{ doc.title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
+                <article>
+                    <header class="mb-8 space-y-2">
+                        <h1 class="text-4xl dark:text-neutral-100 font-bold">
+                            {{ page.title }}
+                        </h1>
+                        <p
+                            class="text-sm text-neutral-600 dark:text-neutral-100"
+                        >
+                            {{ page.description }}
+                        </p>
+                    </header>
+
+                    <div class="mb-4">
+                        <button
+                            id="copy-markdown-btn"
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+                            aria-label="Copy page as Markdown"
+                        >
+                            <i class="ri-file-copy-line"></i>
+                            Copy as Markdown
+                        </button>
+                    </div>
+
+                    <div
+                        id="content"
+                        class="content prose dark:prose-invert max-w-none"
+                    >
+                        {{ content | markdownify }}
+                    </div>
+
+                    <script type="text/plain" id="raw-markdown">
+                        {{ page.content | xml_escape }}
+                    </script>
+
+                    <!-- Navigation for Previous and Next Posts -->
+                    {% assign posts_in_category = site.posts | where:
+                    "category", page.category | sort: "position" %} {% for post
+                    in posts_in_category %} {% if post.url == page.url %} {%
+                    assign current_index = forloop.index0 %} {% endif %} {%
+                    endfor %} {% assign previous_index = current_index | minus:
+                    1 %} {% assign next_index = current_index | plus: 1 %}
+
+                    <nav
+                        class="mt-8 flex justify-between border-t pt-4 dark:border-neutral-700"
+                    >
+                        {% if previous_index >= 0 %} {% assign previous_post =
+                        posts_in_category[previous_index] %}
+                        <a
+                            href="{{ previous_post.url }}"
+                            class="px-4 py-2 text-sm font-medium text-amber-400"
+                        >
+                            &larr; Previous: {{ previous_post.title }}
+                        </a>
+                        {% endif %} {% if next_index < posts_in_category.size %}
+                        {% assign next_post = posts_in_category[next_index] %}
+                        <a
+                            href="{{ next_post.url }}"
+                            class="px-4 py-2 text-sm font-medium text-amber-400"
+                        >
+                            Next: {{ next_post.title }} &rarr;
+                        </a>
+                        {% endif %}
+                    </nav>
+                </article>
+                {% include footer.html %}
+            </main>
+
+            <!-- Right Sidebar for Heading Navigation -->
+            <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
+                <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
+                    On This Page
+                </h2>
+                <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
+                    <ul id="table-of-contents" class="space-y-2"></ul>
+                </nav>
+                <a
+                    class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
+                    href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
+                >
+                    <i class="ri-github-fill"></i>
+                    Edit this page
+                </a>
+            </aside>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </body>
 </html>

@@ -2,8 +2,14 @@ title:      Beaver Docs
 
 # Build settings
 markdown: kramdown
+highlighter: none
 include:
   - _post
+
+collections:
+  docs:
+    output: true
+    permalink: /:path/
 
 plugins:
   - jekyll-paginate

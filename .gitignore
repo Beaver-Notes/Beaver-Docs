@@ -1,1 +1,17 @@
-Gemfile.lock
+# Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Dependencies
+node_modules/
+.bundle/
+vendor/bundle
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~

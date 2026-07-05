@@ -1,35 +1,23 @@
 ---
 ---
 [
-  {% for post in site.posts %}
-    {% if site.authors[post.author].name %}
-      {% assign author = site.authors[post.author] %}
-    {% else %}
-      {% assign author = site.authors["anonymous"] %}
-    {% endif %}
+  {% for doc in site.docs %}
+    {
+      "title": "{{ doc.title | escape }}",
 
-    {% unless post.hidden %}
-      {
-        "title": "{{ post.title | escape }}",
+      {% if doc.details %}
+        "details": "{{ doc.details | strip_html }}",
+      {% else %}
+        "details": "",
+      {% endif %}
 
-        {% if post.details %}
-          "details": "{{ post.details | strip_html }}",
-        {% else %}
-          "details": "{{ post.date | date: "%a, %b %e, %Y" }}",
-        {% endif %}
+      "content": {{ doc.content | jsonify }},
 
-        "content": {{ post.content | jsonify }},
+      "image": "",
 
-        {% if post.image %}
-          "image": "{{ post.image }}",
-        {% else %}
-          "image": "https://www.gravatar.com/avatar/{{ author.gravatar }}?s=84&d=blank",
-        {% endif %}
-
-        "url": "{{ site.baseurl }}{{ post.url }}",
-        "tags": "{{ post.tags | join: ', ' }}",
-        "date": "{{ post.date }}"
-      } {% unless forloop.last %},{% endunless %}
-    {% endunless %}
+      "url": "{{ site.baseurl }}{{ doc.url }}",
+      "tags": "{{ doc.category | default: '' }}",
+      "date": "{{ doc.date | default: '' }}"
+    } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
