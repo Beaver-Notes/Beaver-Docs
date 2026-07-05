@@ -2,6 +2,7 @@
 _site/
 .jekyll-cache/
 .sass-cache/
+Gemfile.lock
 
 # Dependencies
 node_modules/
