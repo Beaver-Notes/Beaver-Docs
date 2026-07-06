@@ -6,7 +6,7 @@ category: Beaver Notes (DEV)
 position: 10
 ---
 
-Beaver Notes supports a plugin system that lets you extend the app on both the **app plane** (notes, folders, labels, settings) and the **editor plane** (Tiptap extensions, slash commands, toolbar items). Plugins are distributed as `.beax` files: standard zip archives containing a manifest and bundled JavaScript.
+Beaver Notes supports a plugin system that lets you extend the app on both the **app plane** (notes, folders, labels, settings, network, filesystem) and the **editor plane** (Tiptap extensions, slash commands, toolbar items). Plugins are distributed as `.beax` files: standard zip archives containing a manifest and bundled JavaScript.
 
 ## Quick Start
 
@@ -63,6 +63,7 @@ The builder (`@beaver-notes/plugin-builder`) compiles TypeScript, bundles depend
   "planes": ["app", "editor"],
   "permissions": ["notes:read", "notes:write"],
   "main": "src/index.ts",
+  "storageSchemaVersion": 1,
   "settings": {
     "apiKey": {
       "type": "string",
@@ -92,20 +93,23 @@ The builder (`@beaver-notes/plugin-builder`) compiles TypeScript, bundles depend
 | `icon` | No | Valid RemixIcon name |
 | `minAppVersion` | No | Minimum Beaver Notes version required |
 | `isDesktopOnly` | No | If `true`, plugin only loads on desktop platforms |
+| `storageSchemaVersion` | No | Integer version for plugin storage migrations (see [Storage Schema Version](#storage-schema-version)) |
 | `settings` | No | JSON schema for auto-generated settings form |
 | `settingsFile` | No | Path to code-based settings file |
 
 ## Permissions
 
-Every plugin declares which permissions it needs. Users can toggle individual permissions in Settings. The available coarse-grained permissions are:
+Every plugin declares which permissions it needs. Users can toggle individual permissions in Settings.
 
-| Permission | Scope |
-|---|---|
-| `notes:read` | List, get, and search notes. Read folder and label data |
-| `notes:write` | Create, update, and delete notes, folders, and labels |
-| `filesystem` | Read and write files via the Tauri filesystem API |
-| `network` | Make outbound HTTP requests |
-| `app:settings` | Read and modify app-level settings |
+| Permission | Scope | Gated? |
+|---|---|---|
+| `notes:read` | List, get, and search notes. Read folder and label data | **Yes**: blocked if toggled off |
+| `notes:write` | Create, update, and delete notes, folders, and labels | **Yes**: blocked if toggled off |
+| `filesystem` | Read and write files scoped to `data/` inside the plugin's directory | **Yes**: blocked if toggled off |
+| `network` | Make outbound HTTP requests via `app.network.request()` | **Yes**: blocked if toggled off |
+| `app:settings` | Read and modify app-level settings | **Yes**: blocked if toggled off |
+
+> **What's NOT gated**: Editor-plane plugins (`"editor"` in manifest planes) have full access to the editor's JavaScript context. They can register Tiptap extensions, toolbar items, and slash commands regardless of permission toggles. The permission system only gates the app-plane API calls listed above. Be honest in your plugin description about what access you need.
 
 ## Entry Point
 
@@ -150,18 +154,20 @@ export function setup(beaverNotes: BeaverNotes) {
 
 ### `beaverNotes.app` (App Plane)
 
-All data operations are gated by CoreAccess permissions.
+All data operations are gated by CoreAccess permissions. If a user toggles a permission off, the corresponding API calls throw `PluginPermissionError`.
 
 #### Notes CRUD
 
 | Method | Permission | Description |
 |---|---|---|
-| `app.notes.list({ folderId?, limit? })` | `notes:read` | List notes |
-| `app.notes.get(id)` | `notes:read` | Get a full note |
+| `app.notes.list({ folderId?, labelId?, limit?, offset? })` | `notes:read` | List notes (returns summaries with `excerpt` instead of full `body`) |
+| `app.notes.get(id)` | `notes:read` | Get a full note with all fields |
 | `app.notes.create({ title, body? })` | `notes:write` | Create a note |
 | `app.notes.update(id, data)` | `notes:write` | Update a note |
 | `app.notes.delete(id)` | `notes:write` | Delete a note |
-| `app.notes.search(query, { limit? })` | `notes:read` | Full-text search |
+| `app.notes.search(query, { limit? })` | `notes:read` | Full-text search (returns summaries) |
+
+> `list()` and `search()` return `NoteSummary` objects with an `excerpt` (first 200 characters of body). `get()` returns the full note with `body`.
 
 #### Folders CRUD
 
@@ -182,6 +188,30 @@ All data operations are gated by CoreAccess permissions.
 | `app.labels.create({ name, color? })` | `notes:write` | Create a label |
 | `app.labels.update(id, data)` | `notes:write` | Update a label |
 | `app.labels.delete(id)` | `notes:write` | Delete a label |
+
+#### Filesystem
+
+```js
+// Requires "filesystem" permission
+// All paths are relative to the plugin's data/ directory
+await app.filesystem.writeText('cache/notes.json', JSON.stringify(data));
+const text = await app.filesystem.readText('cache/notes.json');
+const exists = await app.filesystem.exists('cache');
+const entries = await app.filesystem.list('');
+await app.filesystem.delete('cache/notes.json');
+```
+
+| Method | Description |
+|---|---|
+| `app.filesystem.readText(path)` | Read a file as UTF-8 string |
+| `app.filesystem.writeText(path, content)` | Write a string to a file |
+| `app.filesystem.readBinary(path)` | Read a file as base64-encoded string |
+| `app.filesystem.writeBinary(path, base64)` | Write base64-encoded data to a file |
+| `app.filesystem.delete(path)` | Delete a file or directory |
+| `app.filesystem.list(dir?)` | List directory contents. Returns `[{ name, is_dir, size, mtime_ms }]` |
+| `app.filesystem.exists(path)` | Check if a path exists |
+
+> Files are stored in `<appData>/plugins/<pluginId>/data/`. Path traversal (`../`) is blocked. Use `filesystem` for caching API responses, storing generated assets, or persisting binary data beyond the key-value storage limit.
 
 #### Settings
 
@@ -204,6 +234,7 @@ app.commands.register({
 ```
 
 > Users open the command palette with `Cmd/Ctrl+Shift+P` or `Cmd/Ctrl+K`.
+> Duplicate command IDs across plugins will cause a `PluginConflictError`. IDs must be globally unique.
 
 #### Events
 
@@ -248,6 +279,8 @@ const {
 } = editor.tiptap;
 ```
 
+> **Important**: Editor-plane plugins run with full access to the editor's JavaScript context. There are no permission gates on Tiptap extensions, toolbar items, or slash commands. A plugin that registers an editor extension can execute arbitrary JavaScript. Only install editor plugins from sources you trust.
+
 #### Register a Tiptap Extension
 
 ```js
@@ -258,6 +291,8 @@ editor.registerExtension(Extension.create({
   },
 }));
 ```
+
+> Extension `name` must be unique across all active plugins. Duplicate names throw `PluginConflictError`.
 
 #### Register a Slash Command
 
@@ -272,6 +307,8 @@ editor.registerSlashCommand({
 
 Type `/myBlock` in the editor to see it in the slash menu.
 
+> Slash command `name` must be unique across all active plugins.
+
 #### Register a Toolbar Item
 
 ```js
@@ -282,6 +319,8 @@ editor.registerToolbarItem({
   group: 'plugins',
 });
 ```
+
+> Toolbar item `id` must be unique across all active plugins.
 
 ### `beaverNotes.ui` (Programmatic UI)
 
@@ -314,14 +353,40 @@ ui.registerIcon('myCustomIcon', {
 
 ### `beaverNotes.storage` (Isolated Storage)
 
-Key-value storage scoped to your plugin. Persisted across app restarts, cleared on uninstall.
+Key-value storage scoped to your plugin. Persisted across app restarts, cleared on uninstall. **5 MB quota per plugin.**
 
 ```js
 await beaverNotes.storage.set('lastRun', Date.now());
 const lastRun = await beaverNotes.storage.get('lastRun', 0);
 const keys = await beaverNotes.storage.keys();
 await beaverNotes.storage.delete('tempData');
+
+// Check usage
+const { bytes, maxBytes, percent } = await beaverNotes.storage.usage();
 ```
+
+If storage quota is exceeded, `storage.set()` throws `PluginStorageError`. For larger data, use the [filesystem API](#filesystem).
+
+#### Storage Schema Version
+
+Plugins can declare a `storageSchemaVersion` in `manifest.json`. This enables data migration when your plugin's stored data format changes across versions.
+
+```ts
+// In setup():
+const needsMigration = await storage.needsMigration();
+if (needsMigration) {
+  const current = await storage.getDataVersion();
+  // Migrate old data format...
+  await storage.setDataVersion(beaverNotes.manifest.storageSchemaVersion);
+}
+```
+
+| Method | Description |
+|---|---|
+| `await storage.needsMigration()` | Returns `true` if stored schema version < manifest `storageSchemaVersion` |
+| `await storage.getDataVersion()` | Returns current stored schema version (defaults to `1`) |
+| `await storage.setDataVersion(v)` | Set stored schema version to `v` |
+| `await storage.usage()` | Returns `{ bytes, maxBytes, percent }` |
 
 ## Settings
 
@@ -407,6 +472,14 @@ Then in Beaver Notes: **Settings → Plugins → Install from file** and select 
 ### Debugging
 
 Plugin `console.log` output appears in the app's developer tools (View → Toggle Developer Tools in the menubar). The plugin system also logs lifecycle events prefixed with `[PluginManager]` and `[PluginAPI]`.
+
+### Validating before submission
+
+```bash
+npx beaver-plugin validate
+```
+
+Checks manifest structure, permissions, planes, semver, and common mistakes.
 
 ## Example: A Complete Plugin
 
@@ -505,6 +578,7 @@ Beaver Notes has an in-app plugin browser (Settings → Plugins → Browse) back
   "author": "Your Name",
   "description": "What it does",
   "repo": "your-username/your-plugin-repo",
+  "releaseTag": "v1.0.0",
   "branch": "main",
   "screenshots": [],
   "tags": [],
@@ -518,8 +592,9 @@ Beaver Notes has an in-app plugin browser (Settings → Plugins → Browse) back
 ### After approval
 
 - Your plugin appears in the in-app Browse tab
-- Users can install it with one click
-- Update your plugin by creating a new GitHub Release, the app will pick up the latest version
+- Users must accept permissions before installation
+- Users can toggle individual permissions in plugin settings
+- Update your plugin by creating a new GitHub Release, users will be prompted to re-consent if the new version declares additional permissions
 
 ## Reference
 
