@@ -97,9 +97,58 @@
 }
 
 pre {
-  @apply border border-neutral-200 dark:border-neutral-800 rounded-lg;
+  @apply border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 rounded-xl;
+}
+
+.dark .prose pre code,
+.dark pre code {
+  background: none;
 }
 
 .prose code {
     overflow-wrap: break-word;
+}
+
+/* -------- CODE BLOCK COPY BUTTON -------- */
+.code-block-wrapper {
+    position: relative;
+}
+
+.code-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid theme("colors.neutral.200");
+    background: theme("colors.white");
+    color: theme("colors.neutral.600");
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.dark .code-copy-btn {
+    border-color: theme("colors.neutral.700");
+    background: theme("colors.neutral.800");
+    color: theme("colors.neutral.300");
+}
+
+.code-block-wrapper:hover .code-copy-btn,
+.code-copy-btn:focus {
+    opacity: 1;
+}
+
+.code-copy-btn:hover {
+    background: theme("colors.neutral.100");
+    color: theme("colors.neutral.900");
+}
+
+.dark .code-copy-btn:hover {
+    background: theme("colors.neutral.700");
+    color: theme("colors.white");
 }

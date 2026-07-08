@@ -101,26 +101,30 @@
             <!-- Main Content Area -->
             <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
                 <article>
-                    <header class="mb-8 space-y-2">
-                        <h1 class="text-4xl dark:text-neutral-100 font-bold">
-                            {{ page.title }}
-                        </h1>
-                        <p
-                            class="text-sm text-neutral-600 dark:text-neutral-100"
-                        >
-                            {{ page.description }}
-                        </p>
-                    </header>
+                    <div class="flex justify-between">
+                        <header class="mb-8 space-y-2">
+                            <h1
+                                class="text-4xl dark:text-neutral-100 font-bold"
+                            >
+                                {{ page.title }}
+                            </h1>
+                            <p
+                                class="text-sm text-neutral-600 dark:text-neutral-100"
+                            >
+                                {{ page.description }}
+                            </p>
+                        </header>
 
-                    <div class="mb-4">
-                        <button
-                            id="copy-markdown-btn"
-                            class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
-                            aria-label="Copy page as Markdown"
-                        >
-                            <i class="ri-file-copy-line"></i>
-                            Copy as Markdown
-                        </button>
+                        <div class="mb-4">
+                            <button
+                                id="copy-markdown-btn"
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+                                aria-label="Copy page as Markdown"
+                            >
+                                <i class="ri-file-copy-line"></i>
+                                Copy as Markdown
+                            </button>
+                        </div>
                     </div>
 
                     <div
@@ -186,6 +190,101 @@
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script>
+        <script>
+            hljs.highlightAll();
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const content = document.getElementById("content");
+                const toc = document.getElementById("table-of-contents");
+                if (content && toc) {
+                    const headings = content.querySelectorAll("h1, h2, h3");
+                    let currentLevel = 1;
+                    let currentList = toc;
+                    const listStack = [toc];
+
+                    headings.forEach((heading, index) => {
+                        const id = `heading-${index}`;
+                        heading.setAttribute("id", id);
+
+                        const level = parseInt(heading.tagName.substring(1));
+
+                        while (level > currentLevel) {
+                            const newList = document.createElement("ul");
+                            newList.classList.add("ml-4", "space-y-2");
+
+                            const lastLi = currentList.lastElementChild;
+                            if (lastLi) {
+                                lastLi.appendChild(newList);
+                                currentList = newList;
+                                listStack.push(newList);
+                            }
+                            currentLevel++;
+                        }
+
+                        while (level < currentLevel) {
+                            listStack.pop();
+                            currentList = listStack[listStack.length - 1];
+                            currentLevel--;
+                        }
+
+                        const li = document.createElement("li");
+                        li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
+                        currentList.appendChild(li);
+                    });
+                }
+
+                const copyBtn = document.getElementById("copy-markdown-btn");
+                const rawMarkdown = document.getElementById("raw-markdown");
+                if (copyBtn && rawMarkdown) {
+                    copyBtn.addEventListener("click", function () {
+                        const text = rawMarkdown.textContent;
+                        navigator.clipboard.writeText(text).then(function () {
+                            const original = copyBtn.innerHTML;
+                            copyBtn.innerHTML =
+                                '<i class="ri-check-line"></i> Copied!';
+                            setTimeout(function () {
+                                copyBtn.innerHTML = original;
+                            }, 2000);
+                        });
+                    });
+                }
+
+                document
+                    .querySelectorAll("#content pre")
+                    .forEach(function (pre) {
+                        if (pre.classList.contains("mermaid")) return;
+
+                        const wrapper = document.createElement("div");
+                        wrapper.classList.add("code-block-wrapper");
+                        pre.parentNode.insertBefore(wrapper, pre);
+                        wrapper.appendChild(pre);
+
+                        const btn = document.createElement("button");
+                        btn.className = "code-copy-btn";
+                        btn.type = "button";
+                        btn.setAttribute("aria-label", "Copy code");
+                        btn.innerHTML = '<i class="ri-file-copy-line"></i>';
+                        btn.addEventListener("click", function () {
+                            const code = pre.querySelector("code");
+                            const text = code
+                                ? code.innerText
+                                : pre.innerText;
+                            navigator.clipboard.writeText(text).then(
+                                function () {
+                                    btn.innerHTML =
+                                        '<i class="ri-check-line"></i>';
+                                    setTimeout(function () {
+                                        btn.innerHTML =
+                                            '<i class="ri-file-copy-line"></i>';
+                                    }, 2000);
+                                }
+                            );
+                        });
+                        wrapper.appendChild(btn);
+                    });
+            });
+        </script>
     </body>
 </html>

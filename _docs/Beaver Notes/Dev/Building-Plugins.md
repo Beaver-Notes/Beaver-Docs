@@ -50,7 +50,7 @@ The builder (`@beaver-notes/plugin-builder`) compiles TypeScript, bundles depend
 
 `manifest.json`, placed at the project root:
 
-```jsonc
+```json
 {
   "id": "com.example.my-plugin",
   "name": "My Plugin",
