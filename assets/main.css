@@ -1,9 +1,65 @@
 ---
 ---
 
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/geist-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/geist-sans-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/assets/fonts/geist-sans-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/geist-sans-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/geist-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/assets/fonts/geist-mono-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/geist-mono-latin-700-normal.woff2') format('woff2');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
 
 .content {
     word-wrap: break-word;
@@ -11,7 +67,7 @@
     white-space: normal;
 }
 
-/* -------- DARK MODE SYNTAX HIGHLIGHTING OVERRIDES -------- */
+/* DARK MODE SYNTAX HIGHLIGHTING OVERRIDES */
 .dark .hljs {
     color: #c9d1d9;
     background: #0d1117;
@@ -90,14 +146,20 @@
     background-color: #67060c;
 }
 
-/* -------- CODE BLOCK / INLINE CODE STYLING -------- */
+/* CODE BLOCK / INLINE CODE STYLING */
 .prose pre {
-    background: none;
+    background-color: transparent;
+    color: #24292e;
     overflow-x: auto;
 }
 
+.dark .prose pre {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
 pre {
-  @apply border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 rounded-xl;
+  @apply border border-neutral-200 dark:border-neutral-800 rounded-xl;
 }
 
 .dark .prose pre code,
@@ -109,7 +171,7 @@ pre {
     overflow-wrap: break-word;
 }
 
-/* -------- CODE BLOCK COPY BUTTON -------- */
+/* CODE BLOCK COPY BUTTON */
 .code-block-wrapper {
     position: relative;
 }
@@ -151,4 +213,82 @@ pre {
 .dark .code-copy-btn:hover {
     background: theme("colors.neutral.700");
     color: theme("colors.white");
+}
+
+/* TABLE STYLES */
+.prose table,
+.tableWrapper table {
+    min-width: 100%;
+    width: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: auto;
+}
+
+.prose table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 1.5em 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.prose td,
+.prose th,
+.tableWrapper td,
+.tableWrapper th {
+    min-width: 1em;
+    height: 2.2em;
+    border: 1px solid theme("colors.neutral.200");
+    padding: 10px 12px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    position: relative;
+    vertical-align: top;
+    text-align: initial;
+    background-color: transparent;
+}
+
+:root.dark .prose td,
+:root.dark .prose th,
+:root.dark .tableWrapper td,
+:root.dark .tableWrapper th {
+    border-color: theme("colors.neutral.700");
+}
+
+.prose th,
+.tableWrapper th {
+    background-color: theme("colors.neutral.100");
+    font-weight: 600;
+}
+
+:root.dark .prose th,
+:root.dark .tableWrapper th {
+    background-color: rgb(82 82 82 / 0.3);
+}
+
+/* Rounded outer corners — scoped to the real table edges (thead / last tbody row)
+   so interior body cells are never rounded */
+.prose thead th:first-child,
+.tableWrapper thead th:first-child {
+    border-top-left-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.prose thead th:last-child,
+.tableWrapper thead th:last-child {
+    border-top-right-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.prose tbody tr:last-child td:first-child,
+.tableWrapper tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.prose tbody tr:last-child td:last-child,
+.tableWrapper tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 0.75rem;
+    overflow: hidden;
 }

@@ -1,0 +1,67 @@
+<aside
+    class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
+>
+    <!-- Quick switch between User and Dev docs -->
+    <div class="p-4 border-b dark:border-neutral-700">
+        <div
+            class="flex rounded-lg overflow-hidden border dark:border-neutral-700"
+        >
+            <button
+                id="tab-user"
+                onclick="switchView('user')"
+                class="flex-1 px-3 py-2 text-sm font-medium transition {% if include.default_view == 'dev' %}text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700{% else %}bg-amber-400 text-white{% endif %}"
+            >
+                <i class="ri-user-line mr-1"></i> User
+            </button>
+            <button
+                id="tab-dev"
+                onclick="switchView('dev')"
+                class="flex-1 px-3 py-2 text-sm font-medium transition {% if include.default_view == 'dev' %}bg-amber-400 text-white{% else %}text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-700{% endif %}"
+            >
+                <i class="ri-terminal-line mr-1"></i> Dev
+            </button>
+        </div>
+    </div>
+
+    <!-- User doc list -->
+    <div
+        id="list-user"
+        class="p-4 {% if include.default_view == 'dev' %}hidden{% endif %}"
+    >
+        <ul class="space-y-2">
+            {% assign user_docs = site.docs | where: "category",
+            "Beaver Notes" | sort: "position" %} {% for doc in
+            user_docs %}
+            <li>
+                <a
+                    href="{{ doc.url }}"
+                    class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg block{% if doc.url == page.url %} font-bold{% endif %}"
+                >
+                    {{ doc.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Dev doc list -->
+    <div
+        id="list-dev"
+        class="p-4 {% if include.default_view != 'dev' %}hidden{% endif %}"
+    >
+        <ul class="space-y-2">
+            {% assign dev_docs = site.docs | where: "category",
+            "Beaver Notes (DEV)" | sort: "position" %} {% for doc in
+            dev_docs %}
+            <li>
+                <a
+                    href="{{ doc.url }}"
+                    class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg block{% if doc.url == page.url %} font-bold{% endif %}"
+                >
+                    {{ doc.title }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside>

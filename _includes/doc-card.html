@@ -1,0 +1,22 @@
+<a
+    href="{{ include.doc.url }}"
+    class="group rounded-xl border dark:border-neutral-700 p-5 bg-neutral-50 dark:bg-neutral-800 hover:border-amber-400 hover:shadow-md transition flex flex-col gap-3"
+>
+    <div
+        class="w-11 h-11 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center text-2xl"
+    >
+        <i
+            class="{% case include.doc.title %} {% when 'Download and Install Beaver Notes' %}ri-download-cloud-2-line {% when 'Navigate the Interface' %}ri-compass-3-line {% when 'Markdown Syntax' %}ri-markdown-line {% when 'Using Labels' %}ri-price-tag-3-line {% when 'Syncing Notes' %}ri-refresh-line {% when 'Import Markdown' %}ri-import-line {% when 'Use Mermaid Block' %}ri-mind-map {% when 'Lock a Note' %}ri-lock-line {% when 'Reset a password' %}ri-key-2-line {% when 'How to Contribute' %}ri-team-line {% when 'Code Contributions' %}ri-code-line {% when 'Contributing to the Docs' %}ri-article-line {% when 'Translations' %}ri-translate-2 {% when 'Architecture Overview' %}ri-building-2-line {% when 'Sync Protocol' %}ri-exchange-line {% when 'Security Model' %}ri-shield-line {% when 'Building for Platforms' %}ri-tools-line {% when 'Building Plugins' %}ri-puzzle-2-line {% else %}ri-article-line {% endcase %}"
+        ></i>
+    </div>
+    <div>
+        <h3
+            class="font-semibold dark:text-neutral-100 group-hover:text-amber-400 transition"
+        >
+            {{ include.doc.title }}
+        </h3>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300 mt-1">
+            {{ include.doc.details }}
+        </p>
+    </div>
+</a>

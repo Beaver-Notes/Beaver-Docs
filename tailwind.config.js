@@ -1,5 +1,5 @@
 module.exports = {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
     "./_drafts/**/*.html",
     "./_includes/**/*.html",
@@ -9,8 +9,11 @@ module.exports = {
     "./*.html",
   ],
   theme: {
-    theme: {
-      extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Geist", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["Geist Mono", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

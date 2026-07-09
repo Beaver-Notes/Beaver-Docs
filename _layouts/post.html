@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -15,91 +19,21 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
         />
         <style>
-            /* Enable smooth scrolling */
             html {
                 scroll-behavior: smooth;
             }
         </style>
-        <!-- Mermaid.js diagram support -->
-        <script type="module">
-            import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
-
-            function renderMermaid() {
-                var isDark =
-                    document.documentElement.classList.contains("dark");
-                mermaid.initialize({
-                    startOnLoad: false,
-                    theme: isDark ? "dark" : "default",
-                });
-
-                document
-                    .querySelectorAll("pre code.language-mermaid")
-                    .forEach(function (code) {
-                        var pre = code.parentElement;
-                        if (!pre.classList.contains("mermaid-processed")) {
-                            pre.classList.add("mermaid", "mermaid-processed");
-                            pre.textContent = code.textContent;
-                        }
-                    });
-
-                var elements = document.querySelectorAll("pre.mermaid");
-                if (elements.length > 0) {
-                    mermaid.run({ nodes: elements });
-                }
-            }
-
-            document.addEventListener("DOMContentLoaded", renderMermaid);
-
-            var origToggle = window.toggleDarkMode;
-            window.toggleDarkMode = function () {
-                if (origToggle) origToggle();
-                setTimeout(renderMermaid, 150);
-            };
-        </script>
     </head>
     <body class="bg-white text-neutral-800 dark:bg-neutral-900">
         {% include nav.html %}
-        <div class="flex flex-col lg:flex-row">
-            <!-- Left Sidebar for Category Navigation -->
-            <aside
-                class="w-full lg:w-1/5 lg:border-r border-b dark:border-neutral-700"
-            >
-                <div
-                    class="p-4 border-b dark:border-neutral-700 flex items-center space-x-2"
-                >
-                    <button
-                        class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition"
-                        aria-label="Go Back"
-                        href="/"
-                    >
-                        <i class="ri-arrow-left-line text-xl"></i>
-                    </button>
-                    <h2
-                        class="text-xl font-semibold dark:text-white text-neutral-800"
-                    >
-                        {{ page.category }}
-                    </h2>
-                </div>
-                <div class="p-4">
-                    <ul>
-                        {% assign filtered_docs = site.docs | where: "category",
-                        page.category %} {% assign sorted_docs = filtered_docs |
-                        sort: "position" %} {% for doc in sorted_docs %}
-                        <li class="mb-2">
-                            <a
-                                href="{{ doc.url }}"
-                                class="dark:hover:bg-neutral-700 hover:bg-neutral-100 dark:text-neutral-100 p-2 w-full rounded-lg{% if doc.url == page.url %} font-bold{% endif %}"
-                            >
-                                {{ doc.title }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </aside>
+        <div id="layout-root" class="flex flex-col lg:flex-row">
+            <!-- Left Sidebar: Quick access to User / Dev docs -->
+            {% assign dv = "user" %} {% if page.category == "Beaver Notes (DEV)"
+            %} {% assign dv = "dev" %} {% endif %} {% include
+            sidebar-left.html default_view=dv %}
 
             <!-- Main Content Area -->
-            <main class="flex-1 mt-8 max-w-3xl mx-auto relative px-4 lg:px-8">
+            <main class="flex-1 mt-8 max-w-5xl mx-auto relative px-4 lg:px-8 w-full">
                 <article>
                     <div class="flex justify-between">
                         <header class="mb-8 space-y-2">
@@ -139,7 +73,7 @@
                     </script>
 
                     <!-- Navigation for Previous and Next Posts -->
-                    {% assign posts_in_category = site.posts | where:
+                    {% assign posts_in_category = site.docs | where:
                     "category", page.category | sort: "position" %} {% for post
                     in posts_in_category %} {% if post.url == page.url %} {%
                     assign current_index = forloop.index0 %} {% endif %} {%
@@ -168,20 +102,43 @@
                         {% endif %}
                     </nav>
                 </article>
+
                 {% include footer.html %}
             </main>
 
-            <!-- Right Sidebar for Heading Navigation -->
-            <aside class="w-full lg:w-1/5 p-4 lg:block hidden">
-                <h2 class="text-lg font-semibold dark:text-neutral-100 mb-4">
+            <!-- Right Sidebar: On this page -->
+            <aside class="w-full lg:w-1/5 p-4 lg:block hidden border-l dark:border-neutral-700">
+                <h2
+                    class="text-lg font-semibold dark:text-neutral-100 mb-4"
+                >
                     On This Page
                 </h2>
                 <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
                     <ul id="table-of-contents" class="space-y-2"></ul>
                 </nav>
+                <div class="border-b dark:border-neutral-700 pb-6 mb-6">
+                    <h3
+                        class="text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-3"
+                    >
+                        Recent Updates
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        {% assign recent = site.docs | sort: "position"
+                        | reverse %} {% for doc in recent limit: 3 %}
+                        <li>
+                            <a
+                                href="{{ doc.url }}"
+                                class="dark:text-neutral-100 hover:text-amber-400 transition"
+                            >
+                                {{ doc.title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
                 <a
                     class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
-                    href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_posts"
+                    href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_docs"
                 >
                     <i class="ri-github-fill"></i>
                     Edit this page
@@ -190,101 +147,6 @@
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script>
-            hljs.highlightAll();
-        </script>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const content = document.getElementById("content");
-                const toc = document.getElementById("table-of-contents");
-                if (content && toc) {
-                    const headings = content.querySelectorAll("h1, h2, h3");
-                    let currentLevel = 1;
-                    let currentList = toc;
-                    const listStack = [toc];
-
-                    headings.forEach((heading, index) => {
-                        const id = `heading-${index}`;
-                        heading.setAttribute("id", id);
-
-                        const level = parseInt(heading.tagName.substring(1));
-
-                        while (level > currentLevel) {
-                            const newList = document.createElement("ul");
-                            newList.classList.add("ml-4", "space-y-2");
-
-                            const lastLi = currentList.lastElementChild;
-                            if (lastLi) {
-                                lastLi.appendChild(newList);
-                                currentList = newList;
-                                listStack.push(newList);
-                            }
-                            currentLevel++;
-                        }
-
-                        while (level < currentLevel) {
-                            listStack.pop();
-                            currentList = listStack[listStack.length - 1];
-                            currentLevel--;
-                        }
-
-                        const li = document.createElement("li");
-                        li.innerHTML = `<a href="#${id}" class="text-sm dark:text-neutral-100 hover:underline">${heading.textContent}</a>`;
-                        currentList.appendChild(li);
-                    });
-                }
-
-                const copyBtn = document.getElementById("copy-markdown-btn");
-                const rawMarkdown = document.getElementById("raw-markdown");
-                if (copyBtn && rawMarkdown) {
-                    copyBtn.addEventListener("click", function () {
-                        const text = rawMarkdown.textContent;
-                        navigator.clipboard.writeText(text).then(function () {
-                            const original = copyBtn.innerHTML;
-                            copyBtn.innerHTML =
-                                '<i class="ri-check-line"></i> Copied!';
-                            setTimeout(function () {
-                                copyBtn.innerHTML = original;
-                            }, 2000);
-                        });
-                    });
-                }
-
-                document
-                    .querySelectorAll("#content pre")
-                    .forEach(function (pre) {
-                        if (pre.classList.contains("mermaid")) return;
-
-                        const wrapper = document.createElement("div");
-                        wrapper.classList.add("code-block-wrapper");
-                        pre.parentNode.insertBefore(wrapper, pre);
-                        wrapper.appendChild(pre);
-
-                        const btn = document.createElement("button");
-                        btn.className = "code-copy-btn";
-                        btn.type = "button";
-                        btn.setAttribute("aria-label", "Copy code");
-                        btn.innerHTML = '<i class="ri-file-copy-line"></i>';
-                        btn.addEventListener("click", function () {
-                            const code = pre.querySelector("code");
-                            const text = code
-                                ? code.innerText
-                                : pre.innerText;
-                            navigator.clipboard.writeText(text).then(
-                                function () {
-                                    btn.innerHTML =
-                                        '<i class="ri-check-line"></i>';
-                                    setTimeout(function () {
-                                        btn.innerHTML =
-                                            '<i class="ri-file-copy-line"></i>';
-                                    }, 2000);
-                                }
-                            );
-                        });
-                        wrapper.appendChild(btn);
-                    });
-            });
-        </script>
+        {% include site-js.html %}
     </body>
 </html>

@@ -1,32 +1,187 @@
 ---
-layout: default
-pagination:
-  enabled: true
+layout: null
 ---
 
-<h1>Latest Articles</h1>
-<div class="articles">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    <p>{{ post.excerpt }}</p>
-  </div>
-  {% endfor %}
-</div>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ site.title }}</title>
+        <link href="{{ site.baseurl }}/assets/main.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+    </head>
+    <body class="bg-white text-neutral-800 dark:bg-neutral-900">
+        {% include nav.html %}
 
-<div class="pagination">
-  {% if paginator.previous_page %}
-  <a href="{{ paginator.previous_page_path }}">Previous</a>
-  {% endif %}
-  {% for page in (1..paginator.total_pages) %}
-  <a
-    href="{{ paginator.base_path }}{% if page > 1 %}/page{{ page }}{% endif %}"
-    class="{% if page == paginator.page %}current{% endif %}"
-  >
-    {{ page }}
-  </a>
-  {% endfor %}
-  {% if paginator.next_page %}
-  <a href="{{ paginator.next_page_path }}">Next</a>
-  {% endif %}
-</div>
+        <!-- Banner Section -->
+        <header
+            id="site-banner"
+            class="h-80 p-4 flex flex-col sm:flex-row items-center justify-between relative overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+        >
+            <div class="relative z-10 text-left sm:pt-10 sm:pl-8">
+                <h1 class="text-4xl font-bold dark:text-neutral-100">
+                    Beaver Docs
+                </h1>
+                <p class="mt-2 text-lg dark:text-gray-300">
+                    Help for wherever you are on your Beaver journey.
+                </p>
+            </div>
+            <div class="relative h-full sm:w-1/3 w-2/3">
+                <img
+                    src="{{ base.url }}/assets/img/home/Mac.png"
+                    alt="Documentation Image"
+                    class="w-full sm:w-[80%] object-cover object-bottom sm:object-top mt-5 sm:mt-10"
+                />
+            </div>
+        </header>
+
+        <div id="layout-root" class="flex flex-col lg:flex-row">
+            <!-- Left Sidebar: Quick access to User / Dev docs -->
+            {% include sidebar-left.html default_view="user" %}
+
+            <!-- Main Content -->
+            <main class="flex-1 mt-8 max-w-5xl mx-auto relative px-4 lg:px-8 w-full">
+                <!-- User docs -->
+                <section id="user-docs">
+                    <h1
+                        class="text-3xl dark:text-neutral-100 font-bold mb-1 flex items-center gap-2"
+                    >
+                        <i class="ri-user-line text-amber-400"></i> User Docs
+                    </h1>
+                    <p
+                        class="text-sm text-neutral-600 dark:text-neutral-300 mb-6"
+                    >
+                        Everything you need to use Beaver Notes day to day.
+                    </p>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10"
+                    >
+                        {% assign user_cards = site.docs | where: "category",
+                        "Beaver Notes" | sort: "position" %} {% for doc in
+                        user_cards limit: 6 %} {% include doc-card.html
+                        doc=doc %} {% endfor %}
+                    </div>
+                </section>
+
+                <!-- Dev docs -->
+                <section id="dev-docs" class="hidden">
+                    <h1
+                        class="text-3xl dark:text-neutral-100 font-bold mb-1 flex items-center gap-2"
+                    >
+                        <i class="ri-terminal-line text-amber-400"></i> Dev Docs
+                    </h1>
+                    <p
+                        class="text-sm text-neutral-600 dark:text-neutral-300 mb-6"
+                    >
+                        Build, extend and contribute to Beaver Notes.
+                    </p>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10"
+                    >
+                        {% assign dev_cards = site.docs | where: "category",
+                        "Beaver Notes (DEV)" | sort: "position" %} {% for doc in
+                        dev_cards limit: 6 %} {% include doc-card.html
+                        doc=doc %} {% endfor %}
+                    </div>
+                </section>
+
+                <!-- Last 3 docs updates -->
+                <section id="recent-updates" class="border-t dark:border-neutral-700 pt-8 mb-10">
+                    <h2
+                        class="text-2xl dark:text-neutral-100 font-bold mb-1 flex items-center gap-2"
+                    >
+                        <i class="ri-history-line text-amber-400"></i> Recent
+                        Updates
+                    </h2>
+                    <p
+                        class="text-sm text-neutral-600 dark:text-neutral-300 mb-6"
+                    >
+                        The latest documentation additions.
+                    </p>
+                    {% assign recent = site.docs | sort: "position" | reverse %}
+                    <div class="space-y-3">
+                        {% for doc in recent limit: 3 %}
+                        <a
+                            href="{{ doc.url }}"
+                            class="flex items-center gap-4 rounded-lg border dark:border-neutral-700 p-4 bg-neutral-50 dark:bg-neutral-800 hover:border-amber-400 transition"
+                        >
+                            <span
+                                class="w-9 h-9 shrink-0 rounded-lg bg-amber-400/10 text-amber-400 flex items-center justify-center text-xl"
+                            >
+                                <i class="ri-file-text-line"></i>
+                            </span>
+                            <div>
+                                <h3
+                                    class="font-medium dark:text-neutral-100"
+                                >
+                                    {{ doc.title }}
+                                </h3>
+                                <p
+                                    class="text-sm text-neutral-600 dark:text-neutral-300"
+                                >
+                                    {{ doc.category }} &middot; {{ doc.details }}
+                                </p>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                {% include footer.html %}
+            </main>
+
+            <!-- Right Sidebar: On this page -->
+            <aside class="w-full lg:w-1/5 p-4 lg:block hidden border-l dark:border-neutral-700">
+                <h2
+                    class="text-lg font-semibold dark:text-neutral-100 mb-4"
+                >
+                    On This Page
+                </h2>
+                <nav class="border-b dark:border-neutral-700 pb-6 mb-6">
+                    <ul id="table-of-contents" class="space-y-2 text-sm">
+                        <li>
+                            <a
+                                href="#user-docs"
+                                class="dark:text-neutral-100 hover:underline"
+                                >User Docs</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#dev-docs"
+                                class="dark:text-neutral-100 hover:underline"
+                                >Dev Docs</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="#recent-updates"
+                                class="dark:text-neutral-100 hover:underline"
+                                >Recent Updates</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+                <a
+                    class="text-md font-bolder text-neutral-800 dark:text-neutral-200"
+                    href="https://github.com/Beaver-Notes/Beaver-Docs/tree/main/_docs"
+                >
+                    <i class="ri-github-fill"></i>
+                    Edit this page
+                </a>
+            </aside>
+        </div>
+
+        {% include site-js.html %}
+    </body>
+</html>
