@@ -32,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: npm install
       
+      - name: Build CSS with Tailwind CLI
+        run: npx tailwindcss -i ./assets/main.css -o ./assets/main.compiled.css --minify
+        env:
+          JEKYLL_ENV: production
+      
       - name: Build the site with Jekyll
         uses: limjh16/jekyll-action-ts@v2
         with:

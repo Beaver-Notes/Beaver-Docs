@@ -13,12 +13,8 @@ collections:
 
 plugins:
   - jekyll-paginate
-  - jekyll-postcss
   - jekyll-seo-tag
   - jemoji
-  
-postcss:
-  cache: false
 
 
 paginate: 4

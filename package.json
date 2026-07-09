@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/main.css -o ./assets/main.compiled.css --minify",
+    "jekyll": "npm run build:css && bundle exec jekyll build",
+    "jekyll:serve": "npm run build:css && bundle exec jekyll serve"
+  },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.20",

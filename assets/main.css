@@ -55,6 +55,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.doc-icon {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.15em;
+  line-height: 1;
+  margin: 0 0.15em;
+}
+
 @layer base {
   body {
     @apply font-sans antialiased;
